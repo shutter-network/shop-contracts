@@ -9,6 +9,8 @@ contract KeyperSetManager is IKeyperSetManager, Ownable {
     uint64[] activationSlots;
     address[] contracts;
 
+    constructor () Ownable(msg.sender) {}
+    
     function addKeyperSet(
         uint64 activationSlot,
         address keyperSetContract

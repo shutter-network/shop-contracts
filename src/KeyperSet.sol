@@ -12,6 +12,8 @@ contract KeyperSet is IKeyperSet, Ownable {
     uint64 threshold;
     address broadcaster;
 
+    constructor () Ownable(msg.sender) {}
+
     function isFinalized() external view returns (bool) {
         return finalized;
     }
