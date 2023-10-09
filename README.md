@@ -1,4 +1,4 @@
-# gnosh-contracts
+# shop-contracts
 
 ## Running the tests
 
