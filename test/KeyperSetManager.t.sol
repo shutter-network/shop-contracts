@@ -27,8 +27,9 @@ contract KeyperSetManagerTest is Test {
     }
 
     function testAddKeyperSetOnlyOwner() public {
-        vm.prank(address(1));
-        vm.expectRevert("Ownable: caller is not the owner");
+        address sender = address(1);
+        vm.prank(sender);
+        vm.expectRevert(abi.encodeWithSelector(Ownable.OwnableUnauthorizedAccount.selector, sender));
         keyperSetManager.addKeyperSet(0, address(members0));
     }
 
