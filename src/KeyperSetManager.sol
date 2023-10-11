@@ -4,53 +4,47 @@ pragma solidity ^0.8.21;
 import "openzeppelin/contracts/access/Ownable.sol";
 import "src/IKeyperSet.sol";
 import "src/IKeyperSetManager.sol";
+import "./KeyperSet.sol";
 
 contract KeyperSetManager is IKeyperSetManager, Ownable {
-    uint64[] activationSlots;
-    address[] contracts;
+    struct KeyperSetData {
+        uint64 activationSlot;
+        address contractAddress;
+    }
 
-    constructor () Ownable(msg.sender) {}
-    
-    function addKeyperSet(
-        uint64 activationSlot,
-        address keyperSetContract
-    ) external onlyOwner {
-        if (
-            contracts.length > 0 &&
-            activationSlot < activationSlots[activationSlots.length - 1]
-        ) {
+    KeyperSetData[] keyperSets;
+
+    constructor() Ownable(msg.sender) {}
+
+    function addKeyperSet(uint64 activationSlot, address keyperSetContract) external onlyOwner {
+        if (keyperSets.length > 0 && activationSlot <= keyperSets[keyperSets.length - 1].activationSlot) {
             revert AlreadyHaveKeyperSet();
         }
         if (!IKeyperSet(keyperSetContract).isFinalized()) {
             revert KeyperSetNotFinalized();
         }
-        activationSlots.push(activationSlot);
-        contracts.push(keyperSetContract);
+        keyperSets.push(KeyperSetData(activationSlot, keyperSetContract));
         emit KeyperSetAdded(activationSlot, keyperSetContract);
     }
 
     function getNumKeyperSets() external view returns (uint64) {
-        return uint64(contracts.length);
+        return uint64(keyperSets.length);
     }
 
-    function getKeyperSetIndexBySlot(
-        uint64 slot
-    ) external view returns (uint64) {
-        for (uint256 i = activationSlots.length; i > 0; i--) {
-            if (activationSlots[i - 1] <= slot) {
+    function getKeyperSetIndexBySlot(uint64 slot) external view returns (uint64) {
+        for (uint256 i = keyperSets.length; i > 0; i--) {
+            if (keyperSets[i - 1].activationSlot <= slot) {
                 return uint64(i - 1);
             }
         }
         revert NoActiveKeyperSet();
     }
 
-    function getKeyperSetAddress(uint64 index) external view returns (address) {
-        return contracts[index];
+    function getKeyperSetActivationSlot(uint64 index) external view returns (uint64) {
+        return keyperSets[index].activationSlot;
     }
 
-    function getKeyperSetActivationSlot(
-        uint64 index
-    ) external view returns (uint64) {
-        return activationSlots[index];
+    function getKeyperSetAddress(uint64 index) external view returns (address) {
+        return keyperSets[index].contractAddress;
     }
 }
