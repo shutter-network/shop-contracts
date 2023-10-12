@@ -12,7 +12,7 @@ contract KeyperSetManager is IKeyperSetManager, Ownable {
         address contractAddress;
     }
 
-    KeyperSetData[] keyperSets;
+    KeyperSetData[] public keyperSets;
 
     constructor() Ownable(msg.sender) {}
 
