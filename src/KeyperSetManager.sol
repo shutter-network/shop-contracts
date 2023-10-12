@@ -12,9 +12,12 @@ contract KeyperSetManager is IKeyperSetManager, Ownable {
         address contractAddress;
     }
 
+    bool public active;
     KeyperSetData[] public keyperSets;
 
-    constructor() Ownable(msg.sender) {}
+    constructor() Ownable(msg.sender) {
+        active = false;
+    }
 
     function addKeyperSet(
         uint64 activationSlot,
@@ -56,5 +59,18 @@ contract KeyperSetManager is IKeyperSetManager, Ownable {
 
     function getKeyperSetAddress(uint64 index) external view returns (address) {
         return keyperSets[index].contractAddress;
+    }
+
+    function activate() external onlyOwner {
+        active = true;
+        emit Activated();
+    }
+
+    function deactivate() external {
+        if (!active) {
+            revert AlreadyDeactivated();
+        }
+        active = false;
+        emit Deactivated();
     }
 }

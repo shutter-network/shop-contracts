@@ -1,9 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.21;
 
+import "openzeppelin-contracts/contracts/access/Ownable.sol";
+
 error KeyperSetNotFinalized();
 error AlreadyHaveKeyperSet();
 error NoActiveKeyperSet();
+error AlreadyDeactivated();
 
 interface IKeyperSetManager {
     function addKeyperSet(
@@ -23,5 +26,11 @@ interface IKeyperSetManager {
         uint64 index
     ) external view returns (uint64);
 
+    function activate() external;
+
+    function deactivate() external;
+
     event KeyperSetAdded(uint64 activationSlot, address keyperSetContract);
+    event Activated();
+    event Deactivated();
 }
