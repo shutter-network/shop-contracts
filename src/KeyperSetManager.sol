@@ -16,8 +16,14 @@ contract KeyperSetManager is IKeyperSetManager, Ownable {
 
     constructor() Ownable(msg.sender) {}
 
-    function addKeyperSet(uint64 activationSlot, address keyperSetContract) external onlyOwner {
-        if (keyperSets.length > 0 && activationSlot <= keyperSets[keyperSets.length - 1].activationSlot) {
+    function addKeyperSet(
+        uint64 activationSlot,
+        address keyperSetContract
+    ) external onlyOwner {
+        if (
+            keyperSets.length > 0 &&
+            activationSlot <= keyperSets[keyperSets.length - 1].activationSlot
+        ) {
             revert AlreadyHaveKeyperSet();
         }
         if (!IKeyperSet(keyperSetContract).isFinalized()) {
@@ -31,7 +37,9 @@ contract KeyperSetManager is IKeyperSetManager, Ownable {
         return uint64(keyperSets.length);
     }
 
-    function getKeyperSetIndexBySlot(uint64 slot) external view returns (uint64) {
+    function getKeyperSetIndexBySlot(
+        uint64 slot
+    ) external view returns (uint64) {
         for (uint256 i = keyperSets.length; i > 0; i--) {
             if (keyperSets[i - 1].activationSlot <= slot) {
                 return uint64(i - 1);
@@ -40,7 +48,9 @@ contract KeyperSetManager is IKeyperSetManager, Ownable {
         revert NoActiveKeyperSet();
     }
 
-    function getKeyperSetActivationSlot(uint64 index) external view returns (uint64) {
+    function getKeyperSetActivationSlot(
+        uint64 index
+    ) external view returns (uint64) {
         return keyperSets[index].activationSlot;
     }
 
