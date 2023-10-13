@@ -5,8 +5,9 @@ import "src/IKeyperSet.sol";
 import "src/IKeyperSetManager.sol";
 import "./KeyperSet.sol";
 import "openzeppelin/contracts/access/AccessControl.sol";
+import "openzeppelin/contracts/utils/Pausable.sol";
 
-contract KeyperSetManager is IKeyperSetManager, AccessControl {
+contract KeyperSetManager is IKeyperSetManager, AccessControl, Pausable {
     struct KeyperSetData {
         uint64 activationSlot;
         address contractAddress;
@@ -14,11 +15,9 @@ contract KeyperSetManager is IKeyperSetManager, AccessControl {
 
     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
 
-    bool public active;
     KeyperSetData[] public keyperSets;
 
     constructor() {
-        active = false;
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
     }
 
@@ -64,16 +63,11 @@ contract KeyperSetManager is IKeyperSetManager, AccessControl {
         return keyperSets[index].contractAddress;
     }
 
-    function activate() external onlyRole(DEFAULT_ADMIN_ROLE) {
-        active = true;
-        emit Activated();
+    function pause() external onlyRole(PAUSER_ROLE) {
+        _pause();
     }
 
-    function deactivate() external onlyRole(PAUSER_ROLE) {
-        if (!active) {
-            revert AlreadyDeactivated();
-        }
-        active = false;
-        emit Deactivated();
+    function unpause() external onlyRole(DEFAULT_ADMIN_ROLE) {
+        _unpause();
     }
 }

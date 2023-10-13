@@ -50,7 +50,7 @@ contract KeyperSetManagerTest is Test {
         keyperSetManager.addKeyperSet(1000, address(members0));
         vm.expectRevert(AlreadyHaveKeyperSet.selector);
         keyperSetManager.addKeyperSet(999, address(members1));
-        keyperSetManager.addKeyperSet(1001, address(members1));
+        keyperSetManager.addKeyperSet(1000, address(members1));
     }
 
     event KeyperSetAdded(uint64 activationSlot, address keyperSetContract);

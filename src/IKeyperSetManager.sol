@@ -26,11 +26,5 @@ interface IKeyperSetManager {
         uint64 index
     ) external view returns (uint64);
 
-    function activate() external;
-
-    function deactivate() external;
-
     event KeyperSetAdded(uint64 activationSlot, address keyperSetContract);
-    event Activated();
-    event Deactivated();
 }
