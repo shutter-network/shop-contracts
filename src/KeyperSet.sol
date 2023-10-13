@@ -2,11 +2,10 @@
 pragma solidity ^0.8.21;
 
 import "openzeppelin/contracts/access/Ownable.sol";
-import "src/IKeyperSet.sol";
 
 error AlreadyFinalized();
 
-contract KeyperSet is IKeyperSet, Ownable {
+contract KeyperSet is Ownable {
     bool finalized;
     address[] members;
     uint64 threshold;

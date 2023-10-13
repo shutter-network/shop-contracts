@@ -1,16 +1,21 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.21;
 
-import "src/IKeyBroadcastContract.sol";
-import "src/IKeyperSetManager.sol";
-import "src/IKeyperSet.sol";
+import "src/KeyperSetManager.sol";
+import "src/KeyperSet.sol";
 
-contract KeyBroadcastContract is IKeyBroadcastContract {
+error InvalidKey();
+error AlreadyHaveKey();
+error NotAllowed();
+
+contract KeyBroadcastContract {
     mapping(uint64 => bytes) private keys;
-    IKeyperSetManager private keyperSetManager;
+    KeyperSetManager private keyperSetManager;
+
+    event EonKeyBroadcast(uint64 eon, bytes key);
 
     constructor(address keyperSetManagerAddress) {
-        keyperSetManager = IKeyperSetManager(keyperSetManagerAddress);
+        keyperSetManager = KeyperSetManager(keyperSetManagerAddress);
     }
 
     function broadcastEonKey(uint64 eon, bytes memory key) external {
@@ -21,7 +26,7 @@ contract KeyBroadcastContract is IKeyBroadcastContract {
             revert AlreadyHaveKey();
         }
         if (
-            !IKeyperSet(keyperSetManager.getKeyperSetAddress(eon))
+            !KeyperSet(keyperSetManager.getKeyperSetAddress(eon))
                 .isAllowedToBroadcastEonKey(msg.sender)
         ) {
             revert NotAllowed();

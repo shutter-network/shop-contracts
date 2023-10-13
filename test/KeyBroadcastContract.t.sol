@@ -2,7 +2,6 @@
 pragma solidity ^0.8.21;
 
 import "forge-std/Test.sol";
-import "../src/IKeyBroadcastContract.sol";
 import "../src/KeyBroadcastContract.sol";
 import "../src/KeyperSetManager.sol";
 import "../src/KeyperSet.sol";
