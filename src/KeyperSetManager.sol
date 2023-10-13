@@ -18,7 +18,7 @@ contract KeyperSetManager is AccessControl, Pausable {
 
     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
 
-    KeyperSetData[] public keyperSets;
+    KeyperSetData[] private keyperSets;
 
     event KeyperSetAdded(uint64 activationSlot, address keyperSetContract);
 
