@@ -77,21 +77,36 @@ contract KeyperSetTest is Test {
         address[] memory members = new address[](0);
         address sender = address(1);
         vm.prank(sender);
-        vm.expectRevert(abi.encodeWithSelector(Ownable.OwnableUnauthorizedAccount.selector, sender));
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                Ownable.OwnableUnauthorizedAccount.selector,
+                sender
+            )
+        );
         keyperSet.addMembers(members);
     }
 
     function testSetThresholdOnlyOwner() public {
         address sender = address(1);
         vm.prank(sender);
-        vm.expectRevert(abi.encodeWithSelector(Ownable.OwnableUnauthorizedAccount.selector, sender));
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                Ownable.OwnableUnauthorizedAccount.selector,
+                sender
+            )
+        );
         keyperSet.setThreshold(0);
     }
 
     function testSetKeybroadcasterOnlyOwner() public {
         address sender = address(1);
         vm.prank(sender);
-        vm.expectRevert(abi.encodeWithSelector(Ownable.OwnableUnauthorizedAccount.selector, sender));
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                Ownable.OwnableUnauthorizedAccount.selector,
+                sender
+            )
+        );
         keyperSet.setKeyBroadcaster(address(5));
     }
 
@@ -104,7 +119,12 @@ contract KeyperSetTest is Test {
     function testSetFinalizedOnlyOwner() public {
         address sender = address(1);
         vm.prank(sender);
-        vm.expectRevert(abi.encodeWithSelector(Ownable.OwnableUnauthorizedAccount.selector, sender));
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                Ownable.OwnableUnauthorizedAccount.selector,
+                sender
+            )
+        );
         keyperSet.setFinalized();
     }
 
