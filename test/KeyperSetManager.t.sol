@@ -26,10 +26,17 @@ contract KeyperSetManagerTest is Test {
         assertEq(keyperSetManager.getNumKeyperSets(), 2);
     }
 
-    function testAddKeyperSetOnlyOwner() public {
+    function testAddKeyperSetOnlyDefaultAdmin() public {
         address sender = address(1);
+        bytes32 DEFAULT_ADMIN_ROLE = keyperSetManager.DEFAULT_ADMIN_ROLE();
         vm.prank(sender);
-        vm.expectRevert(abi.encodeWithSelector(Ownable.OwnableUnauthorizedAccount.selector, sender));
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                IAccessControl.AccessControlUnauthorizedAccount.selector,
+                sender,
+                DEFAULT_ADMIN_ROLE
+            )
+        );
         keyperSetManager.addKeyperSet(0, address(members0));
     }
 
@@ -43,7 +50,7 @@ contract KeyperSetManagerTest is Test {
         keyperSetManager.addKeyperSet(1000, address(members0));
         vm.expectRevert(AlreadyHaveKeyperSet.selector);
         keyperSetManager.addKeyperSet(999, address(members1));
-        keyperSetManager.addKeyperSet(1000, address(members1));
+        keyperSetManager.addKeyperSet(1001, address(members1));
     }
 
     event KeyperSetAdded(uint64 activationSlot, address keyperSetContract);

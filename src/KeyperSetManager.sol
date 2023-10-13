@@ -1,31 +1,34 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.21;
 
-import "openzeppelin/contracts/access/Ownable.sol";
 import "src/IKeyperSet.sol";
 import "src/IKeyperSetManager.sol";
 import "./KeyperSet.sol";
+import "openzeppelin/contracts/access/AccessControl.sol";
 
-contract KeyperSetManager is IKeyperSetManager, Ownable {
+contract KeyperSetManager is IKeyperSetManager, AccessControl {
     struct KeyperSetData {
         uint64 activationSlot;
         address contractAddress;
     }
 
+    bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
+
     bool public active;
     KeyperSetData[] public keyperSets;
 
-    constructor() Ownable(msg.sender) {
+    constructor() {
         active = false;
+        _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
     }
 
     function addKeyperSet(
         uint64 activationSlot,
         address keyperSetContract
-    ) external onlyOwner {
+    ) external onlyRole(DEFAULT_ADMIN_ROLE) {
         if (
             keyperSets.length > 0 &&
-            activationSlot <= keyperSets[keyperSets.length - 1].activationSlot
+            activationSlot < keyperSets[keyperSets.length - 1].activationSlot
         ) {
             revert AlreadyHaveKeyperSet();
         }
@@ -61,12 +64,12 @@ contract KeyperSetManager is IKeyperSetManager, Ownable {
         return keyperSets[index].contractAddress;
     }
 
-    function activate() external onlyOwner {
+    function activate() external onlyRole(DEFAULT_ADMIN_ROLE) {
         active = true;
         emit Activated();
     }
 
-    function deactivate() external {
+    function deactivate() external onlyRole(PAUSER_ROLE) {
         if (!active) {
             revert AlreadyDeactivated();
         }
