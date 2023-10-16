@@ -54,6 +54,16 @@ contract KeyperSetManagerTest is Test {
         keyperSetManager.addKeyperSet(1000, address(members1));
     }
 
+    function testAddKeyperSetRequiresFutureActivationBlock() public {
+        keyperSetManager.addKeyperSet(10, address(members0));
+        vm.roll(15);
+        uint64 currentEon = keyperSetManager.getKeyperSetIndexBySlot(15);
+        assertEq(10, keyperSetManager.getKeyperSetActivationSlot(currentEon));
+        vm.expectRevert(AlreadyHaveKeyperSet.selector);
+        keyperSetManager.addKeyperSet(15, address(members1));
+        keyperSetManager.addKeyperSet(16, address(members1));
+    }
+
     event KeyperSetAdded(uint64 activationSlot, address keyperSetContract);
 
     function testAddKeyperSetEmits() public {
