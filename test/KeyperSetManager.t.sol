@@ -19,10 +19,11 @@ contract KeyperSetManagerTest is Test {
     }
 
     function testGetNumKeyperSets() public {
+        uint64 currentBlock = uint64(block.number);
         assertEq(keyperSetManager.getNumKeyperSets(), 0);
-        keyperSetManager.addKeyperSet(0, address(members0));
+        keyperSetManager.addKeyperSet(currentBlock + 1, address(members0));
         assertEq(keyperSetManager.getNumKeyperSets(), 1);
-        keyperSetManager.addKeyperSet(1, address(members0));
+        keyperSetManager.addKeyperSet(currentBlock + 2, address(members0));
         assertEq(keyperSetManager.getNumKeyperSets(), 2);
     }
 

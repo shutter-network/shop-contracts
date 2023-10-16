@@ -4,6 +4,7 @@ pragma solidity ^0.8.21;
 import "./KeyperSet.sol";
 import "openzeppelin/contracts/access/AccessControl.sol";
 import "openzeppelin/contracts/utils/Pausable.sol";
+import "openzeppelin/contracts/utils/math/Math.sol";
 
 error KeyperSetNotFinalized();
 error AlreadyHaveKeyperSet();
@@ -32,7 +33,11 @@ contract KeyperSetManager is AccessControl, Pausable {
     ) external onlyRole(DEFAULT_ADMIN_ROLE) {
         if (
             keyperSets.length > 0 &&
-            activationSlot < keyperSets[keyperSets.length - 1].activationSlot
+            activationSlot <
+            Math.max(
+                keyperSets[keyperSets.length - 1].activationSlot,
+                block.number + 1
+            )
         ) {
             revert AlreadyHaveKeyperSet();
         }
