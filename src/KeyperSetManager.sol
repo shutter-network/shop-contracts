@@ -13,7 +13,7 @@ error AlreadyDeactivated();
 
 contract KeyperSetManager is AccessControl, Pausable {
     struct KeyperSetData {
-        uint64 activationSlot;
+        uint64 activationBlock;
         address contractAddress;
     }
 
@@ -21,21 +21,21 @@ contract KeyperSetManager is AccessControl, Pausable {
 
     KeyperSetData[] private keyperSets;
 
-    event KeyperSetAdded(uint64 activationSlot, address keyperSetContract);
+    event KeyperSetAdded(uint64 activationBlock, address keyperSetContract);
 
     constructor() {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
     }
 
     function addKeyperSet(
-        uint64 activationSlot,
+        uint64 activationBlock,
         address keyperSetContract
     ) external onlyRole(DEFAULT_ADMIN_ROLE) {
         if (
             keyperSets.length > 0 &&
-            activationSlot <
+            activationBlock <
             Math.max(
-                keyperSets[keyperSets.length - 1].activationSlot,
+                keyperSets[keyperSets.length - 1].activationBlock,
                 block.number + 1
             )
         ) {
@@ -44,29 +44,29 @@ contract KeyperSetManager is AccessControl, Pausable {
         if (!KeyperSet(keyperSetContract).isFinalized()) {
             revert KeyperSetNotFinalized();
         }
-        keyperSets.push(KeyperSetData(activationSlot, keyperSetContract));
-        emit KeyperSetAdded(activationSlot, keyperSetContract);
+        keyperSets.push(KeyperSetData(activationBlock, keyperSetContract));
+        emit KeyperSetAdded(activationBlock, keyperSetContract);
     }
 
     function getNumKeyperSets() external view returns (uint64) {
         return uint64(keyperSets.length);
     }
 
-    function getKeyperSetIndexBySlot(
-        uint64 slot
+    function getKeyperSetIndexByBlock(
+        uint64 blockNumber
     ) external view returns (uint64) {
         for (uint256 i = keyperSets.length; i > 0; i--) {
-            if (keyperSets[i - 1].activationSlot <= slot) {
+            if (keyperSets[i - 1].activationBlock <= blockNumber) {
                 return uint64(i - 1);
             }
         }
         revert NoActiveKeyperSet();
     }
 
-    function getKeyperSetActivationSlot(
+    function getKeyperSetActivationBlock(
         uint64 index
     ) external view returns (uint64) {
-        return keyperSets[index].activationSlot;
+        return keyperSets[index].activationBlock;
     }
 
     function getKeyperSetAddress(uint64 index) external view returns (address) {
