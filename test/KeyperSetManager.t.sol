@@ -57,14 +57,14 @@ contract KeyperSetManagerTest is Test {
     function testAddKeyperSetRequiresFutureActivationBlock() public {
         keyperSetManager.addKeyperSet(10, address(members0));
         vm.roll(15);
-        uint64 currentEon = keyperSetManager.getKeyperSetIndexBySlot(15);
-        assertEq(10, keyperSetManager.getKeyperSetActivationSlot(currentEon));
+        uint64 currentEon = keyperSetManager.getKeyperSetIndexByBlock(15);
+        assertEq(10, keyperSetManager.getKeyperSetActivationBlock(currentEon));
         vm.expectRevert(AlreadyHaveKeyperSet.selector);
         keyperSetManager.addKeyperSet(15, address(members1));
         keyperSetManager.addKeyperSet(16, address(members1));
     }
 
-    event KeyperSetAdded(uint64 activationSlot, address keyperSetContract);
+    event KeyperSetAdded(uint64 activationBlock, address keyperSetContract);
 
     function testAddKeyperSetEmits() public {
         vm.expectEmit(address(keyperSetManager));
@@ -72,33 +72,33 @@ contract KeyperSetManagerTest is Test {
         keyperSetManager.addKeyperSet(1000, address(members0));
     }
 
-    function testGetKeyperSetIndexBySlotEmpty() public {
+    function testGetKeyperSetIndexByBlockEmpty() public {
         vm.expectRevert(NoActiveKeyperSet.selector);
-        keyperSetManager.getKeyperSetIndexBySlot(0);
+        keyperSetManager.getKeyperSetIndexByBlock(0);
     }
 
-    function testGetKeyperSetIndexBySlot() public {
+    function testGetKeyperSetIndexByBlock() public {
         keyperSetManager.addKeyperSet(1000, address(members0));
         keyperSetManager.addKeyperSet(1100, address(members1));
 
         vm.expectRevert(NoActiveKeyperSet.selector);
-        keyperSetManager.getKeyperSetIndexBySlot(0);
+        keyperSetManager.getKeyperSetIndexByBlock(0);
 
         vm.expectRevert(NoActiveKeyperSet.selector);
-        keyperSetManager.getKeyperSetIndexBySlot(999);
+        keyperSetManager.getKeyperSetIndexByBlock(999);
 
-        assertEq(keyperSetManager.getKeyperSetIndexBySlot(1000), 0);
-        assertEq(keyperSetManager.getKeyperSetIndexBySlot(1099), 0);
+        assertEq(keyperSetManager.getKeyperSetIndexByBlock(1000), 0);
+        assertEq(keyperSetManager.getKeyperSetIndexByBlock(1099), 0);
 
-        assertEq(keyperSetManager.getKeyperSetIndexBySlot(1100), 1);
-        assertEq(keyperSetManager.getKeyperSetIndexBySlot(1250), 1);
+        assertEq(keyperSetManager.getKeyperSetIndexByBlock(1100), 1);
+        assertEq(keyperSetManager.getKeyperSetIndexByBlock(1250), 1);
     }
 
-    function testGetKeyperSetActivationSlot() public {
+    function testGetKeyperSetActivationBlock() public {
         keyperSetManager.addKeyperSet(1000, address(members0));
         keyperSetManager.addKeyperSet(1100, address(members1));
-        assertEq(keyperSetManager.getKeyperSetActivationSlot(0), 1000);
-        assertEq(keyperSetManager.getKeyperSetActivationSlot(1), 1100);
+        assertEq(keyperSetManager.getKeyperSetActivationBlock(0), 1000);
+        assertEq(keyperSetManager.getKeyperSetActivationBlock(1), 1100);
     }
 
     function testGetKeyperSetAddress() public {
