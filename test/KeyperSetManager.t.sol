@@ -107,4 +107,54 @@ contract KeyperSetManagerTest is Test {
         assertEq(keyperSetManager.getKeyperSetAddress(0), address(members0));
         assertEq(keyperSetManager.getKeyperSetAddress(1), address(members1));
     }
+
+    function testPauseShutter() public {
+        bytes32 pauserRole = keyperSetManager.PAUSER_ROLE();
+        keyperSetManager.grantRole(pauserRole, address(1));
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                IAccessControl.AccessControlUnauthorizedAccount.selector,
+                address(this),
+                pauserRole
+            )
+        );
+        keyperSetManager.pause();
+        vm.prank(address(2));
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                IAccessControl.AccessControlUnauthorizedAccount.selector,
+                address(2),
+                pauserRole
+            )
+        );
+        keyperSetManager.pause();
+        vm.startPrank(address(1));
+        keyperSetManager.pause();
+        assert(keyperSetManager.paused());
+        vm.expectRevert(Pausable.EnforcedPause.selector);
+        keyperSetManager.pause();
+        vm.stopPrank();
+    }
+
+    function testUnpauseShutter() public {
+        bytes32 pauserRole = keyperSetManager.PAUSER_ROLE();
+        bytes32 adminRole = keyperSetManager.DEFAULT_ADMIN_ROLE();
+        keyperSetManager.grantRole(pauserRole, address(1));
+        vm.startPrank(address(1));
+        keyperSetManager.pause();
+        assert(keyperSetManager.paused());
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                IAccessControl.AccessControlUnauthorizedAccount.selector,
+                address(1),
+                adminRole
+            )
+        );
+        keyperSetManager.unpause();
+        vm.stopPrank();
+        keyperSetManager.unpause();
+        assert(!keyperSetManager.paused());
+        vm.expectRevert(Pausable.ExpectedPause.selector);
+        keyperSetManager.unpause();
+    }
 }
