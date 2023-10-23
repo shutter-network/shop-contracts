@@ -1,20 +1,17 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.21;
 
-import "openzeppelin/contracts/access/AccessControl.sol";
-import "openzeppelin/contracts/utils/Pausable.sol";
+import "./RestrictedPausable.sol";
 
 error InsufficientFunds();
 error BlockAlreadyFinalized();
 error TransferEtherFailed();
 
-contract Inbox is AccessControl, Pausable {
+contract Inbox is RestrictedPausable {
     struct Transaction {
         bytes encryptedTransaction;
         uint64 gasLimit;
     }
-
-    bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
 
     event EncryptedTransactionSubmitted(
         uint64 block,
@@ -29,10 +26,6 @@ contract Inbox is AccessControl, Pausable {
     bytes32 public constant SEQUENCER_ROLE = keccak256("SEQUENCER_ROLE");
 
     mapping(uint64 blockNumber => Transaction[]) private transactions;
-
-    constructor() {
-        _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
-    }
 
     function submitEncryptedTransaction(
         uint64 blockNumber,
@@ -77,14 +70,6 @@ contract Inbox is AccessControl, Pausable {
     function withdraw(address recipient) external onlyRole(WITHDRAW_ROLE) {
         _sendEther(recipient, address(this).balance);
         emit FeesWithdrawn(recipient);
-    }
-
-    function pause() external onlyRole(PAUSER_ROLE) {
-        _pause();
-    }
-
-    function unpause() external onlyRole(DEFAULT_ADMIN_ROLE) {
-        _unpause();
     }
 
     function _sendEther(address recipient, uint256 value) private {

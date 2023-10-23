@@ -1,31 +1,24 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.21;
 
-import "./KeyperSet.sol";
-import "openzeppelin/contracts/access/AccessControl.sol";
-import "openzeppelin/contracts/utils/Pausable.sol";
 import "openzeppelin/contracts/utils/math/Math.sol";
+import "./KeyperSet.sol";
+import "./RestrictedPausable.sol";
 
 error KeyperSetNotFinalized();
 error AlreadyHaveKeyperSet();
 error NoActiveKeyperSet();
 error AlreadyDeactivated();
 
-contract KeyperSetManager is AccessControl, Pausable {
+contract KeyperSetManager is RestrictedPausable {
     struct KeyperSetData {
         uint64 activationBlock;
         address contractAddress;
     }
 
-    bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
-
     KeyperSetData[] private keyperSets;
 
     event KeyperSetAdded(uint64 activationBlock, address keyperSetContract);
-
-    constructor() {
-        _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
-    }
 
     function addKeyperSet(
         uint64 activationBlock,
@@ -71,13 +64,5 @@ contract KeyperSetManager is AccessControl, Pausable {
 
     function getKeyperSetAddress(uint64 index) external view returns (address) {
         return keyperSets[index].contractAddress;
-    }
-
-    function pause() external onlyRole(PAUSER_ROLE) {
-        _pause();
-    }
-
-    function unpause() external onlyRole(DEFAULT_ADMIN_ROLE) {
-        _unpause();
     }
 }
