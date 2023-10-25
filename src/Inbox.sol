@@ -6,17 +6,21 @@ import "./RestrictedPausable.sol";
 error InsufficientFunds();
 error BlockAlreadyFinalized();
 error TransferEtherFailed();
+error BlockGasLimitExceeded();
 
 contract Inbox is RestrictedPausable {
     struct Transaction {
         bytes encryptedTransaction;
         uint64 gasLimit;
+        uint64 cumulativeGasLimit;
     }
 
     event EncryptedTransactionSubmitted(
-        uint64 block,
+        uint64 indexed index,
+        uint64 indexed block,
         bytes encryptedTransaction,
         uint64 gasLimit,
+        uint64 cumulativeGasLimit,
         uint256 fee
     );
 
@@ -24,8 +28,25 @@ contract Inbox is RestrictedPausable {
 
     bytes32 public constant WITHDRAW_ROLE = keccak256("WITHDRAW_ROLE");
     bytes32 public constant SEQUENCER_ROLE = keccak256("SEQUENCER_ROLE");
+    bytes32 public constant BLOCK_GAS_LIMIT_SETTER_ROLE =
+        keccak256("BLOCK_GAS_LIMIT_SETTER_ROLE");
 
     mapping(uint64 blockNumber => Transaction[]) private transactions;
+    uint64 private blockGasLimit;
+
+    constructor(uint64 _blockGasLimit) {
+        blockGasLimit = _blockGasLimit;
+    }
+
+    function setBlockGasLimit(
+        uint64 newBlockGasLimit
+    ) external onlyRole(BLOCK_GAS_LIMIT_SETTER_ROLE) {
+        blockGasLimit = newBlockGasLimit;
+    }
+
+    function getBlockGasLimit() external view returns (uint64) {
+        return blockGasLimit;
+    }
 
     function submitEncryptedTransaction(
         uint64 blockNumber,
@@ -42,12 +63,29 @@ contract Inbox is RestrictedPausable {
         }
 
         Transaction[] storage transactionsForBlock = transactions[blockNumber];
-        transactionsForBlock.push(Transaction(encryptedTransaction, gasLimit));
+        uint64 length = uint64(transactionsForBlock.length);
+        uint64 cumulativeGasLimit = (length > 0)
+            ? transactionsForBlock[length - 1].cumulativeGasLimit
+            : 0;
+
+        if (cumulativeGasLimit + gasLimit > blockGasLimit) {
+            revert BlockGasLimitExceeded();
+        }
+
+        transactionsForBlock.push(
+            Transaction(
+                encryptedTransaction,
+                gasLimit,
+                cumulativeGasLimit + gasLimit
+            )
+        );
 
         emit EncryptedTransactionSubmitted(
+            length,
             blockNumber,
             encryptedTransaction,
             gasLimit,
+            cumulativeGasLimit + gasLimit,
             fee
         );
 
