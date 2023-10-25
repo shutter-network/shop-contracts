@@ -11,8 +11,8 @@ contract InboxTest is Test {
     Inbox.Transaction public transaction;
 
     function setUp() public {
-        inbox = new Inbox();
-        transaction = Inbox.Transaction(hex"12345678", 1e5);
+        inbox = new Inbox(30e6);
+        transaction = Inbox.Transaction(hex"12345678", uint64(1e5), uint64(0));
         vm.fee(1e9);
     }
 
