@@ -12,7 +12,7 @@ contract InboxTest is Test {
 
     function setUp() public {
         inbox = new Inbox(30e6);
-        transaction = Inbox.Transaction(hex"12345678", uint64(1e5), uint64(0));
+        transaction = Inbox.Transaction(hex"12345678", 1e5, 0);
         vm.fee(1e9);
     }
 
@@ -130,6 +130,60 @@ contract InboxTest is Test {
             address(nonReceivableContract)
         );
         vm.stopPrank();
+    }
+
+    function testBlockGasLimitExceeded() public {
+        uint256 fee = block.basefee * transaction.gasLimit;
+        uint64 blockToInclude = uint64(block.number) + 1;
+
+        _submitTx(blockToInclude, fee, bytes4(0));
+
+        // Submit a transaction to fill up to the limit exactly
+        uint64 remainingGasLimit = 30e6 - transaction.gasLimit;
+        inbox.submitEncryptedTransaction{
+            value: remainingGasLimit * block.basefee
+        }(
+            blockToInclude,
+            transaction.encryptedTransaction,
+            remainingGasLimit,
+            msg.sender
+        );
+
+        // Already 1 gas will exceed the total block limit
+        vm.expectRevert(BlockGasLimitExceeded.selector);
+        inbox.submitEncryptedTransaction{value: 1 * block.basefee}(
+            blockToInclude,
+            transaction.encryptedTransaction,
+            1,
+            msg.sender
+        );
+    }
+
+    function testSetBlockGasLimit() public {
+        uint64 oldBlockGasLimit = inbox.getBlockGasLimit();
+        uint64 newBlockGasLimit = oldBlockGasLimit + 1;
+        address blockGasLimitSetter = address(1);
+
+        vm.startPrank(blockGasLimitSetter);
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                IAccessControl.AccessControlUnauthorizedAccount.selector,
+                blockGasLimitSetter,
+                inbox.BLOCK_GAS_LIMIT_SETTER_ROLE()
+            )
+        );
+        inbox.setBlockGasLimit(newBlockGasLimit);
+        vm.stopPrank();
+        assertEq(oldBlockGasLimit, inbox.getBlockGasLimit());
+
+        inbox.grantRole(
+            inbox.BLOCK_GAS_LIMIT_SETTER_ROLE(),
+            blockGasLimitSetter
+        );
+
+        vm.prank(blockGasLimitSetter);
+        inbox.setBlockGasLimit(newBlockGasLimit);
+        assertEq(inbox.getBlockGasLimit(), newBlockGasLimit);
     }
 
     function _submitTx(
