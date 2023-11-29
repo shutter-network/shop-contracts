@@ -1,0 +1,5 @@
+{
+  "enableShutter": true,
+  "shutterBlockGasLimit": 5000000,
+  "shutterAdminAddress": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720"
+}
