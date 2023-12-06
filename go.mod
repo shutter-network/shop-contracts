@@ -2,7 +2,10 @@ module github.com/shutter-network/shop-contracts
 
 go 1.21.4
 
-require github.com/ethereum/go-ethereum v1.13.5
+require (
+	github.com/ethereum/go-ethereum v1.13.5
+	github.com/pelletier/go-toml/v2 v2.1.0
+)
 
 require (
 	github.com/Microsoft/go-winio v0.6.1 // indirect
