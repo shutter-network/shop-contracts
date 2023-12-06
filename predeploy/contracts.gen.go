@@ -14,16 +14,15 @@ var (
 	KeyBroadcastContractAddr = common.HexToAddress(keyBroadcastContract)
 
 	Predeploys        = make(map[string]*common.Address)
-	PredeploysAddrSet = make(map[common.Address]bool)
+	PredeploysAddrSet = make(map[common.Address]string)
 )
 
 func init() {
-
 	Predeploys["Inbox"] = &InboxAddr
 	Predeploys["KeyperSetManager"] = &KeyperSetManagerAddr
 	Predeploys["KeyBroadcastContract"] = &KeyBroadcastContractAddr
 
-	for _, addr := range Predeploys {
-		PredeploysAddrSet[*addr] = true
+	for name, addr := range Predeploys {
+		PredeploysAddrSet[*addr] = name
 	}
 }
