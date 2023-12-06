@@ -122,7 +122,7 @@ var (
 	{{- end}}
 
 	Predeploys = make(map[string]*common.Address)
-	PredeploysAddrSet = make(map[common.Address]bool)
+	PredeploysAddrSet = make(map[common.Address]string)
 )
 
 func init() {
@@ -130,8 +130,8 @@ func init() {
 	Predeploys["{{.Name}}"] = &{{.Name}}Addr
 	{{- end}}
 
-	for _, addr := range Predeploys{
-		PredeploysAddrSet[*addr] = true 
+	for name, addr := range Predeploys{
+		PredeploysAddrSet[*addr] = name
 	}
 }
 `
