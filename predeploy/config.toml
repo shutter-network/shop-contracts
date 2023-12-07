@@ -1,9 +1,0 @@
-[Golang]
-  Package = "predeploy"
-[System]
-  ShutterStartAddress = "0x4200420000000000000000000000000000000000"
-  Contracts = [
-    { Index = 0, Name = "Inbox"},
-    { Index = 1, Name = "KeyperSetManager"},
-    { Index = 2, Name = "KeyBroadcastContract"}
-  ]
