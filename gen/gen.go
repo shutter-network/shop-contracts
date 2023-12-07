@@ -54,6 +54,9 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	// TODO: check that the addresses fall in the range of the
+	// Optimism predeploy namespace! (not 100% sure, but it needs to have
+	// the 0x420000000... prefix [:18] and the remainder has to be unique etc.)
 	if !common.IsHexAddress(cfg.System.ShutterStartAddress) {
 		panic("start address must be an ethereum hex address")
 	}
@@ -119,11 +122,16 @@ var (
 	{{- end}}
 
 	Predeploys = make(map[string]*common.Address)
+	PredeploysAddrSet = make(map[common.Address]bool)
 )
 
 func init() {
 	{{range .System.Contracts}}
 	Predeploys["{{.Name}}"] = &{{.Name}}Addr
 	{{- end}}
+
+	for _, addr := range Predeploys{
+		PredeploysAddrSet[*addr] = true 
+	}
 }
 `

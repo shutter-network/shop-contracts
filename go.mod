@@ -5,6 +5,7 @@ go 1.21.4
 require (
 	github.com/ethereum/go-ethereum v1.13.5
 	github.com/pelletier/go-toml/v2 v2.1.0
+	github.com/pkg/errors v0.9.1
 )
 
 require (
