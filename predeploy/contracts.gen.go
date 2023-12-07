@@ -6,14 +6,15 @@ package predeploy
 import "github.com/ethereum/go-ethereum/common"
 
 var (
-	inbox                    = "0x4200420000000000000000000000000000000000"
+	inbox                    = "0x4200000000000000000000000000000000000066"
 	InboxAddr                = common.HexToAddress(inbox)
-	keyperSetManager         = "0x4200420000000000000000000000000000000001"
+	keyperSetManager         = "0x4200000000000000000000000000000000000067"
 	KeyperSetManagerAddr     = common.HexToAddress(keyperSetManager)
-	keyBroadcastContract     = "0x4200420000000000000000000000000000000002"
+	keyBroadcastContract     = "0x4200000000000000000000000000000000000068"
 	KeyBroadcastContractAddr = common.HexToAddress(keyBroadcastContract)
 
-	Predeploys = make(map[string]*common.Address)
+	Predeploys        = make(map[string]*common.Address)
+	PredeploysAddrSet = make(map[common.Address]bool)
 )
 
 func init() {
@@ -21,4 +22,8 @@ func init() {
 	Predeploys["Inbox"] = &InboxAddr
 	Predeploys["KeyperSetManager"] = &KeyperSetManagerAddr
 	Predeploys["KeyBroadcastContract"] = &KeyBroadcastContractAddr
+
+	for _, addr := range Predeploys {
+		PredeploysAddrSet[*addr] = true
+	}
 }
