@@ -9,13 +9,18 @@ contract KeyperSetManagerTest is Test {
     KeyperSetManager public keyperSetManager;
     KeyperSet public members0;
     KeyperSet public members1;
+    address public admin;
 
     function setUp() public {
-        keyperSetManager = new KeyperSetManager();
+        admin = address(42);
+        keyperSetManager = new KeyperSetManager(admin);
         members0 = new KeyperSet();
         members0.setFinalized();
         members1 = new KeyperSet();
         members1.setFinalized();
+
+        // always use the admin per default
+        vm.startPrank(admin);
     }
 
     function testGetNumKeyperSets() public {
@@ -30,7 +35,7 @@ contract KeyperSetManagerTest is Test {
     function testAddKeyperSetOnlyDefaultAdmin() public {
         address sender = address(1);
         bytes32 DEFAULT_ADMIN_ROLE = keyperSetManager.DEFAULT_ADMIN_ROLE();
-        vm.prank(sender);
+        changePrank(sender);
         vm.expectRevert(
             abi.encodeWithSelector(
                 IAccessControl.AccessControlUnauthorizedAccount.selector,
@@ -110,16 +115,19 @@ contract KeyperSetManagerTest is Test {
 
     function testPauseShutter() public {
         bytes32 pauserRole = keyperSetManager.PAUSER_ROLE();
+        address unauthorized = address(777);
         keyperSetManager.grantRole(pauserRole, address(1));
+        changePrank(unauthorized);
+
         vm.expectRevert(
             abi.encodeWithSelector(
                 IAccessControl.AccessControlUnauthorizedAccount.selector,
-                address(this),
+                unauthorized,
                 pauserRole
             )
         );
         keyperSetManager.pause();
-        vm.prank(address(2));
+        changePrank(address(2));
         vm.expectRevert(
             abi.encodeWithSelector(
                 IAccessControl.AccessControlUnauthorizedAccount.selector,
@@ -128,19 +136,21 @@ contract KeyperSetManagerTest is Test {
             )
         );
         keyperSetManager.pause();
-        vm.startPrank(address(1));
+        changePrank(address(1));
         keyperSetManager.pause();
         assert(keyperSetManager.paused());
         vm.expectRevert(Pausable.EnforcedPause.selector);
         keyperSetManager.pause();
-        vm.stopPrank();
+
+        changePrank(admin);
     }
 
     function testUnpauseShutter() public {
         bytes32 pauserRole = keyperSetManager.PAUSER_ROLE();
         bytes32 adminRole = keyperSetManager.DEFAULT_ADMIN_ROLE();
         keyperSetManager.grantRole(pauserRole, address(1));
-        vm.startPrank(address(1));
+
+        changePrank(address(1));
         keyperSetManager.pause();
         assert(keyperSetManager.paused());
         vm.expectRevert(
@@ -151,7 +161,8 @@ contract KeyperSetManagerTest is Test {
             )
         );
         keyperSetManager.unpause();
-        vm.stopPrank();
+
+        changePrank(admin);
         keyperSetManager.unpause();
         assert(!keyperSetManager.paused());
         vm.expectRevert(Pausable.ExpectedPause.selector);

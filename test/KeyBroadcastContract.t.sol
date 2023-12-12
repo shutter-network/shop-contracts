@@ -11,27 +11,33 @@ contract KeyBroadcastTest is Test {
     KeyperSetManager public keyperSetManager;
     KeyperSet public keyperSet0;
     KeyperSet public keyperSet1;
+    address public admin;
     address public broadcaster0;
     address public broadcaster1;
 
     event EonKeyBroadcast(uint64 eon, bytes key);
 
     function setUp() public {
+        admin = address(42);
         broadcaster0 = address(1);
         broadcaster1 = address(2);
 
-        keyperSetManager = new KeyperSetManager();
+        keyperSetManager = new KeyperSetManager(admin);
         keyBroadcastContract = new KeyBroadcastContract(
             address(keyperSetManager)
         );
         keyperSet0 = new KeyperSet();
         keyperSet0.setKeyBroadcaster(broadcaster0);
         keyperSet0.setFinalized();
+
+        vm.prank(admin);
         keyperSetManager.addKeyperSet(100, address(keyperSet0));
 
         keyperSet1 = new KeyperSet();
         keyperSet1.setKeyBroadcaster(broadcaster1);
         keyperSet1.setFinalized();
+
+        vm.prank(admin);
         keyperSetManager.addKeyperSet(200, address(keyperSet1));
     }
 

@@ -16,6 +16,10 @@ contract KeyperSetManager is RestrictedPausable {
         address contractAddress;
     }
 
+    constructor(
+        address _adminRoleAddress
+    ) RestrictedPausable(_adminRoleAddress) {}
+
     KeyperSetData[] private keyperSets;
 
     event KeyperSetAdded(uint64 activationBlock, address keyperSetContract);
