@@ -34,7 +34,10 @@ contract Inbox is RestrictedPausable {
     mapping(uint64 blockNumber => Transaction[]) private transactions;
     uint64 private blockGasLimit;
 
-    constructor(uint64 _blockGasLimit) {
+    constructor(
+        uint64 _blockGasLimit,
+        address _adminRoleAddress
+    ) RestrictedPausable(_adminRoleAddress) {
         blockGasLimit = _blockGasLimit;
     }
 

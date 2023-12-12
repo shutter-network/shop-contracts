@@ -7,11 +7,13 @@ import "../src/Inbox.sol";
 contract NonReceivable {}
 
 contract InboxTest is Test {
+    address public admin;
     Inbox public inbox;
     Inbox.Transaction public transaction;
 
     function setUp() public {
-        inbox = new Inbox(30e6);
+        admin = address(42);
+        inbox = new Inbox(30e6, admin);
         transaction = Inbox.Transaction(hex"12345678", 1e5, 0);
         vm.fee(1e9);
     }
@@ -76,12 +78,14 @@ contract InboxTest is Test {
             )
         );
         inbox.clear();
-        vm.stopPrank();
 
+        changePrank(admin);
         inbox.grantRole(inbox.SEQUENCER_ROLE(), sequencer);
-        vm.prank(sequencer);
+
+        changePrank(sequencer);
         inbox.clear();
         assertEq(inbox.getTransactions(uint64(block.number)).length, 0);
+        vm.stopPrank();
     }
 
     function testWithdraw() public {
@@ -100,13 +104,13 @@ contract InboxTest is Test {
             )
         );
         inbox.withdraw(withdrawAddress);
-        vm.stopPrank();
 
+        changePrank(admin);
         inbox.grantRole(inbox.WITHDRAW_ROLE(), withdrawAddress);
 
         uint256 balanceBefore = withdrawAddress.balance;
         uint256 inboxBalance = address(inbox).balance;
-        vm.prank(withdrawAddress);
+        changePrank(withdrawAddress);
         inbox.withdraw(withdrawAddress);
         uint256 balanceAfter = withdrawAddress.balance;
 
@@ -173,15 +177,15 @@ contract InboxTest is Test {
             )
         );
         inbox.setBlockGasLimit(newBlockGasLimit);
-        vm.stopPrank();
         assertEq(oldBlockGasLimit, inbox.getBlockGasLimit());
 
+        changePrank(admin);
         inbox.grantRole(
             inbox.BLOCK_GAS_LIMIT_SETTER_ROLE(),
             blockGasLimitSetter
         );
+        changePrank(blockGasLimitSetter);
 
-        vm.prank(blockGasLimitSetter);
         inbox.setBlockGasLimit(newBlockGasLimit);
         assertEq(inbox.getBlockGasLimit(), newBlockGasLimit);
     }
