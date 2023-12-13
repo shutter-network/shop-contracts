@@ -22,7 +22,13 @@ contract KeyperSetManager is RestrictedPausable {
 
     KeyperSetData[] private keyperSets;
 
-    event KeyperSetAdded(uint64 activationBlock, address keyperSetContract);
+    event KeyperSetAdded(
+        uint64 activationBlock,
+        address keyperSetContract,
+        address[] members,
+        uint64 threshold,
+        uint64 eon
+    );
 
     function addKeyperSet(
         uint64 activationBlock,
@@ -42,7 +48,14 @@ contract KeyperSetManager is RestrictedPausable {
             revert KeyperSetNotFinalized();
         }
         keyperSets.push(KeyperSetData(activationBlock, keyperSetContract));
-        emit KeyperSetAdded(activationBlock, keyperSetContract);
+        KeyperSet keyperSet = KeyperSet(keyperSetContract);
+        emit KeyperSetAdded(
+            activationBlock,
+            keyperSetContract,
+            keyperSet.getMembers(),
+            keyperSet.getThreshold(),
+            uint64(keyperSets.length - 1)
+        );
     }
 
     function getNumKeyperSets() external view returns (uint64) {
