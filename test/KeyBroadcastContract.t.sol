@@ -11,18 +11,20 @@ contract KeyBroadcastTest is Test {
     KeyperSetManager public keyperSetManager;
     KeyperSet public keyperSet0;
     KeyperSet public keyperSet1;
-    address public admin;
+    address public dao;
+    address public sequencer;
     address public broadcaster0;
     address public broadcaster1;
 
     event EonKeyBroadcast(uint64 eon, bytes key);
 
     function setUp() public {
-        admin = address(42);
+        dao = address(42);
+        sequencer = address(43);
         broadcaster0 = address(1);
         broadcaster1 = address(2);
 
-        keyperSetManager = new KeyperSetManager(admin);
+        keyperSetManager = new KeyperSetManager(dao, sequencer);
         keyBroadcastContract = new KeyBroadcastContract(
             address(keyperSetManager)
         );
@@ -30,14 +32,14 @@ contract KeyBroadcastTest is Test {
         keyperSet0.setKeyBroadcaster(broadcaster0);
         keyperSet0.setFinalized();
 
-        vm.prank(admin);
+        vm.prank(dao);
         keyperSetManager.addKeyperSet(100, address(keyperSet0));
 
         keyperSet1 = new KeyperSet();
         keyperSet1.setKeyBroadcaster(broadcaster1);
         keyperSet1.setFinalized();
 
-        vm.prank(admin);
+        vm.prank(dao);
         keyperSetManager.addKeyperSet(200, address(keyperSet1));
     }
 

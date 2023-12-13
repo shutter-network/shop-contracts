@@ -36,8 +36,10 @@ contract Inbox is RestrictedPausable {
 
     constructor(
         uint64 _blockGasLimit,
-        address _adminRoleAddress
-    ) RestrictedPausable(_adminRoleAddress) {
+        address dao,
+        address sequencer
+    ) RestrictedPausable(dao, sequencer) {
+        _grantRole(SEQUENCER_ROLE, sequencer);
         blockGasLimit = _blockGasLimit;
     }
 

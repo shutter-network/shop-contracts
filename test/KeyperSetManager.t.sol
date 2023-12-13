@@ -9,18 +9,20 @@ contract KeyperSetManagerTest is Test {
     KeyperSetManager public keyperSetManager;
     KeyperSet public members0;
     KeyperSet public members1;
-    address public admin;
+    address public dao;
+    address public sequencer;
 
     function setUp() public {
-        admin = address(42);
-        keyperSetManager = new KeyperSetManager(admin);
+        dao = address(42);
+        sequencer = address(43);
+        keyperSetManager = new KeyperSetManager(dao, sequencer);
         members0 = new KeyperSet();
         members0.setFinalized();
         members1 = new KeyperSet();
         members1.setFinalized();
 
-        // always use the admin per default
-        vm.startPrank(admin);
+        // always use the dao (admin) per default
+        vm.startPrank(dao);
     }
 
     function testGetNumKeyperSets() public {
@@ -116,9 +118,7 @@ contract KeyperSetManagerTest is Test {
     function testPauseShutter() public {
         bytes32 pauserRole = keyperSetManager.PAUSER_ROLE();
         address unauthorized = address(777);
-        keyperSetManager.grantRole(pauserRole, address(1));
-        changePrank(unauthorized);
-
+        vm.startPrank(unauthorized);
         vm.expectRevert(
             abi.encodeWithSelector(
                 IAccessControl.AccessControlUnauthorizedAccount.selector,
@@ -136,13 +136,14 @@ contract KeyperSetManagerTest is Test {
             )
         );
         keyperSetManager.pause();
-        changePrank(address(1));
+
+        vm.startPrank(sequencer);
         keyperSetManager.pause();
         assert(keyperSetManager.paused());
         vm.expectRevert(Pausable.EnforcedPause.selector);
         keyperSetManager.pause();
 
-        changePrank(admin);
+        changePrank(dao);
     }
 
     function testUnpauseShutter() public {
@@ -162,7 +163,7 @@ contract KeyperSetManagerTest is Test {
         );
         keyperSetManager.unpause();
 
-        changePrank(admin);
+        vm.startPrank(dao);
         keyperSetManager.unpause();
         assert(!keyperSetManager.paused());
         vm.expectRevert(Pausable.ExpectedPause.selector);

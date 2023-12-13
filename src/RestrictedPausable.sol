@@ -7,8 +7,9 @@ import "openzeppelin/contracts/utils/Pausable.sol";
 abstract contract RestrictedPausable is AccessControl, Pausable {
     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
 
-    constructor(address _adminRoleAddress) {
-        _grantRole(DEFAULT_ADMIN_ROLE, _adminRoleAddress);
+    constructor(address admin, address pauser) {
+        _grantRole(DEFAULT_ADMIN_ROLE, admin);
+        _grantRole(PAUSER_ROLE, pauser);
     }
 
     function pause() external onlyRole(PAUSER_ROLE) {

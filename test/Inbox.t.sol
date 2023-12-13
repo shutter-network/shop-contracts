@@ -7,13 +7,15 @@ import "../src/Inbox.sol";
 contract NonReceivable {}
 
 contract InboxTest is Test {
-    address public admin;
+    address public dao;
+    address public sequencer;
     Inbox public inbox;
     Inbox.Transaction public transaction;
 
     function setUp() public {
-        admin = address(42);
-        inbox = new Inbox(30e6, admin);
+        dao = address(42);
+        sequencer = address(420);
+        inbox = new Inbox(30e6, dao, sequencer);
         transaction = Inbox.Transaction(hex"12345678", 1e5, 0);
         vm.fee(1e9);
     }
@@ -68,21 +70,17 @@ contract InboxTest is Test {
         vm.roll(blockNumber + 1);
         assertEq(inbox.getTransactions(uint64(block.number)).length, 2);
 
-        address sequencer = address(1);
-        vm.startPrank(sequencer);
+        vm.startPrank(dao);
         vm.expectRevert(
             abi.encodeWithSelector(
                 IAccessControl.AccessControlUnauthorizedAccount.selector,
-                sequencer,
+                dao,
                 inbox.SEQUENCER_ROLE()
             )
         );
         inbox.clear();
-
-        changePrank(admin);
-        inbox.grantRole(inbox.SEQUENCER_ROLE(), sequencer);
-
-        changePrank(sequencer);
+        vm.startPrank(sequencer);
+        console.log(inbox.getTransactions(uint64(block.number)).length);
         inbox.clear();
         assertEq(inbox.getTransactions(uint64(block.number)).length, 0);
         vm.stopPrank();
@@ -105,7 +103,7 @@ contract InboxTest is Test {
         );
         inbox.withdraw(withdrawAddress);
 
-        changePrank(admin);
+        vm.startPrank(dao);
         inbox.grantRole(inbox.WITHDRAW_ROLE(), withdrawAddress);
 
         uint256 balanceBefore = withdrawAddress.balance;
@@ -179,7 +177,7 @@ contract InboxTest is Test {
         inbox.setBlockGasLimit(newBlockGasLimit);
         assertEq(oldBlockGasLimit, inbox.getBlockGasLimit());
 
-        changePrank(admin);
+        vm.startPrank(dao);
         inbox.grantRole(
             inbox.BLOCK_GAS_LIMIT_SETTER_ROLE(),
             blockGasLimitSetter
