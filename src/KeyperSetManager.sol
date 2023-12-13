@@ -17,8 +17,9 @@ contract KeyperSetManager is RestrictedPausable {
     }
 
     constructor(
-        address _adminRoleAddress
-    ) RestrictedPausable(_adminRoleAddress) {}
+        address dao,
+        address sequencer
+    ) RestrictedPausable(dao, sequencer) {}
 
     KeyperSetData[] private keyperSets;
 
