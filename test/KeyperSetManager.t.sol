@@ -69,11 +69,15 @@ contract KeyperSetManagerTest is Test {
         keyperSetManager.addKeyperSet(16, address(members1));
     }
 
-    event KeyperSetAdded(uint64 activationBlock, address keyperSetContract);
-
     function testAddKeyperSetEmits() public {
         vm.expectEmit(address(keyperSetManager));
-        emit KeyperSetAdded(1000, address(members0));
+        emit KeyperSetManager.KeyperSetAdded(
+            1000,
+            address(members0),
+            members0.getMembers(),
+            members0.getThreshold(),
+            keyperSetManager.getNumKeyperSets()
+        );
         keyperSetManager.addKeyperSet(1000, address(members0));
     }
 
