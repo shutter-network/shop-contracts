@@ -108,7 +108,7 @@ contract InboxTest is Test {
 
         uint256 balanceBefore = withdrawAddress.balance;
         uint256 inboxBalance = address(inbox).balance;
-        changePrank(withdrawAddress);
+        vm.startPrank(withdrawAddress);
         inbox.withdraw(withdrawAddress);
         uint256 balanceAfter = withdrawAddress.balance;
 
@@ -182,8 +182,7 @@ contract InboxTest is Test {
             inbox.BLOCK_GAS_LIMIT_SETTER_ROLE(),
             blockGasLimitSetter
         );
-        changePrank(blockGasLimitSetter);
-
+        vm.startPrank(blockGasLimitSetter);
         inbox.setBlockGasLimit(newBlockGasLimit);
         assertEq(inbox.getBlockGasLimit(), newBlockGasLimit);
     }
