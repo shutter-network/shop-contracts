@@ -8,15 +8,11 @@ import "../src/KeyperSetManager.sol";
 import "../src/KeyBroadcastContract.sol";
 
 contract DeployScript is Script {
-    Inbox inbox;
-    KeyperSetManager keyperSetManager;
-    KeyBroadcastContract keyBroadcastContract;
+    Inbox public inbox;
+    KeyperSetManager public keyperSetManager;
+    KeyBroadcastContract public keyBroadcastContract;
 
-    KeyperSet keyperSet;
-
-    address inboxAddress;
-    address keyBroadcastContractAddress;
-    address keyperSetManagerAddress;
+    KeyperSet public keyperSet;
 
     function setUp() public {}
 
@@ -30,9 +26,13 @@ contract DeployScript is Script {
         }
         //TODO: sanity check threshold
 
-        inboxAddress = vm.envAddress("INBOX_ADDRESS");
-        keyperSetManagerAddress = vm.envAddress("KEYPERSETMANAGER_ADDRESS");
-        keyBroadcastContractAddress = vm.envAddress("KEYBROADCAST_ADDRESS");
+        address inboxAddress = vm.envAddress("INBOX_ADDRESS");
+        address keyperSetManagerAddress = vm.envAddress(
+            "KEYPERSETMANAGER_ADDRESS"
+        );
+        address keyBroadcastContractAddress = vm.envAddress(
+            "KEYBROADCAST_ADDRESS"
+        );
 
         inbox = Inbox(inboxAddress);
         keyperSetManager = KeyperSetManager(keyperSetManagerAddress);
