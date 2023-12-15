@@ -12,14 +12,13 @@ contract DeployScript is Script {
     Inbox public inbox;
     KeyperSetManager public keyperSetManager;
     KeyBroadcastContract public keyBroadcastContract;
-
     KeyperSet public keyperSet;
     EonKeyPublish public eonKeyPublish;
 
-    function setUp() public {}
+    // function setUp() public {}
 
     function run() public {
-        uint256 adminPrivateKey = vm.envUint("ADMIN_PRIVATE_KEY");
+        // uint256 adminPrivateKey = vm.envUint("ADMIN_PRIVATE_KEY");
         uint256 activationDelta = vm.envUint("ACTIVATION_DELTA");
         uint256 threshold = vm.envUint("THRESHOLD");
         address[] memory keypers = vm.envAddress("KEYPER_ADDRESSES", ",");
@@ -42,10 +41,12 @@ contract DeployScript is Script {
             keyBroadcastContractAddress
         );
 
-        vm.startBroadcast(adminPrivateKey);
+        vm.startBroadcast();
+        uint64 numKs = keyperSetManager.getNumKeyperSets();
+        console.log("Num KS", numKs);
 
-        address adminAddress = vm.addr(adminPrivateKey);
-        console.log("admin is:", adminAddress);
+        // address adminAddress = vm.addr(adminPrivateKey);
+        // console.log("admin is:", adminAddress);
 
         keyperSet = new KeyperSet();
         console.log("KeyperSet deployed at:", address(keyperSet));
@@ -64,8 +65,10 @@ contract DeployScript is Script {
         // Finalize the KeyperSet
         keyperSet.setFinalized();
         console.log("KeyperSet finalized");
-
+        //
         uint64 activationBlock = uint64(block.number + activationDelta);
+        console.log("Current block number: ", block.number);
+        console.log("Activation block would be: ", activationBlock);
         keyperSetManager.addKeyperSet(activationBlock, address(keyperSet));
         console.log(
             "KeyperSet added to KeyperSetManager with activation block:",
