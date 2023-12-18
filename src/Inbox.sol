@@ -11,6 +11,7 @@ error BlockGasLimitExceeded();
 contract Inbox is RestrictedPausable {
     struct Transaction {
         bytes encryptedTransaction;
+        address sender;
         uint64 gasLimit;
         uint64 cumulativeGasLimit;
     }
@@ -19,6 +20,7 @@ contract Inbox is RestrictedPausable {
         uint64 indexed index,
         uint64 indexed block,
         bytes encryptedTransaction,
+        address sender,
         uint64 gasLimit,
         uint64 cumulativeGasLimit,
         uint256 fee
@@ -80,6 +82,7 @@ contract Inbox is RestrictedPausable {
         transactionsForBlock.push(
             Transaction(
                 encryptedTransaction,
+                msg.sender,
                 gasLimit,
                 cumulativeGasLimit + gasLimit
             )
@@ -89,6 +92,7 @@ contract Inbox is RestrictedPausable {
             length,
             blockNumber,
             encryptedTransaction,
+            msg.sender,
             gasLimit,
             cumulativeGasLimit + gasLimit,
             fee
