@@ -16,7 +16,7 @@ contract InboxTest is Test {
         dao = address(42);
         sequencer = address(420);
         inbox = new Inbox(30e6, dao, sequencer);
-        transaction = Inbox.Transaction(hex"12345678", 1e5, 0);
+        transaction = Inbox.Transaction(hex"12345678", address(0), 1e5, 0);
         vm.fee(1e9);
     }
 
