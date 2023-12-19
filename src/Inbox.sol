@@ -38,11 +38,17 @@ contract Inbox is RestrictedPausable {
 
     constructor(
         uint64 _blockGasLimit,
+        address initializer
+    ) RestrictedPausable(initializer) {
+        blockGasLimit = _blockGasLimit;
+    }
+
+    function initialize(
         address dao,
         address sequencer
-    ) RestrictedPausable(dao, sequencer) {
+    ) public override onlyInitializer {
         _grantRole(SEQUENCER_ROLE, sequencer);
-        blockGasLimit = _blockGasLimit;
+        super.initialize(dao, sequencer);
     }
 
     function setBlockGasLimit(

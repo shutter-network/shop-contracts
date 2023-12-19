@@ -13,9 +13,12 @@ contract InboxTest is Test {
     Inbox.Transaction public transaction;
 
     function setUp() public {
+        address initializer = address(69);
         dao = address(42);
         sequencer = address(420);
-        inbox = new Inbox(30e6, dao, sequencer);
+        inbox = new Inbox(30e6, initializer);
+        vm.prank(initializer);
+        inbox.initialize(dao, sequencer);
         transaction = Inbox.Transaction(hex"12345678", address(0), 1e5, 0);
         vm.fee(1e9);
     }

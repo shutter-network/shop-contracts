@@ -19,12 +19,15 @@ contract KeyBroadcastTest is Test {
     event EonKeyBroadcast(uint64 eon, bytes key);
 
     function setUp() public {
+        address initializer = address(69);
         dao = address(42);
-        sequencer = address(43);
+        sequencer = address(420);
         broadcaster0 = address(1);
         broadcaster1 = address(2);
 
-        keyperSetManager = new KeyperSetManager(dao, sequencer);
+        keyperSetManager = new KeyperSetManager(initializer);
+        vm.prank(initializer);
+        keyperSetManager.initialize(dao, sequencer);
         keyBroadcastContract = new KeyBroadcastContract(
             address(keyperSetManager)
         );

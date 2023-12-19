@@ -26,9 +26,9 @@ contract DeployScript is Script {
         // Step 0: Deploy Inbox
         inbox = new Inbox(
             uint64(vm.envUint("BLOCK_GAS_LIMIT")),
-            deployerAddress,
-            sequencerAddress
+            deployerAddress
         );
+        inbox.initialize(deployerAddress, sequencerAddress);
         console.log("Inbox deployed at:", address(inbox));
 
         // Step 1: Deploy KeyperSet
@@ -44,10 +44,8 @@ contract DeployScript is Script {
         console.log("KeyperSet finalized");
 
         // Step 3: Deploy KeyperSetManager and call addKeyperSet
-        keyperSetManager = new KeyperSetManager(
-            deployerAddress,
-            sequencerAddress
-        );
+        keyperSetManager = new KeyperSetManager(deployerAddress);
+        keyperSetManager.initialize(deployerAddress, sequencerAddress);
         console.log("KeyperSetManager deployed at:", address(keyperSetManager));
 
         uint64 activationBlock = uint64(block.number + 10); // Assuming "near future" is 10 blocks ahead
