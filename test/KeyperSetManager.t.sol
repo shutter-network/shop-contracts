@@ -13,9 +13,12 @@ contract KeyperSetManagerTest is Test {
     address public sequencer;
 
     function setUp() public {
+        address initializer = address(69);
         dao = address(42);
-        sequencer = address(43);
-        keyperSetManager = new KeyperSetManager(dao, sequencer);
+        sequencer = address(420);
+        keyperSetManager = new KeyperSetManager(initializer);
+        vm.prank(initializer);
+        keyperSetManager.initialize(dao, sequencer);
         members0 = new KeyperSet();
         members0.setFinalized();
         members1 = new KeyperSet();
