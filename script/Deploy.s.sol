@@ -13,61 +13,136 @@ contract DeployScript is Script {
     KeyperSetManager keyperSetManager;
     KeyBroadcastContract keyBroadcastContract;
 
-    function setUp() public {}
+    uint256 deployerPrivateKey;
+    address sequencerAddress;
+    address deployerAddress;
+    uint64 blockGasLimit;
+    uint256 activationDelta;
+    uint256 threshold;
+    // address[] memory keypers;
+
+    address inboxAddress;
+    address keyperSetManagerAddress;
+    address keyBroadcastContractAddress;
+    address keyperSetAddress;
+
+    function setUp() public {
+        deployerPrivateKey = vm.envUint("PRIVATE_KEY");
+        deployerAddress = vm.addr(deployerPrivateKey);
+        sequencerAddress = vm.envOr("SEQUENCER_ADDRESS", address(0));
+
+        console.log("deployer is:", vm.addr(deployerPrivateKey));
+        blockGasLimit = uint64(vm.envOr("BLOCK_GAS_LIMIT", uint256(0)));
+
+        activationDelta = vm.envOr("ACTIVATION_DELTA", uint256(0));
+
+        inboxAddress = vm.envOr("INBOX_ADDRESS", address(0));
+        keyperSetManagerAddress = vm.envOr(
+            "KEYPERSETMANAGER_ADDRESS",
+            address(0)
+        );
+        keyBroadcastContractAddress = vm.envOr(
+            "KEYBROADCAST_ADDRESS",
+            address(0)
+        );
+        keyperSetAddress = vm.envOr("KEYPERSET_ADDRESS", address(0));
+    }
+
+    function deploy() public {
+        vm.startBroadcast(deployerPrivateKey);
+        if (inboxAddress == address(0)) {
+            inbox = new Inbox(blockGasLimit, sequencerAddress);
+            console.log("Inbox deployed at:", address(inbox));
+        } else {
+            inbox = Inbox(inboxAddress);
+        }
+
+        if (keyperSetManagerAddress == address(0)) {
+            keyperSetManager = new KeyperSetManager(deployerAddress);
+            console.log(
+                "KeyperSetManager deployed at:",
+                address(keyperSetManager)
+            );
+        } else {
+            keyperSetManager = KeyperSetManager(keyperSetManagerAddress);
+        }
+
+        if (keyBroadcastContractAddress == address(0)) {
+            keyBroadcastContract = new KeyBroadcastContract(
+                address(keyperSetManager)
+            );
+            console.log(
+                "KeyBroadcastContract deployed at:",
+                address(keyBroadcastContract)
+            );
+        } else {
+            keyBroadcastContract = KeyBroadcastContract(
+                keyBroadcastContractAddress
+            );
+        }
+        if (keyperSetAddress == address(0)) {
+            keyperSet = new KeyperSet();
+            console.log("KeyperSet deployed at:", address(keyperSet));
+        } else {
+            keyperSet = KeyperSet(keyperSetAddress);
+        }
+        vm.stopBroadcast();
+    }
 
     function run() public {
-        uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
+        deploy();
+        init();
+    }
+
+    function init() public {
         vm.startBroadcast(deployerPrivateKey);
 
-        address deployerAddress = vm.addr(deployerPrivateKey);
-        address sequencerAddress = vm.envAddress("SEQUENCER_ADDRESS");
-        console.log("deployer is:", deployerAddress);
-
-        // Step 0: Deploy Inbox
-        inbox = new Inbox(
-            uint64(vm.envUint("BLOCK_GAS_LIMIT")),
-            deployerAddress
-        );
         inbox.initialize(deployerAddress, sequencerAddress);
-        console.log("Inbox deployed at:", address(inbox));
 
-        // Step 1: Deploy KeyperSet
-        keyperSet = new KeyperSet();
-        console.log("KeyperSet deployed at:", address(keyperSet));
+        keyperSetManager.initialize(deployerAddress, sequencerAddress);
+
+
+        address[] memory keypers = vm.envAddress("KEYPER_ADDRESSES", ",");
+        assert(keypers.length != 0);
+        threshold = vm.envOr("THRESHOLD", uint256(0));
+
+        assert(threshold <= keypers.length);
+        //TODO: more sanity checks threshold
+
+        keyperSet.addMembers(keypers);
+        keyperSet.setThreshold(uint64(threshold));
 
         // Step 2: Call setPublisher with deployer address (the sender)
         keyperSet.setPublisher(deployerAddress);
         console.log("Eon Key Publisher set to deployer's address");
 
-        // Finalize the KeyperSet
         keyperSet.setFinalized();
         console.log("KeyperSet finalized");
+        console.log("Current block number: ", block.number);
 
-        // Step 3: Deploy KeyperSetManager and call addKeyperSet
-        keyperSetManager = new KeyperSetManager(deployerAddress);
-        keyperSetManager.initialize(deployerAddress, sequencerAddress);
-        console.log("KeyperSetManager deployed at:", address(keyperSetManager));
+        uint64 activationBlock = uint64(block.number + activationDelta);
+        console.log("Activation block would be: ", activationBlock);
 
-        uint64 activationBlock = uint64(block.number + 10); // Assuming "near future" is 10 blocks ahead
+        bool hasRole = keyperSetManager.hasRole(
+            keyperSetManager.DEFAULT_ADMIN_ROLE(),
+            deployerAddress
+        );
+
+        console.log("has role", hasRole);
+
+        // address add = keyperSetManager.getKeyperSetAddress(0);
+        // console.log("existing keyperset", add);
         keyperSetManager.addKeyperSet(activationBlock, address(keyperSet));
         console.log(
             "KeyperSet added to KeyperSetManager with activation block:",
             activationBlock
         );
 
-        // Step 4: Deploy KeyBroadcastContract and call broadcastEonKey
-        keyBroadcastContract = new KeyBroadcastContract(
-            address(keyperSetManager)
-        );
-        console.log(
-            "KeyBroadcastContract deployed at:",
-            address(keyBroadcastContract)
-        );
-
         // Broadcast the eonKey
-        bytes memory eonKey = vm.envBytes("EON_KEY"); // Replace with actual eon key
-        keyBroadcastContract.broadcastEonKey(0, eonKey);
-        console.log("Eon key broadcasted for eon 0");
+        //TODO: envOr
+        // bytes memory eonKey = vm.envOr("EON_KEY"); // Replace with actual eon key
+        // keyBroadcastContract.broadcastEonKey(0, eonKey);
+        // console.log("Eon key broadcasted for eon 0");
 
         vm.stopBroadcast();
     }
