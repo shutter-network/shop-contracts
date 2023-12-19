@@ -190,6 +190,30 @@ contract InboxTest is Test {
         assertEq(inbox.getBlockGasLimit(), newBlockGasLimit);
     }
 
+    function testInitializer() public {
+        address initializer = address(69);
+        Inbox _inbox = new Inbox(30e6, initializer);
+        vm.expectRevert(
+            abi.encodeWithSelector(UnauthorizedInitializer.selector)
+        );
+        _inbox.initialize(dao, sequencer);
+
+        assertEq(_inbox.initializer(), initializer);
+        assertEq(_inbox.hasRole(_inbox.DEFAULT_ADMIN_ROLE(), dao), false);
+        assertEq(_inbox.hasRole(_inbox.PAUSER_ROLE(), sequencer), false);
+        assertEq(_inbox.hasRole(_inbox.SEQUENCER_ROLE(), sequencer), false);
+
+        vm.startPrank(initializer);
+        _inbox.initialize(dao, sequencer);
+        assertEq(_inbox.initializer(), address(0));
+        assertEq(_inbox.hasRole(_inbox.DEFAULT_ADMIN_ROLE(), dao), true);
+        assertEq(_inbox.hasRole(_inbox.PAUSER_ROLE(), sequencer), true);
+        assertEq(_inbox.hasRole(_inbox.SEQUENCER_ROLE(), sequencer), true);
+        vm.expectRevert(AlreadyInitialized.selector);
+        _inbox.initialize(dao, sequencer);
+        vm.stopPrank();
+    }
+
     function _submitTx(
         uint64 blockNumber,
         uint256 value,
