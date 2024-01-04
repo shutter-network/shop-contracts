@@ -101,6 +101,17 @@ contract DeployScript is Script {
 
         keyperSetManager.initialize(deployerAddress, sequencerAddress);
 
+        //HACK: Eon=0 clashes with the current bootstrapping implementation in
+        // the shuttermint chain, so we have to set a fake keyper set to increase
+        // the index.
+        KeyperSet fakeKeyperset = new KeyperSet();
+        fakeKeyperset.setFinalized();
+        keyperSetManager.addKeyperSet(0, address(fakeKeyperset));
+        console.log(
+            "Initial fake KeyperSet added to KeyperSetManager with activation block:",
+            0
+        );
+
         address[] memory keypers = vm.envAddress("KEYPER_ADDRESSES", ",");
         assert(keypers.length != 0);
         threshold = vm.envOr("THRESHOLD", uint256(0));
