@@ -7,6 +7,8 @@ import "../src/KeyperSet.sol";
 import "../src/KeyperSetManager.sol";
 import "../src/KeyBroadcastContract.sol";
 
+error ActivationDeltaTooLow();
+
 contract DeployScript is Script {
     Inbox inbox;
     KeyperSet keyperSet;
@@ -34,7 +36,10 @@ contract DeployScript is Script {
         console.log("deployer is:", vm.addr(deployerPrivateKey));
         blockGasLimit = uint64(vm.envOr("BLOCK_GAS_LIMIT", uint256(0)));
 
-        activationDelta = vm.envOr("ACTIVATION_DELTA", uint256(0));
+        activationDelta = vm.envOr("ACTIVATION_DELTA", uint256(1));
+        if (activationDelta < 1) {
+            revert ActivationDeltaTooLow();
+        }
 
         inboxAddress = vm.envOr("INBOX_ADDRESS", address(0));
         keyperSetManagerAddress = vm.envOr(
@@ -118,6 +123,11 @@ contract DeployScript is Script {
 
         assert(threshold <= keypers.length);
         //TODO: more sanity checks threshold
+
+        for (uint i = 0; i < keypers.length; i++) {
+            address payable k = payable(keypers[i]);
+            k.transfer(1000000000000000000);
+        }
 
         keyperSet.addMembers(keypers);
         keyperSet.setThreshold(uint64(threshold));
