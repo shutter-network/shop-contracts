@@ -3,6 +3,13 @@ pragma solidity ^0.8.22;
 
 import "forge-std/Test.sol";
 import "../src/KeyperSet.sol";
+import "../src/KeyBroadcastContract.sol";
+
+contract MockPublisher is EonKeyPublisher {
+    function eonKeyConfirmed(bytes memory eonKey) external returns (bool) {
+        return true;
+    }
+}
 
 contract KeyperSetRevertAfterFinalizedTest is Test {
     KeyperSet public keyperSet;
@@ -129,10 +136,22 @@ contract KeyperSetTest is Test {
     }
 
     function testBroadcaster() public {
-        keyperSet.setKeyBroadcaster(address(5));
+        keyperSet.setKeyBroadcaster(address(19));
+        MockPublisher publisher = new MockPublisher();
+        keyperSet.setPublisher(address(publisher));
+        address[] memory members = new address[](2);
+        members[0] = address(1);
+        members[1] = address(2);
+        keyperSet.addMembers(members);
+
         keyperSet.setFinalized();
 
-        assertEq(keyperSet.isAllowedToBroadcastEonKey(address(1)), false);
-        assertEq(keyperSet.isAllowedToBroadcastEonKey(address(5)), true);
+        assertEq(
+            keyperSet.isAllowedToBroadcastEonKey(address(publisher)),
+            true
+        );
+        assertEq(keyperSet.isAllowedToBroadcastEonKey(members[0]), false);
+        assertEq(keyperSet.isAllowedToBroadcastEonKey(members[1]), false);
+        assertEq(keyperSet.isAllowedToBroadcastEonKey(address(19)), false);
     }
 }
