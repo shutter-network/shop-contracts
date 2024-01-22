@@ -8,6 +8,10 @@ error InvalidKey();
 error AlreadyHaveKey();
 error NotAllowed();
 
+interface EonKeyPublisher {
+    function eonKeyConfirmed(bytes memory eonKey) external returns (bool);
+}
+
 contract KeyBroadcastContract {
     mapping(uint64 => bytes) private keys;
     KeyperSetManager private keyperSetManager;
@@ -25,10 +29,13 @@ contract KeyBroadcastContract {
         if (keys[eon].length > 0) {
             revert AlreadyHaveKey();
         }
-        if (
-            !KeyperSet(keyperSetManager.getKeyperSetAddress(eon))
-                .isAllowedToBroadcastEonKey(msg.sender)
-        ) {
+        KeyperSet keyperSet = KeyperSet(
+            keyperSetManager.getKeyperSetAddress(eon)
+        );
+        if (!keyperSet.isAllowedToBroadcastEonKey(msg.sender)) {
+            revert NotAllowed();
+        }
+        if (!EonKeyPublisher(keyperSet.getPublisher()).eonKeyConfirmed(key)) {
             revert NotAllowed();
         }
 

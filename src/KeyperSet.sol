@@ -4,12 +4,14 @@ pragma solidity ^0.8.22;
 import "openzeppelin/contracts/access/Ownable.sol";
 
 error AlreadyFinalized();
+error NotRegistered();
 
 contract KeyperSet is Ownable {
     bool finalized;
     address[] members;
     uint64 threshold;
     address broadcaster;
+    address publisher;
 
     constructor() Ownable(msg.sender) {}
 
@@ -31,6 +33,10 @@ contract KeyperSet is Ownable {
 
     function getThreshold() external view returns (uint64) {
         return threshold;
+    }
+
+    function getPublisher() external view returns (address) {
+        return publisher;
     }
 
     function addMembers(address[] calldata newMembers) public onlyOwner {
@@ -56,13 +62,29 @@ contract KeyperSet is Ownable {
         broadcaster = _broadcaster;
     }
 
+    function setPublisher(address _publisher) public onlyOwner {
+        if (finalized) {
+            revert AlreadyFinalized();
+        }
+        publisher = _publisher;
+    }
+
     function setFinalized() public onlyOwner {
         finalized = true;
+    }
+
+    function keyperIndex(address candidate) public view returns (int64) {
+        for (uint64 i = 0; i < members.length; i++) {
+            if (members[i] == candidate) {
+                return int64(i);
+            }
+        }
+        return -1;
     }
 
     function isAllowedToBroadcastEonKey(
         address a
     ) external view returns (bool) {
-        return a == broadcaster;
+        return a == publisher;
     }
 }
