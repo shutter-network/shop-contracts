@@ -4,17 +4,15 @@ pragma solidity ^0.8.22;
 import "src/KeyBroadcastContract.sol";
 
 contract EonKeyPublish is EonKeyPublisher {
-    mapping(uint64 => bytes) private keys;
-    uint64[] publishers;
+    mapping(bytes32 => uint64) private numVotesForKey;
+    mapping(address => bool) private hasVoted;
     KeyperSet keyperSet;
     KeyBroadcastContract broadcaster;
     uint64 eon;
 
-    constructor(
-        KeyperSet _keyperSet,
-        KeyBroadcastContract _broadcaster,
-        uint64 _eon
-    ) {
+    event EonVoteRegistered(uint64 eon, bytes key);
+
+    constructor(address _keyperSet, address _broadcaster, uint64 _eon) {
         keyperSet = KeyperSet(_keyperSet);
         broadcaster = KeyBroadcastContract(_broadcaster);
         eon = _eon;
@@ -22,38 +20,34 @@ contract EonKeyPublish is EonKeyPublisher {
 
     function eonKeyConfirmed(bytes memory eonKey) public view returns (bool) {
         uint required = keyperSet.getThreshold();
-        if (publishers.length >= keyperSet.getThreshold()) {
-            for (uint i = 0; i < publishers.length; i++) {
-                if (keccak256(keys[publishers[i]]) == keccak256(eonKey)) {
-                    required--;
-                    if (required == 0) {
-                        break;
-                    }
-                }
-            }
+        uint64 votes = numVotesForKey[keccak256(eonKey)];
+        if (votes >= required) {
+            return true;
         }
-        return required <= 0;
+        return false;
     }
 
-    function publishEonKey(bytes memory eonKey) public {
+    function publishEonKey(bytes memory eonKey, uint64 keyperId) public {
         if (eonKey.length == 0) {
             revert InvalidKey();
         }
         if (!keyperSet.isFinalized()) {
             revert KeyperSetNotFinalized();
         }
-        uint64 keyperId = uint64(keyperSet.keyperIndex(msg.sender));
-        if (keyperId < 0) {
+        if (!hasVoted[msg.sender]) {
+            hasVoted[msg.sender] = true;
+            numVotesForKey[keccak256(eonKey)]++;
+            emit EonVoteRegistered(eon, eonKey);
+        }
+        // check msg.sender is keyper
+        if (keyperSet.getMember(keyperId) != msg.sender) {
             revert NotAllowed();
         }
-        publishers.push(keyperId);
         if (eonKeyConfirmed(eonKey)) {
             // broadcast
             broadcaster.broadcastEonKey(eon, eonKey);
             //exit
             return;
         }
-        // only store key, if not yet broadcast
-        keys[keyperId] = eonKey;
     }
 }

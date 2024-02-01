@@ -43,7 +43,6 @@ contract KeyBroadcastTest is Test {
         );
         keyperSet0 = new KeyperSet();
         keyperSet0.setPublisher(address(publisher0));
-        keyperSet0.setKeyBroadcaster(broadcaster0);
         keyperSet0.setFinalized();
 
         vm.prank(dao);
@@ -51,7 +50,6 @@ contract KeyBroadcastTest is Test {
 
         keyperSet1 = new KeyperSet();
         keyperSet1.setPublisher(address(publisher1));
-        keyperSet1.setKeyBroadcaster(broadcaster1);
         keyperSet1.setFinalized();
 
         vm.prank(dao);

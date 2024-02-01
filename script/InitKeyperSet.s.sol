@@ -6,6 +6,7 @@ import "../src/Inbox.sol";
 import "../src/KeyperSet.sol";
 import "../src/KeyperSetManager.sol";
 import "../src/KeyBroadcastContract.sol";
+import "../src/EonKeyPublish.sol";
 
 contract DeployScript is Script {
     Inbox public inbox;
@@ -13,6 +14,7 @@ contract DeployScript is Script {
     KeyBroadcastContract public keyBroadcastContract;
 
     KeyperSet public keyperSet;
+    EonKeyPublish public eonKeyPublish;
 
     function setUp() public {}
 
@@ -50,12 +52,14 @@ contract DeployScript is Script {
         keyperSet.addMembers(keypers);
         keyperSet.setThreshold(uint64(threshold));
 
-        //FIXME:  only one predetermined address can set the key.
-        // We want to do this automatically:
-        // Ideally all keypers should call to set it, and when the threshold
-        // is reached, the key is "activated" (returned by a read, event emitted)
-        keyperSet.setKeyBroadcaster(keypers[0]);
-        console.log("KeyBroadcaster is:", address(keypers[0]));
+        uint64 eon = 0;
+        eonKeyPublish = new EonKeyPublish(
+            address(keyperSet),
+            keyBroadcastContractAddress,
+            eon
+        );
+        keyperSet.setPublisher(address(eonKeyPublish));
+        console.log("Key publisher is:", keyperSet.getPublisher());
 
         // Finalize the KeyperSet
         keyperSet.setFinalized();

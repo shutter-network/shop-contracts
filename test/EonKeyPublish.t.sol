@@ -24,14 +24,19 @@ contract EonKeyPublishTest is Test {
         keyperSet0 = new KeyperSet();
         keyperSet0.setFinalized();
         vm.prank(dao);
+        uint64 eon = 1;
         manager.addKeyperSet(uint64(10), address(keyperSet0));
-        eonKeyPublish = new EonKeyPublish(keyperSet, broadcastContract, 1);
-        keyperSet.setKeyBroadcaster(address(broadcastContract));
+        eonKeyPublish = new EonKeyPublish(
+            address(keyperSet),
+            address(broadcastContract),
+            eon
+        );
+        keyperSet.setPublisher(address(eonKeyPublish));
     }
 
     function testPublishEonKeyNotFinalized() public {
         vm.expectRevert(KeyperSetNotFinalized.selector);
-        eonKeyPublish.publishEonKey("deadbeef");
+        eonKeyPublish.publishEonKey("deadbeef", 1);
     }
 
     function testAllowedToBroadcast() public {
@@ -43,8 +48,11 @@ contract EonKeyPublishTest is Test {
         members[1] = address(82);
         members[2] = address(83);
         ks = new KeyperSet();
-        publisher = new EonKeyPublish(ks, broadcastContract, eon);
-        ks.setKeyBroadcaster(address(broadcastContract));
+        publisher = new EonKeyPublish(
+            address(ks),
+            address(broadcastContract),
+            eon
+        );
         ks.setPublisher(address(publisher));
         ks.addMembers(members);
         ks.setFinalized();
@@ -70,9 +78,9 @@ contract EonKeyPublishTest is Test {
         vm.startPrank(dao);
         manager.addKeyperSet(uint64(block.number + 10), address(keyperSet));
         vm.stopPrank();
-        for (uint i = 0; i < keyperSet.getThreshold(); i++) {
+        for (uint i = 0; i < keyperSet.getThreshold() - 1; i++) {
             vm.prank(members[i]);
-            eonKeyPublish.publishEonKey(bytes("deadbeef"));
+            eonKeyPublish.publishEonKey(bytes("deadbeef"), uint64(i));
         }
         assertEq(keyperSet.getPublisher(), address(eonKeyPublish));
         assertEq(
@@ -89,7 +97,7 @@ contract EonKeyPublishTest is Test {
         );
         vm.expectRevert(NotAllowed.selector);
         broadcastContract.broadcastEonKey(eon, bytes("deadbeef"));
-        eonKeyPublish.publishEonKey(bytes("deadbeef"));
+        eonKeyPublish.publishEonKey(bytes("deadbeef"), uint64(threshold));
         assertEq(broadcastContract.getEonKey(eon), bytes("deadbeef"));
         vm.stopPrank();
     }
