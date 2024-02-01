@@ -10,7 +10,6 @@ contract KeyperSet is Ownable {
     bool finalized;
     address[] members;
     uint64 threshold;
-    address broadcaster;
     address publisher;
 
     constructor() Ownable(msg.sender) {}
@@ -55,13 +54,6 @@ contract KeyperSet is Ownable {
         threshold = _threshold;
     }
 
-    function setKeyBroadcaster(address _broadcaster) public onlyOwner {
-        if (finalized) {
-            revert AlreadyFinalized();
-        }
-        broadcaster = _broadcaster;
-    }
-
     function setPublisher(address _publisher) public onlyOwner {
         if (finalized) {
             revert AlreadyFinalized();
@@ -71,15 +63,6 @@ contract KeyperSet is Ownable {
 
     function setFinalized() public onlyOwner {
         finalized = true;
-    }
-
-    function keyperIndex(address candidate) public view returns (int64) {
-        for (uint64 i = 0; i < members.length; i++) {
-            if (members[i] == candidate) {
-                return int64(i);
-            }
-        }
-        return -1;
     }
 
     function isAllowedToBroadcastEonKey(

@@ -32,7 +32,7 @@ contract KeyperSetRevertAfterFinalizedTest is Test {
 
     function testSetKeyBroadcaster() public {
         vm.expectRevert(AlreadyFinalized.selector);
-        keyperSet.setKeyBroadcaster(address(5));
+        keyperSet.setPublisher(address(5));
     }
 }
 
@@ -105,7 +105,7 @@ contract KeyperSetTest is Test {
         keyperSet.setThreshold(0);
     }
 
-    function testSetKeybroadcasterOnlyOwner() public {
+    function testSetPublisherOnlyOwner() public {
         address sender = address(1);
         vm.prank(sender);
         vm.expectRevert(
@@ -114,7 +114,7 @@ contract KeyperSetTest is Test {
                 sender
             )
         );
-        keyperSet.setKeyBroadcaster(address(5));
+        keyperSet.setPublisher(address(5));
     }
 
     function testThreshold() public {
@@ -135,8 +135,8 @@ contract KeyperSetTest is Test {
         keyperSet.setFinalized();
     }
 
-    function testBroadcaster() public {
-        keyperSet.setKeyBroadcaster(address(19));
+    function testPublisher() public {
+        keyperSet.setPublisher(address(19));
         MockPublisher publisher = new MockPublisher();
         keyperSet.setPublisher(address(publisher));
         address[] memory members = new address[](2);
