@@ -25,6 +25,7 @@ contract KeyBroadcastTest is Test {
     MockPublisher public publisher1;
 
     event EonKeyBroadcast(uint64 eon, bytes key);
+    event AlreadyHaveKey(uint64 eon, bytes key);
 
     function setUp() public {
         address initializer = address(69);
@@ -75,8 +76,9 @@ contract KeyBroadcastTest is Test {
         vm.prank(address(publisher1));
         keyBroadcastContract.broadcastEonKey(1, key);
 
-        vm.expectRevert(AlreadyHaveKey.selector);
         vm.prank(address(publisher1));
+        vm.expectEmit(address(keyBroadcastContract));
+        emit AlreadyHaveKey(1, key);
         keyBroadcastContract.broadcastEonKey(1, key);
     }
 

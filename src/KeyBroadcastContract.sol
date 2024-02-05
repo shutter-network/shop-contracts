@@ -5,7 +5,6 @@ import "src/KeyperSetManager.sol";
 import "src/KeyperSet.sol";
 
 error InvalidKey();
-error AlreadyHaveKey();
 error NotAllowed();
 
 interface EonKeyPublisher {
@@ -17,6 +16,7 @@ contract KeyBroadcastContract {
     KeyperSetManager private keyperSetManager;
 
     event EonKeyBroadcast(uint64 eon, bytes key);
+    event AlreadyHaveKey(uint64 eon, bytes key);
 
     constructor(address keyperSetManagerAddress) {
         keyperSetManager = KeyperSetManager(keyperSetManagerAddress);
@@ -27,7 +27,8 @@ contract KeyBroadcastContract {
             revert InvalidKey();
         }
         if (keys[eon].length > 0) {
-            revert AlreadyHaveKey();
+            emit AlreadyHaveKey(eon, key);
+            return;
         }
         KeyperSet keyperSet = KeyperSet(
             keyperSetManager.getKeyperSetAddress(eon)
