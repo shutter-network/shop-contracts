@@ -35,9 +35,9 @@ contract DeployScript is Script {
         keyperSet = new KeyperSet();
         console.log("KeyperSet deployed at:", address(keyperSet));
 
-        // Step 2: Call setKeyBroadcaster with deployer address (the sender)
-        keyperSet.setKeyBroadcaster(deployerAddress);
-        console.log("KeyBroadcaster set to deployer's address");
+        // Step 2: Call setPublisher with deployer address (the sender)
+        keyperSet.setPublisher(deployerAddress);
+        console.log("Eon Key Publisher set to deployer's address");
 
         // Finalize the KeyperSet
         keyperSet.setFinalized();

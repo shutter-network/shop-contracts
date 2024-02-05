@@ -3,6 +3,13 @@ pragma solidity ^0.8.22;
 
 import "forge-std/Test.sol";
 import "../src/KeyperSet.sol";
+import "../src/KeyBroadcastContract.sol";
+
+contract MockPublisher is EonKeyPublisher {
+    function eonKeyConfirmed(bytes memory eonKey) external returns (bool) {
+        return true;
+    }
+}
 
 contract KeyperSetRevertAfterFinalizedTest is Test {
     KeyperSet public keyperSet;
@@ -25,7 +32,7 @@ contract KeyperSetRevertAfterFinalizedTest is Test {
 
     function testSetKeyBroadcaster() public {
         vm.expectRevert(AlreadyFinalized.selector);
-        keyperSet.setKeyBroadcaster(address(5));
+        keyperSet.setPublisher(address(5));
     }
 }
 
@@ -98,7 +105,7 @@ contract KeyperSetTest is Test {
         keyperSet.setThreshold(0);
     }
 
-    function testSetKeybroadcasterOnlyOwner() public {
+    function testSetPublisherOnlyOwner() public {
         address sender = address(1);
         vm.prank(sender);
         vm.expectRevert(
@@ -107,7 +114,7 @@ contract KeyperSetTest is Test {
                 sender
             )
         );
-        keyperSet.setKeyBroadcaster(address(5));
+        keyperSet.setPublisher(address(5));
     }
 
     function testThreshold() public {
@@ -128,11 +135,23 @@ contract KeyperSetTest is Test {
         keyperSet.setFinalized();
     }
 
-    function testBroadcaster() public {
-        keyperSet.setKeyBroadcaster(address(5));
+    function testPublisher() public {
+        keyperSet.setPublisher(address(19));
+        MockPublisher publisher = new MockPublisher();
+        keyperSet.setPublisher(address(publisher));
+        address[] memory members = new address[](2);
+        members[0] = address(1);
+        members[1] = address(2);
+        keyperSet.addMembers(members);
+
         keyperSet.setFinalized();
 
-        assertEq(keyperSet.isAllowedToBroadcastEonKey(address(1)), false);
-        assertEq(keyperSet.isAllowedToBroadcastEonKey(address(5)), true);
+        assertEq(
+            keyperSet.isAllowedToBroadcastEonKey(address(publisher)),
+            true
+        );
+        assertEq(keyperSet.isAllowedToBroadcastEonKey(members[0]), false);
+        assertEq(keyperSet.isAllowedToBroadcastEonKey(members[1]), false);
+        assertEq(keyperSet.isAllowedToBroadcastEonKey(address(19)), false);
     }
 }
