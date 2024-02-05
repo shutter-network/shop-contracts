@@ -13,6 +13,8 @@ contract EonKeyPublishTest is Test {
     address public initializer;
     address public dao;
 
+    event EonVoteRegistered(uint64 eon, bytes key);
+
     function setUp() public {
         initializer = address(19);
         dao = address(42);
@@ -60,6 +62,29 @@ contract EonKeyPublishTest is Test {
         manager.addKeyperSet(uint64(10), address(ks));
         vm.prank(address(publisher));
         assertEq(ks.isAllowedToBroadcastEonKey(address(publisher)), true);
+    }
+
+    function testEonVoteRegisteredEvent() public {
+        uint64 eon = 1;
+        address[] memory members = new address[](5);
+        members[0] = address(91);
+        members[1] = address(92);
+        members[2] = address(93);
+        keyperSet.addMembers(members);
+        keyperSet.setThreshold(2);
+        keyperSet.setPublisher(address(eonKeyPublish));
+        keyperSet.setFinalized();
+        assertEq(keyperSet.getThreshold(), 2);
+        bytes memory key = bytes("deadbeef");
+        vm.startPrank(dao);
+        manager.addKeyperSet(uint64(block.number + 10), address(keyperSet));
+        vm.stopPrank();
+        for (uint i = 0; i < keyperSet.getThreshold() - 1; i++) {
+            vm.prank(members[i]);
+            vm.expectEmit(address(eonKeyPublish));
+            emit EonVoteRegistered(eon, key);
+            eonKeyPublish.publishEonKey(key, uint64(i));
+        }
     }
 
     function testPublishEonKey() public {
