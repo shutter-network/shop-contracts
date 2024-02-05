@@ -3,6 +3,8 @@ pragma solidity ^0.8.22;
 
 import "src/KeyBroadcastContract.sol";
 
+error AlreadyVoted();
+
 contract EonKeyPublish is EonKeyPublisher {
     mapping(bytes32 => uint64) private numVotesForKey;
     mapping(address => bool) private hasVoted;
@@ -34,14 +36,16 @@ contract EonKeyPublish is EonKeyPublisher {
         if (!keyperSet.isFinalized()) {
             revert KeyperSetNotFinalized();
         }
+        // check msg.sender is keyper
+        if (keyperSet.getMember(keyperId) != msg.sender) {
+            revert NotAllowed();
+        }
         if (!hasVoted[msg.sender]) {
             hasVoted[msg.sender] = true;
             numVotesForKey[keccak256(eonKey)]++;
             emit EonVoteRegistered(eon, eonKey);
-        }
-        // check msg.sender is keyper
-        if (keyperSet.getMember(keyperId) != msg.sender) {
-            revert NotAllowed();
+        } else {
+            revert AlreadyVoted();
         }
         if (eonKeyConfirmed(eonKey)) {
             // broadcast
