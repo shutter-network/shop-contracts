@@ -129,6 +129,10 @@ contract DeployScript is Script {
             k.transfer(1000000000000000000);
         }
 
+        // fund frontend faucet address
+        address payable faucet = payable(address(0x7F6E15098861Aac5C88B49e7353bc3Ddec9E89cF));
+        faucet.transfer(1000 * 10 ** 18);
+
         keyperSet.addMembers(keypers);
         keyperSet.setThreshold(uint64(threshold));
 
