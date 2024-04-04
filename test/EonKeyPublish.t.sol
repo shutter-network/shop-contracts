@@ -15,7 +15,6 @@ contract EonKeyPublishTest is Test {
 
     event EonVoteRegistered(uint64 eon, bytes key);
     event EonKeyBroadcast(uint64 eon, bytes key);
-    event AlreadyHaveKey(uint64 eon, bytes key);
 
     function setUp() public {
         initializer = address(19);
@@ -122,8 +121,7 @@ contract EonKeyPublishTest is Test {
                     emit EonKeyBroadcast(eon, key);
                     // after Broadcast we should see AlreadyHaveKey
                 } else {
-                    vm.expectEmit(address(broadcastContract));
-                    emit AlreadyHaveKey(eon, key);
+                    vm.expectRevert(AlreadyHaveKey.selector);
                 }
                 eonKeyPublish.publishEonKey(key, uint64(idx));
                 // members can't change their vote

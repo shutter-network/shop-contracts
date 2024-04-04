@@ -48,10 +48,11 @@ contract EonKeyPublish is EonKeyPublisher {
             revert AlreadyVoted();
         }
         if (eonKeyConfirmed(eonKey)) {
-            // broadcast
-            broadcaster.broadcastEonKey(eon, eonKey);
-            //exit
-            return;
+            try broadcaster.broadcastEonKey(eon, eonKey) {
+                return;
+            } catch Error(string memory) {
+                return;
+            }
         }
     }
 }
