@@ -6,7 +6,7 @@ import "../src/KeyperSet.sol";
 import "../src/KeyBroadcastContract.sol";
 
 contract MockPublisher is EonKeyPublisher {
-    function eonKeyConfirmed(bytes memory eonKey) external returns (bool) {
+    function eonKeyConfirmed(bytes memory) external returns (bool) {
         return true;
     }
 }

@@ -35,9 +35,6 @@ contract KeyBroadcastContract {
         if (!keyperSet.isAllowedToBroadcastEonKey(msg.sender)) {
             revert NotAllowed();
         }
-        if (!EonKeyPublisher(keyperSet.getPublisher()).eonKeyConfirmed(key)) {
-            revert NotAllowed();
-        }
 
         keys[eon] = key;
         emit EonKeyBroadcast(eon, key);
