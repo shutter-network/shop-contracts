@@ -18,6 +18,7 @@ var (
 )
 
 func init() {
+
 	Predeploys["Inbox"] = &InboxAddr
 	Predeploys["KeyperSetManager"] = &KeyperSetManagerAddr
 	Predeploys["KeyBroadcastContract"] = &KeyBroadcastContractAddr

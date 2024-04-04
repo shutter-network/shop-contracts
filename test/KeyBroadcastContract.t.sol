@@ -7,7 +7,7 @@ import "../src/KeyperSetManager.sol";
 import "../src/KeyperSet.sol";
 
 contract MockPublisher is EonKeyPublisher {
-    function eonKeyConfirmed(bytes memory eonKey) external returns (bool) {
+    function eonKeyConfirmed(bytes memory) external returns (bool) {
         return true;
     }
 }
@@ -25,7 +25,6 @@ contract KeyBroadcastTest is Test {
     MockPublisher public publisher1;
 
     event EonKeyBroadcast(uint64 eon, bytes key);
-    event AlreadyHaveKey(uint64 eon, bytes key);
 
     function setUp() public {
         address initializer = address(69);
@@ -77,8 +76,7 @@ contract KeyBroadcastTest is Test {
         keyBroadcastContract.broadcastEonKey(1, key);
 
         vm.prank(address(publisher1));
-        vm.expectEmit(address(keyBroadcastContract));
-        emit AlreadyHaveKey(1, key);
+        vm.expectRevert(AlreadyHaveKey.selector);
         keyBroadcastContract.broadcastEonKey(1, key);
     }
 
