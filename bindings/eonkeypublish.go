@@ -31,7 +31,7 @@ var (
 
 // EonKeyPublishMetaData contains all meta data concerning the EonKeyPublish contract.
 var EonKeyPublishMetaData = &bind.MetaData{
-	ABI: "[{\"type\":\"constructor\",\"inputs\":[{\"name\":\"_keyperSet\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"_broadcaster\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"_eon\",\"type\":\"uint64\",\"internalType\":\"uint64\"}],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"eonKeyConfirmed\",\"inputs\":[{\"name\":\"eonKey\",\"type\":\"bytes\",\"internalType\":\"bytes\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bool\",\"internalType\":\"bool\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"publishEonKey\",\"inputs\":[{\"name\":\"eonKey\",\"type\":\"bytes\",\"internalType\":\"bytes\"},{\"name\":\"keyperId\",\"type\":\"uint64\",\"internalType\":\"uint64\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"event\",\"name\":\"EonVoteRegistered\",\"inputs\":[{\"name\":\"eon\",\"type\":\"uint64\",\"indexed\":false,\"internalType\":\"uint64\"},{\"name\":\"key\",\"type\":\"bytes\",\"indexed\":false,\"internalType\":\"bytes\"}],\"anonymous\":false},{\"type\":\"error\",\"name\":\"AlreadyVoted\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"InvalidKey\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"KeyperSetNotFinalized\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"NotAllowed\",\"inputs\":[]}]",
+	ABI: "[{\"type\":\"constructor\",\"inputs\":[{\"name\":\"_keyperSet\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"_broadcaster\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"_eon\",\"type\":\"uint64\",\"internalType\":\"uint64\"}],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"eonKeyConfirmed\",\"inputs\":[{\"name\":\"eonKey\",\"type\":\"bytes\",\"internalType\":\"bytes\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bool\",\"internalType\":\"bool\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"hasKeyperVoted\",\"inputs\":[{\"name\":\"keyper\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bool\",\"internalType\":\"bool\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"publishEonKey\",\"inputs\":[{\"name\":\"eonKey\",\"type\":\"bytes\",\"internalType\":\"bytes\"},{\"name\":\"keyperId\",\"type\":\"uint64\",\"internalType\":\"uint64\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"event\",\"name\":\"EonVoteRegistered\",\"inputs\":[{\"name\":\"eon\",\"type\":\"uint64\",\"indexed\":false,\"internalType\":\"uint64\"},{\"name\":\"key\",\"type\":\"bytes\",\"indexed\":false,\"internalType\":\"bytes\"}],\"anonymous\":false},{\"type\":\"error\",\"name\":\"AlreadyVoted\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"InvalidKey\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"KeyperSetNotFinalized\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"NotAllowed\",\"inputs\":[]}]",
 }
 
 // EonKeyPublishABI is the input ABI used to generate the binding from.
@@ -209,6 +209,37 @@ func (_EonKeyPublish *EonKeyPublishSession) EonKeyConfirmed(eonKey []byte) (bool
 // Solidity: function eonKeyConfirmed(bytes eonKey) view returns(bool)
 func (_EonKeyPublish *EonKeyPublishCallerSession) EonKeyConfirmed(eonKey []byte) (bool, error) {
 	return _EonKeyPublish.Contract.EonKeyConfirmed(&_EonKeyPublish.CallOpts, eonKey)
+}
+
+// HasKeyperVoted is a free data retrieval call binding the contract method 0xb118b6ed.
+//
+// Solidity: function hasKeyperVoted(address keyper) view returns(bool)
+func (_EonKeyPublish *EonKeyPublishCaller) HasKeyperVoted(opts *bind.CallOpts, keyper common.Address) (bool, error) {
+	var out []interface{}
+	err := _EonKeyPublish.contract.Call(opts, &out, "hasKeyperVoted", keyper)
+
+	if err != nil {
+		return *new(bool), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
+
+	return out0, err
+
+}
+
+// HasKeyperVoted is a free data retrieval call binding the contract method 0xb118b6ed.
+//
+// Solidity: function hasKeyperVoted(address keyper) view returns(bool)
+func (_EonKeyPublish *EonKeyPublishSession) HasKeyperVoted(keyper common.Address) (bool, error) {
+	return _EonKeyPublish.Contract.HasKeyperVoted(&_EonKeyPublish.CallOpts, keyper)
+}
+
+// HasKeyperVoted is a free data retrieval call binding the contract method 0xb118b6ed.
+//
+// Solidity: function hasKeyperVoted(address keyper) view returns(bool)
+func (_EonKeyPublish *EonKeyPublishCallerSession) HasKeyperVoted(keyper common.Address) (bool, error) {
+	return _EonKeyPublish.Contract.HasKeyperVoted(&_EonKeyPublish.CallOpts, keyper)
 }
 
 // PublishEonKey is a paid mutator transaction binding the contract method 0xa1dd75ba.

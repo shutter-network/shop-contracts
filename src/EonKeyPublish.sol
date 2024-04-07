@@ -29,6 +29,10 @@ contract EonKeyPublish is EonKeyPublisher {
         return false;
     }
 
+    function hasKeyperVoted(address keyper) public view returns (bool) {
+        return hasVoted[keyper];
+    }
+
     function publishEonKey(bytes memory eonKey, uint64 keyperId) public {
         if (eonKey.length == 0) {
             revert InvalidKey();

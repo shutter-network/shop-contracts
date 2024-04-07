@@ -192,4 +192,37 @@ contract EonKeyPublishTest is Test {
         assertEq(broadcastContract.getEonKey(eon), bytes("deadbeef"));
         vm.stopPrank();
     }
+
+    function testHasVoted() public {
+        uint64 eon = 1;
+        address[] memory members = new address[](5);
+        members[0] = address(61);
+        members[1] = address(62);
+        members[2] = address(63);
+        members[3] = address(64);
+        members[4] = address(65);
+        keyperSet.addMembers(members);
+        keyperSet.setThreshold(2);
+        keyperSet.setPublisher(address(eonKeyPublish));
+        keyperSet.setFinalized();
+        assertEq(keyperSet.getThreshold(), 2);
+        bytes memory key = bytes("deadbeef");
+        vm.startPrank(dao);
+        manager.addKeyperSet(uint64(block.number + 10), address(keyperSet));
+        vm.stopPrank();
+        for (uint i = 0; i < members.length; i++) {
+            assertEq(eonKeyPublish.hasKeyperVoted(members[i]), false);
+        }
+        for (uint i = 0; i < keyperSet.getThreshold(); i++) {
+            vm.prank(members[i]);
+            eonKeyPublish.publishEonKey(key, uint64(i));
+
+            for (uint j = 0; j <= i; j++) {
+                assertEq(eonKeyPublish.hasKeyperVoted(members[j]), true);
+            }
+            for (uint j = i + 1; j < members.length; j++) {
+                assertEq(eonKeyPublish.hasKeyperVoted(members[j]), false);
+            }
+        }
+    }
 }
