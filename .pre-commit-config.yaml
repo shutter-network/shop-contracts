@@ -33,3 +33,20 @@ repos:
             "javascript",
             "proto",
           ]
+
+  - repo: local
+    hooks:
+      - id: generate
+        name: generate
+        language: system
+        entry: bash -c 'make gen'
+        always_run: true
+        pass_filenames: false
+        require_serial: true
+      - id: bindings
+        name: bindings
+        language: system
+        entry: bash -c 'make bindings'
+        always_run: true
+        pass_filenames: false
+        require_serial: true
