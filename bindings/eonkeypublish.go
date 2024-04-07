@@ -31,7 +31,7 @@ var (
 
 // BindingsMetaData contains all meta data concerning the Bindings contract.
 var BindingsMetaData = &bind.MetaData{
-	ABI: "[{\"type\":\"constructor\",\"inputs\":[{\"name\":\"keyperSetManagerAddress\",\"type\":\"address\",\"internalType\":\"address\"}],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"broadcastEonKey\",\"inputs\":[{\"name\":\"eon\",\"type\":\"uint64\",\"internalType\":\"uint64\"},{\"name\":\"key\",\"type\":\"bytes\",\"internalType\":\"bytes\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"getEonKey\",\"inputs\":[{\"name\":\"eon\",\"type\":\"uint64\",\"internalType\":\"uint64\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bytes\",\"internalType\":\"bytes\"}],\"stateMutability\":\"view\"},{\"type\":\"event\",\"name\":\"EonKeyBroadcast\",\"inputs\":[{\"name\":\"eon\",\"type\":\"uint64\",\"indexed\":false,\"internalType\":\"uint64\"},{\"name\":\"key\",\"type\":\"bytes\",\"indexed\":false,\"internalType\":\"bytes\"}],\"anonymous\":false},{\"type\":\"error\",\"name\":\"AlreadyHaveKey\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"InvalidKey\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"NotAllowed\",\"inputs\":[]}]",
+	ABI: "[{\"type\":\"constructor\",\"inputs\":[{\"name\":\"_keyperSet\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"_broadcaster\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"_eon\",\"type\":\"uint64\",\"internalType\":\"uint64\"}],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"eonKeyConfirmed\",\"inputs\":[{\"name\":\"eonKey\",\"type\":\"bytes\",\"internalType\":\"bytes\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bool\",\"internalType\":\"bool\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"publishEonKey\",\"inputs\":[{\"name\":\"eonKey\",\"type\":\"bytes\",\"internalType\":\"bytes\"},{\"name\":\"keyperId\",\"type\":\"uint64\",\"internalType\":\"uint64\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"event\",\"name\":\"EonVoteRegistered\",\"inputs\":[{\"name\":\"eon\",\"type\":\"uint64\",\"indexed\":false,\"internalType\":\"uint64\"},{\"name\":\"key\",\"type\":\"bytes\",\"indexed\":false,\"internalType\":\"bytes\"}],\"anonymous\":false},{\"type\":\"error\",\"name\":\"AlreadyVoted\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"InvalidKey\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"KeyperSetNotFinalized\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"NotAllowed\",\"inputs\":[]}]",
 }
 
 // BindingsABI is the input ABI used to generate the binding from.
@@ -180,61 +180,61 @@ func (_Bindings *BindingsTransactorRaw) Transact(opts *bind.TransactOpts, method
 	return _Bindings.Contract.contract.Transact(opts, method, params...)
 }
 
-// GetEonKey is a free data retrieval call binding the contract method 0x8a0b8b28.
+// EonKeyConfirmed is a free data retrieval call binding the contract method 0x517e1cf7.
 //
-// Solidity: function getEonKey(uint64 eon) view returns(bytes)
-func (_Bindings *BindingsCaller) GetEonKey(opts *bind.CallOpts, eon uint64) ([]byte, error) {
+// Solidity: function eonKeyConfirmed(bytes eonKey) view returns(bool)
+func (_Bindings *BindingsCaller) EonKeyConfirmed(opts *bind.CallOpts, eonKey []byte) (bool, error) {
 	var out []interface{}
-	err := _Bindings.contract.Call(opts, &out, "getEonKey", eon)
+	err := _Bindings.contract.Call(opts, &out, "eonKeyConfirmed", eonKey)
 
 	if err != nil {
-		return *new([]byte), err
+		return *new(bool), err
 	}
 
-	out0 := *abi.ConvertType(out[0], new([]byte)).(*[]byte)
+	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
 
 	return out0, err
 
 }
 
-// GetEonKey is a free data retrieval call binding the contract method 0x8a0b8b28.
+// EonKeyConfirmed is a free data retrieval call binding the contract method 0x517e1cf7.
 //
-// Solidity: function getEonKey(uint64 eon) view returns(bytes)
-func (_Bindings *BindingsSession) GetEonKey(eon uint64) ([]byte, error) {
-	return _Bindings.Contract.GetEonKey(&_Bindings.CallOpts, eon)
+// Solidity: function eonKeyConfirmed(bytes eonKey) view returns(bool)
+func (_Bindings *BindingsSession) EonKeyConfirmed(eonKey []byte) (bool, error) {
+	return _Bindings.Contract.EonKeyConfirmed(&_Bindings.CallOpts, eonKey)
 }
 
-// GetEonKey is a free data retrieval call binding the contract method 0x8a0b8b28.
+// EonKeyConfirmed is a free data retrieval call binding the contract method 0x517e1cf7.
 //
-// Solidity: function getEonKey(uint64 eon) view returns(bytes)
-func (_Bindings *BindingsCallerSession) GetEonKey(eon uint64) ([]byte, error) {
-	return _Bindings.Contract.GetEonKey(&_Bindings.CallOpts, eon)
+// Solidity: function eonKeyConfirmed(bytes eonKey) view returns(bool)
+func (_Bindings *BindingsCallerSession) EonKeyConfirmed(eonKey []byte) (bool, error) {
+	return _Bindings.Contract.EonKeyConfirmed(&_Bindings.CallOpts, eonKey)
 }
 
-// BroadcastEonKey is a paid mutator transaction binding the contract method 0xdaade8e8.
+// PublishEonKey is a paid mutator transaction binding the contract method 0xa1dd75ba.
 //
-// Solidity: function broadcastEonKey(uint64 eon, bytes key) returns()
-func (_Bindings *BindingsTransactor) BroadcastEonKey(opts *bind.TransactOpts, eon uint64, key []byte) (*types.Transaction, error) {
-	return _Bindings.contract.Transact(opts, "broadcastEonKey", eon, key)
+// Solidity: function publishEonKey(bytes eonKey, uint64 keyperId) returns()
+func (_Bindings *BindingsTransactor) PublishEonKey(opts *bind.TransactOpts, eonKey []byte, keyperId uint64) (*types.Transaction, error) {
+	return _Bindings.contract.Transact(opts, "publishEonKey", eonKey, keyperId)
 }
 
-// BroadcastEonKey is a paid mutator transaction binding the contract method 0xdaade8e8.
+// PublishEonKey is a paid mutator transaction binding the contract method 0xa1dd75ba.
 //
-// Solidity: function broadcastEonKey(uint64 eon, bytes key) returns()
-func (_Bindings *BindingsSession) BroadcastEonKey(eon uint64, key []byte) (*types.Transaction, error) {
-	return _Bindings.Contract.BroadcastEonKey(&_Bindings.TransactOpts, eon, key)
+// Solidity: function publishEonKey(bytes eonKey, uint64 keyperId) returns()
+func (_Bindings *BindingsSession) PublishEonKey(eonKey []byte, keyperId uint64) (*types.Transaction, error) {
+	return _Bindings.Contract.PublishEonKey(&_Bindings.TransactOpts, eonKey, keyperId)
 }
 
-// BroadcastEonKey is a paid mutator transaction binding the contract method 0xdaade8e8.
+// PublishEonKey is a paid mutator transaction binding the contract method 0xa1dd75ba.
 //
-// Solidity: function broadcastEonKey(uint64 eon, bytes key) returns()
-func (_Bindings *BindingsTransactorSession) BroadcastEonKey(eon uint64, key []byte) (*types.Transaction, error) {
-	return _Bindings.Contract.BroadcastEonKey(&_Bindings.TransactOpts, eon, key)
+// Solidity: function publishEonKey(bytes eonKey, uint64 keyperId) returns()
+func (_Bindings *BindingsTransactorSession) PublishEonKey(eonKey []byte, keyperId uint64) (*types.Transaction, error) {
+	return _Bindings.Contract.PublishEonKey(&_Bindings.TransactOpts, eonKey, keyperId)
 }
 
-// BindingsEonKeyBroadcastIterator is returned from FilterEonKeyBroadcast and is used to iterate over the raw logs and unpacked data for EonKeyBroadcast events raised by the Bindings contract.
-type BindingsEonKeyBroadcastIterator struct {
-	Event *BindingsEonKeyBroadcast // Event containing the contract specifics and raw log
+// BindingsEonVoteRegisteredIterator is returned from FilterEonVoteRegistered and is used to iterate over the raw logs and unpacked data for EonVoteRegistered events raised by the Bindings contract.
+type BindingsEonVoteRegisteredIterator struct {
+	Event *BindingsEonVoteRegistered // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -248,7 +248,7 @@ type BindingsEonKeyBroadcastIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *BindingsEonKeyBroadcastIterator) Next() bool {
+func (it *BindingsEonVoteRegisteredIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -257,7 +257,7 @@ func (it *BindingsEonKeyBroadcastIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(BindingsEonKeyBroadcast)
+			it.Event = new(BindingsEonVoteRegistered)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -272,7 +272,7 @@ func (it *BindingsEonKeyBroadcastIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(BindingsEonKeyBroadcast)
+		it.Event = new(BindingsEonVoteRegistered)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -288,42 +288,42 @@ func (it *BindingsEonKeyBroadcastIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *BindingsEonKeyBroadcastIterator) Error() error {
+func (it *BindingsEonVoteRegisteredIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *BindingsEonKeyBroadcastIterator) Close() error {
+func (it *BindingsEonVoteRegisteredIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// BindingsEonKeyBroadcast represents a EonKeyBroadcast event raised by the Bindings contract.
-type BindingsEonKeyBroadcast struct {
+// BindingsEonVoteRegistered represents a EonVoteRegistered event raised by the Bindings contract.
+type BindingsEonVoteRegistered struct {
 	Eon uint64
 	Key []byte
 	Raw types.Log // Blockchain specific contextual infos
 }
 
-// FilterEonKeyBroadcast is a free log retrieval operation binding the contract event 0xf0dbcf46bf98296dd97ce9cb1ef117ac6fd1b2f126741125433174d56dad3768.
+// FilterEonVoteRegistered is a free log retrieval operation binding the contract event 0xd521fd602f7dce253c2e07c489358eb9e00e3af335a362168a0300d30e401a8a.
 //
-// Solidity: event EonKeyBroadcast(uint64 eon, bytes key)
-func (_Bindings *BindingsFilterer) FilterEonKeyBroadcast(opts *bind.FilterOpts) (*BindingsEonKeyBroadcastIterator, error) {
+// Solidity: event EonVoteRegistered(uint64 eon, bytes key)
+func (_Bindings *BindingsFilterer) FilterEonVoteRegistered(opts *bind.FilterOpts) (*BindingsEonVoteRegisteredIterator, error) {
 
-	logs, sub, err := _Bindings.contract.FilterLogs(opts, "EonKeyBroadcast")
+	logs, sub, err := _Bindings.contract.FilterLogs(opts, "EonVoteRegistered")
 	if err != nil {
 		return nil, err
 	}
-	return &BindingsEonKeyBroadcastIterator{contract: _Bindings.contract, event: "EonKeyBroadcast", logs: logs, sub: sub}, nil
+	return &BindingsEonVoteRegisteredIterator{contract: _Bindings.contract, event: "EonVoteRegistered", logs: logs, sub: sub}, nil
 }
 
-// WatchEonKeyBroadcast is a free log subscription operation binding the contract event 0xf0dbcf46bf98296dd97ce9cb1ef117ac6fd1b2f126741125433174d56dad3768.
+// WatchEonVoteRegistered is a free log subscription operation binding the contract event 0xd521fd602f7dce253c2e07c489358eb9e00e3af335a362168a0300d30e401a8a.
 //
-// Solidity: event EonKeyBroadcast(uint64 eon, bytes key)
-func (_Bindings *BindingsFilterer) WatchEonKeyBroadcast(opts *bind.WatchOpts, sink chan<- *BindingsEonKeyBroadcast) (event.Subscription, error) {
+// Solidity: event EonVoteRegistered(uint64 eon, bytes key)
+func (_Bindings *BindingsFilterer) WatchEonVoteRegistered(opts *bind.WatchOpts, sink chan<- *BindingsEonVoteRegistered) (event.Subscription, error) {
 
-	logs, sub, err := _Bindings.contract.WatchLogs(opts, "EonKeyBroadcast")
+	logs, sub, err := _Bindings.contract.WatchLogs(opts, "EonVoteRegistered")
 	if err != nil {
 		return nil, err
 	}
@@ -333,8 +333,8 @@ func (_Bindings *BindingsFilterer) WatchEonKeyBroadcast(opts *bind.WatchOpts, si
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(BindingsEonKeyBroadcast)
-				if err := _Bindings.contract.UnpackLog(event, "EonKeyBroadcast", log); err != nil {
+				event := new(BindingsEonVoteRegistered)
+				if err := _Bindings.contract.UnpackLog(event, "EonVoteRegistered", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -355,12 +355,12 @@ func (_Bindings *BindingsFilterer) WatchEonKeyBroadcast(opts *bind.WatchOpts, si
 	}), nil
 }
 
-// ParseEonKeyBroadcast is a log parse operation binding the contract event 0xf0dbcf46bf98296dd97ce9cb1ef117ac6fd1b2f126741125433174d56dad3768.
+// ParseEonVoteRegistered is a log parse operation binding the contract event 0xd521fd602f7dce253c2e07c489358eb9e00e3af335a362168a0300d30e401a8a.
 //
-// Solidity: event EonKeyBroadcast(uint64 eon, bytes key)
-func (_Bindings *BindingsFilterer) ParseEonKeyBroadcast(log types.Log) (*BindingsEonKeyBroadcast, error) {
-	event := new(BindingsEonKeyBroadcast)
-	if err := _Bindings.contract.UnpackLog(event, "EonKeyBroadcast", log); err != nil {
+// Solidity: event EonVoteRegistered(uint64 eon, bytes key)
+func (_Bindings *BindingsFilterer) ParseEonVoteRegistered(log types.Log) (*BindingsEonVoteRegistered, error) {
+	event := new(BindingsEonVoteRegistered)
+	if err := _Bindings.contract.UnpackLog(event, "EonVoteRegistered", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log

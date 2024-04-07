@@ -29,17 +29,9 @@ var (
 	_ = abi.ConvertType
 )
 
-// InboxTransaction is an auto generated low-level Go binding around an user-defined struct.
-type InboxTransaction struct {
-	EncryptedTransaction []byte
-	Sender               common.Address
-	GasLimit             uint64
-	CumulativeGasLimit   uint64
-}
-
 // BindingsMetaData contains all meta data concerning the Bindings contract.
 var BindingsMetaData = &bind.MetaData{
-	ABI: "[{\"type\":\"constructor\",\"inputs\":[{\"name\":\"_blockGasLimit\",\"type\":\"uint64\",\"internalType\":\"uint64\"},{\"name\":\"initializer\",\"type\":\"address\",\"internalType\":\"address\"}],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"BLOCK_GAS_LIMIT_SETTER_ROLE\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"DEFAULT_ADMIN_ROLE\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"PAUSER_ROLE\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"SEQUENCER_ROLE\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"WITHDRAW_ROLE\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"clear\",\"inputs\":[],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"getBlockGasLimit\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint64\",\"internalType\":\"uint64\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"getRoleAdmin\",\"inputs\":[{\"name\":\"role\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"getTransactions\",\"inputs\":[{\"name\":\"blockNumber\",\"type\":\"uint64\",\"internalType\":\"uint64\"}],\"outputs\":[{\"name\":\"\",\"type\":\"tuple[]\",\"internalType\":\"structInbox.Transaction[]\",\"components\":[{\"name\":\"encryptedTransaction\",\"type\":\"bytes\",\"internalType\":\"bytes\"},{\"name\":\"sender\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"gasLimit\",\"type\":\"uint64\",\"internalType\":\"uint64\"},{\"name\":\"cumulativeGasLimit\",\"type\":\"uint64\",\"internalType\":\"uint64\"}]}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"grantRole\",\"inputs\":[{\"name\":\"role\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"account\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"hasRole\",\"inputs\":[{\"name\":\"role\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"account\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bool\",\"internalType\":\"bool\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"initialize\",\"inputs\":[{\"name\":\"dao\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"sequencer\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"initializer\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"address\",\"internalType\":\"address\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"pause\",\"inputs\":[],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"paused\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"bool\",\"internalType\":\"bool\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"renounceRole\",\"inputs\":[{\"name\":\"role\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"callerConfirmation\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"revokeRole\",\"inputs\":[{\"name\":\"role\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"account\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"setBlockGasLimit\",\"inputs\":[{\"name\":\"newBlockGasLimit\",\"type\":\"uint64\",\"internalType\":\"uint64\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"submitEncryptedTransaction\",\"inputs\":[{\"name\":\"blockNumber\",\"type\":\"uint64\",\"internalType\":\"uint64\"},{\"name\":\"encryptedTransaction\",\"type\":\"bytes\",\"internalType\":\"bytes\"},{\"name\":\"gasLimit\",\"type\":\"uint64\",\"internalType\":\"uint64\"},{\"name\":\"excessFeeRecipient\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[],\"stateMutability\":\"payable\"},{\"type\":\"function\",\"name\":\"supportsInterface\",\"inputs\":[{\"name\":\"interfaceId\",\"type\":\"bytes4\",\"internalType\":\"bytes4\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bool\",\"internalType\":\"bool\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"unpause\",\"inputs\":[],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"withdraw\",\"inputs\":[{\"name\":\"recipient\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"event\",\"name\":\"EncryptedTransactionSubmitted\",\"inputs\":[{\"name\":\"index\",\"type\":\"uint64\",\"indexed\":true,\"internalType\":\"uint64\"},{\"name\":\"block\",\"type\":\"uint64\",\"indexed\":true,\"internalType\":\"uint64\"},{\"name\":\"encryptedTransaction\",\"type\":\"bytes\",\"indexed\":false,\"internalType\":\"bytes\"},{\"name\":\"sender\",\"type\":\"address\",\"indexed\":false,\"internalType\":\"address\"},{\"name\":\"gasLimit\",\"type\":\"uint64\",\"indexed\":false,\"internalType\":\"uint64\"},{\"name\":\"cumulativeGasLimit\",\"type\":\"uint64\",\"indexed\":false,\"internalType\":\"uint64\"},{\"name\":\"fee\",\"type\":\"uint256\",\"indexed\":false,\"internalType\":\"uint256\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"FeesWithdrawn\",\"inputs\":[{\"name\":\"recipient\",\"type\":\"address\",\"indexed\":false,\"internalType\":\"address\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"Paused\",\"inputs\":[{\"name\":\"account\",\"type\":\"address\",\"indexed\":false,\"internalType\":\"address\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"RoleAdminChanged\",\"inputs\":[{\"name\":\"role\",\"type\":\"bytes32\",\"indexed\":true,\"internalType\":\"bytes32\"},{\"name\":\"previousAdminRole\",\"type\":\"bytes32\",\"indexed\":true,\"internalType\":\"bytes32\"},{\"name\":\"newAdminRole\",\"type\":\"bytes32\",\"indexed\":true,\"internalType\":\"bytes32\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"RoleGranted\",\"inputs\":[{\"name\":\"role\",\"type\":\"bytes32\",\"indexed\":true,\"internalType\":\"bytes32\"},{\"name\":\"account\",\"type\":\"address\",\"indexed\":true,\"internalType\":\"address\"},{\"name\":\"sender\",\"type\":\"address\",\"indexed\":true,\"internalType\":\"address\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"RoleRevoked\",\"inputs\":[{\"name\":\"role\",\"type\":\"bytes32\",\"indexed\":true,\"internalType\":\"bytes32\"},{\"name\":\"account\",\"type\":\"address\",\"indexed\":true,\"internalType\":\"address\"},{\"name\":\"sender\",\"type\":\"address\",\"indexed\":true,\"internalType\":\"address\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"Unpaused\",\"inputs\":[{\"name\":\"account\",\"type\":\"address\",\"indexed\":false,\"internalType\":\"address\"}],\"anonymous\":false},{\"type\":\"error\",\"name\":\"AccessControlBadConfirmation\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"AccessControlUnauthorizedAccount\",\"inputs\":[{\"name\":\"account\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"neededRole\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]},{\"type\":\"error\",\"name\":\"AlreadyInitialized\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"BlockAlreadyFinalized\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"BlockGasLimitExceeded\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"EnforcedPause\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"ExpectedPause\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"InsufficientFunds\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"TransferEtherFailed\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"UnauthorizedInitializer\",\"inputs\":[]}]",
+	ABI: "[{\"type\":\"function\",\"name\":\"DEFAULT_ADMIN_ROLE\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"PAUSER_ROLE\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"getRoleAdmin\",\"inputs\":[{\"name\":\"role\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"grantRole\",\"inputs\":[{\"name\":\"role\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"account\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"hasRole\",\"inputs\":[{\"name\":\"role\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"account\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bool\",\"internalType\":\"bool\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"initialize\",\"inputs\":[{\"name\":\"admin\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"pauser\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"initializer\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"address\",\"internalType\":\"address\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"pause\",\"inputs\":[],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"paused\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"bool\",\"internalType\":\"bool\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"renounceRole\",\"inputs\":[{\"name\":\"role\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"callerConfirmation\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"revokeRole\",\"inputs\":[{\"name\":\"role\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"account\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"supportsInterface\",\"inputs\":[{\"name\":\"interfaceId\",\"type\":\"bytes4\",\"internalType\":\"bytes4\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bool\",\"internalType\":\"bool\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"unpause\",\"inputs\":[],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"event\",\"name\":\"Paused\",\"inputs\":[{\"name\":\"account\",\"type\":\"address\",\"indexed\":false,\"internalType\":\"address\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"RoleAdminChanged\",\"inputs\":[{\"name\":\"role\",\"type\":\"bytes32\",\"indexed\":true,\"internalType\":\"bytes32\"},{\"name\":\"previousAdminRole\",\"type\":\"bytes32\",\"indexed\":true,\"internalType\":\"bytes32\"},{\"name\":\"newAdminRole\",\"type\":\"bytes32\",\"indexed\":true,\"internalType\":\"bytes32\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"RoleGranted\",\"inputs\":[{\"name\":\"role\",\"type\":\"bytes32\",\"indexed\":true,\"internalType\":\"bytes32\"},{\"name\":\"account\",\"type\":\"address\",\"indexed\":true,\"internalType\":\"address\"},{\"name\":\"sender\",\"type\":\"address\",\"indexed\":true,\"internalType\":\"address\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"RoleRevoked\",\"inputs\":[{\"name\":\"role\",\"type\":\"bytes32\",\"indexed\":true,\"internalType\":\"bytes32\"},{\"name\":\"account\",\"type\":\"address\",\"indexed\":true,\"internalType\":\"address\"},{\"name\":\"sender\",\"type\":\"address\",\"indexed\":true,\"internalType\":\"address\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"Unpaused\",\"inputs\":[{\"name\":\"account\",\"type\":\"address\",\"indexed\":false,\"internalType\":\"address\"}],\"anonymous\":false},{\"type\":\"error\",\"name\":\"AccessControlBadConfirmation\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"AccessControlUnauthorizedAccount\",\"inputs\":[{\"name\":\"account\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"neededRole\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]},{\"type\":\"error\",\"name\":\"AlreadyInitialized\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"EnforcedPause\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"ExpectedPause\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"UnauthorizedInitializer\",\"inputs\":[]}]",
 }
 
 // BindingsABI is the input ABI used to generate the binding from.
@@ -188,37 +180,6 @@ func (_Bindings *BindingsTransactorRaw) Transact(opts *bind.TransactOpts, method
 	return _Bindings.Contract.contract.Transact(opts, method, params...)
 }
 
-// BLOCKGASLIMITSETTERROLE is a free data retrieval call binding the contract method 0x91de737e.
-//
-// Solidity: function BLOCK_GAS_LIMIT_SETTER_ROLE() view returns(bytes32)
-func (_Bindings *BindingsCaller) BLOCKGASLIMITSETTERROLE(opts *bind.CallOpts) ([32]byte, error) {
-	var out []interface{}
-	err := _Bindings.contract.Call(opts, &out, "BLOCK_GAS_LIMIT_SETTER_ROLE")
-
-	if err != nil {
-		return *new([32]byte), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new([32]byte)).(*[32]byte)
-
-	return out0, err
-
-}
-
-// BLOCKGASLIMITSETTERROLE is a free data retrieval call binding the contract method 0x91de737e.
-//
-// Solidity: function BLOCK_GAS_LIMIT_SETTER_ROLE() view returns(bytes32)
-func (_Bindings *BindingsSession) BLOCKGASLIMITSETTERROLE() ([32]byte, error) {
-	return _Bindings.Contract.BLOCKGASLIMITSETTERROLE(&_Bindings.CallOpts)
-}
-
-// BLOCKGASLIMITSETTERROLE is a free data retrieval call binding the contract method 0x91de737e.
-//
-// Solidity: function BLOCK_GAS_LIMIT_SETTER_ROLE() view returns(bytes32)
-func (_Bindings *BindingsCallerSession) BLOCKGASLIMITSETTERROLE() ([32]byte, error) {
-	return _Bindings.Contract.BLOCKGASLIMITSETTERROLE(&_Bindings.CallOpts)
-}
-
 // DEFAULTADMINROLE is a free data retrieval call binding the contract method 0xa217fddf.
 //
 // Solidity: function DEFAULT_ADMIN_ROLE() view returns(bytes32)
@@ -281,99 +242,6 @@ func (_Bindings *BindingsCallerSession) PAUSERROLE() ([32]byte, error) {
 	return _Bindings.Contract.PAUSERROLE(&_Bindings.CallOpts)
 }
 
-// SEQUENCERROLE is a free data retrieval call binding the contract method 0x4842855c.
-//
-// Solidity: function SEQUENCER_ROLE() view returns(bytes32)
-func (_Bindings *BindingsCaller) SEQUENCERROLE(opts *bind.CallOpts) ([32]byte, error) {
-	var out []interface{}
-	err := _Bindings.contract.Call(opts, &out, "SEQUENCER_ROLE")
-
-	if err != nil {
-		return *new([32]byte), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new([32]byte)).(*[32]byte)
-
-	return out0, err
-
-}
-
-// SEQUENCERROLE is a free data retrieval call binding the contract method 0x4842855c.
-//
-// Solidity: function SEQUENCER_ROLE() view returns(bytes32)
-func (_Bindings *BindingsSession) SEQUENCERROLE() ([32]byte, error) {
-	return _Bindings.Contract.SEQUENCERROLE(&_Bindings.CallOpts)
-}
-
-// SEQUENCERROLE is a free data retrieval call binding the contract method 0x4842855c.
-//
-// Solidity: function SEQUENCER_ROLE() view returns(bytes32)
-func (_Bindings *BindingsCallerSession) SEQUENCERROLE() ([32]byte, error) {
-	return _Bindings.Contract.SEQUENCERROLE(&_Bindings.CallOpts)
-}
-
-// WITHDRAWROLE is a free data retrieval call binding the contract method 0xe02023a1.
-//
-// Solidity: function WITHDRAW_ROLE() view returns(bytes32)
-func (_Bindings *BindingsCaller) WITHDRAWROLE(opts *bind.CallOpts) ([32]byte, error) {
-	var out []interface{}
-	err := _Bindings.contract.Call(opts, &out, "WITHDRAW_ROLE")
-
-	if err != nil {
-		return *new([32]byte), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new([32]byte)).(*[32]byte)
-
-	return out0, err
-
-}
-
-// WITHDRAWROLE is a free data retrieval call binding the contract method 0xe02023a1.
-//
-// Solidity: function WITHDRAW_ROLE() view returns(bytes32)
-func (_Bindings *BindingsSession) WITHDRAWROLE() ([32]byte, error) {
-	return _Bindings.Contract.WITHDRAWROLE(&_Bindings.CallOpts)
-}
-
-// WITHDRAWROLE is a free data retrieval call binding the contract method 0xe02023a1.
-//
-// Solidity: function WITHDRAW_ROLE() view returns(bytes32)
-func (_Bindings *BindingsCallerSession) WITHDRAWROLE() ([32]byte, error) {
-	return _Bindings.Contract.WITHDRAWROLE(&_Bindings.CallOpts)
-}
-
-// GetBlockGasLimit is a free data retrieval call binding the contract method 0x2cc8377d.
-//
-// Solidity: function getBlockGasLimit() view returns(uint64)
-func (_Bindings *BindingsCaller) GetBlockGasLimit(opts *bind.CallOpts) (uint64, error) {
-	var out []interface{}
-	err := _Bindings.contract.Call(opts, &out, "getBlockGasLimit")
-
-	if err != nil {
-		return *new(uint64), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(uint64)).(*uint64)
-
-	return out0, err
-
-}
-
-// GetBlockGasLimit is a free data retrieval call binding the contract method 0x2cc8377d.
-//
-// Solidity: function getBlockGasLimit() view returns(uint64)
-func (_Bindings *BindingsSession) GetBlockGasLimit() (uint64, error) {
-	return _Bindings.Contract.GetBlockGasLimit(&_Bindings.CallOpts)
-}
-
-// GetBlockGasLimit is a free data retrieval call binding the contract method 0x2cc8377d.
-//
-// Solidity: function getBlockGasLimit() view returns(uint64)
-func (_Bindings *BindingsCallerSession) GetBlockGasLimit() (uint64, error) {
-	return _Bindings.Contract.GetBlockGasLimit(&_Bindings.CallOpts)
-}
-
 // GetRoleAdmin is a free data retrieval call binding the contract method 0x248a9ca3.
 //
 // Solidity: function getRoleAdmin(bytes32 role) view returns(bytes32)
@@ -403,37 +271,6 @@ func (_Bindings *BindingsSession) GetRoleAdmin(role [32]byte) ([32]byte, error) 
 // Solidity: function getRoleAdmin(bytes32 role) view returns(bytes32)
 func (_Bindings *BindingsCallerSession) GetRoleAdmin(role [32]byte) ([32]byte, error) {
 	return _Bindings.Contract.GetRoleAdmin(&_Bindings.CallOpts, role)
-}
-
-// GetTransactions is a free data retrieval call binding the contract method 0x552fd4aa.
-//
-// Solidity: function getTransactions(uint64 blockNumber) view returns((bytes,address,uint64,uint64)[])
-func (_Bindings *BindingsCaller) GetTransactions(opts *bind.CallOpts, blockNumber uint64) ([]InboxTransaction, error) {
-	var out []interface{}
-	err := _Bindings.contract.Call(opts, &out, "getTransactions", blockNumber)
-
-	if err != nil {
-		return *new([]InboxTransaction), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new([]InboxTransaction)).(*[]InboxTransaction)
-
-	return out0, err
-
-}
-
-// GetTransactions is a free data retrieval call binding the contract method 0x552fd4aa.
-//
-// Solidity: function getTransactions(uint64 blockNumber) view returns((bytes,address,uint64,uint64)[])
-func (_Bindings *BindingsSession) GetTransactions(blockNumber uint64) ([]InboxTransaction, error) {
-	return _Bindings.Contract.GetTransactions(&_Bindings.CallOpts, blockNumber)
-}
-
-// GetTransactions is a free data retrieval call binding the contract method 0x552fd4aa.
-//
-// Solidity: function getTransactions(uint64 blockNumber) view returns((bytes,address,uint64,uint64)[])
-func (_Bindings *BindingsCallerSession) GetTransactions(blockNumber uint64) ([]InboxTransaction, error) {
-	return _Bindings.Contract.GetTransactions(&_Bindings.CallOpts, blockNumber)
 }
 
 // HasRole is a free data retrieval call binding the contract method 0x91d14854.
@@ -560,27 +397,6 @@ func (_Bindings *BindingsCallerSession) SupportsInterface(interfaceId [4]byte) (
 	return _Bindings.Contract.SupportsInterface(&_Bindings.CallOpts, interfaceId)
 }
 
-// Clear is a paid mutator transaction binding the contract method 0x52efea6e.
-//
-// Solidity: function clear() returns()
-func (_Bindings *BindingsTransactor) Clear(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _Bindings.contract.Transact(opts, "clear")
-}
-
-// Clear is a paid mutator transaction binding the contract method 0x52efea6e.
-//
-// Solidity: function clear() returns()
-func (_Bindings *BindingsSession) Clear() (*types.Transaction, error) {
-	return _Bindings.Contract.Clear(&_Bindings.TransactOpts)
-}
-
-// Clear is a paid mutator transaction binding the contract method 0x52efea6e.
-//
-// Solidity: function clear() returns()
-func (_Bindings *BindingsTransactorSession) Clear() (*types.Transaction, error) {
-	return _Bindings.Contract.Clear(&_Bindings.TransactOpts)
-}
-
 // GrantRole is a paid mutator transaction binding the contract method 0x2f2ff15d.
 //
 // Solidity: function grantRole(bytes32 role, address account) returns()
@@ -604,23 +420,23 @@ func (_Bindings *BindingsTransactorSession) GrantRole(role [32]byte, account com
 
 // Initialize is a paid mutator transaction binding the contract method 0x485cc955.
 //
-// Solidity: function initialize(address dao, address sequencer) returns()
-func (_Bindings *BindingsTransactor) Initialize(opts *bind.TransactOpts, dao common.Address, sequencer common.Address) (*types.Transaction, error) {
-	return _Bindings.contract.Transact(opts, "initialize", dao, sequencer)
+// Solidity: function initialize(address admin, address pauser) returns()
+func (_Bindings *BindingsTransactor) Initialize(opts *bind.TransactOpts, admin common.Address, pauser common.Address) (*types.Transaction, error) {
+	return _Bindings.contract.Transact(opts, "initialize", admin, pauser)
 }
 
 // Initialize is a paid mutator transaction binding the contract method 0x485cc955.
 //
-// Solidity: function initialize(address dao, address sequencer) returns()
-func (_Bindings *BindingsSession) Initialize(dao common.Address, sequencer common.Address) (*types.Transaction, error) {
-	return _Bindings.Contract.Initialize(&_Bindings.TransactOpts, dao, sequencer)
+// Solidity: function initialize(address admin, address pauser) returns()
+func (_Bindings *BindingsSession) Initialize(admin common.Address, pauser common.Address) (*types.Transaction, error) {
+	return _Bindings.Contract.Initialize(&_Bindings.TransactOpts, admin, pauser)
 }
 
 // Initialize is a paid mutator transaction binding the contract method 0x485cc955.
 //
-// Solidity: function initialize(address dao, address sequencer) returns()
-func (_Bindings *BindingsTransactorSession) Initialize(dao common.Address, sequencer common.Address) (*types.Transaction, error) {
-	return _Bindings.Contract.Initialize(&_Bindings.TransactOpts, dao, sequencer)
+// Solidity: function initialize(address admin, address pauser) returns()
+func (_Bindings *BindingsTransactorSession) Initialize(admin common.Address, pauser common.Address) (*types.Transaction, error) {
+	return _Bindings.Contract.Initialize(&_Bindings.TransactOpts, admin, pauser)
 }
 
 // Pause is a paid mutator transaction binding the contract method 0x8456cb59.
@@ -686,48 +502,6 @@ func (_Bindings *BindingsTransactorSession) RevokeRole(role [32]byte, account co
 	return _Bindings.Contract.RevokeRole(&_Bindings.TransactOpts, role, account)
 }
 
-// SetBlockGasLimit is a paid mutator transaction binding the contract method 0xae0dad60.
-//
-// Solidity: function setBlockGasLimit(uint64 newBlockGasLimit) returns()
-func (_Bindings *BindingsTransactor) SetBlockGasLimit(opts *bind.TransactOpts, newBlockGasLimit uint64) (*types.Transaction, error) {
-	return _Bindings.contract.Transact(opts, "setBlockGasLimit", newBlockGasLimit)
-}
-
-// SetBlockGasLimit is a paid mutator transaction binding the contract method 0xae0dad60.
-//
-// Solidity: function setBlockGasLimit(uint64 newBlockGasLimit) returns()
-func (_Bindings *BindingsSession) SetBlockGasLimit(newBlockGasLimit uint64) (*types.Transaction, error) {
-	return _Bindings.Contract.SetBlockGasLimit(&_Bindings.TransactOpts, newBlockGasLimit)
-}
-
-// SetBlockGasLimit is a paid mutator transaction binding the contract method 0xae0dad60.
-//
-// Solidity: function setBlockGasLimit(uint64 newBlockGasLimit) returns()
-func (_Bindings *BindingsTransactorSession) SetBlockGasLimit(newBlockGasLimit uint64) (*types.Transaction, error) {
-	return _Bindings.Contract.SetBlockGasLimit(&_Bindings.TransactOpts, newBlockGasLimit)
-}
-
-// SubmitEncryptedTransaction is a paid mutator transaction binding the contract method 0xa44e7cfe.
-//
-// Solidity: function submitEncryptedTransaction(uint64 blockNumber, bytes encryptedTransaction, uint64 gasLimit, address excessFeeRecipient) payable returns()
-func (_Bindings *BindingsTransactor) SubmitEncryptedTransaction(opts *bind.TransactOpts, blockNumber uint64, encryptedTransaction []byte, gasLimit uint64, excessFeeRecipient common.Address) (*types.Transaction, error) {
-	return _Bindings.contract.Transact(opts, "submitEncryptedTransaction", blockNumber, encryptedTransaction, gasLimit, excessFeeRecipient)
-}
-
-// SubmitEncryptedTransaction is a paid mutator transaction binding the contract method 0xa44e7cfe.
-//
-// Solidity: function submitEncryptedTransaction(uint64 blockNumber, bytes encryptedTransaction, uint64 gasLimit, address excessFeeRecipient) payable returns()
-func (_Bindings *BindingsSession) SubmitEncryptedTransaction(blockNumber uint64, encryptedTransaction []byte, gasLimit uint64, excessFeeRecipient common.Address) (*types.Transaction, error) {
-	return _Bindings.Contract.SubmitEncryptedTransaction(&_Bindings.TransactOpts, blockNumber, encryptedTransaction, gasLimit, excessFeeRecipient)
-}
-
-// SubmitEncryptedTransaction is a paid mutator transaction binding the contract method 0xa44e7cfe.
-//
-// Solidity: function submitEncryptedTransaction(uint64 blockNumber, bytes encryptedTransaction, uint64 gasLimit, address excessFeeRecipient) payable returns()
-func (_Bindings *BindingsTransactorSession) SubmitEncryptedTransaction(blockNumber uint64, encryptedTransaction []byte, gasLimit uint64, excessFeeRecipient common.Address) (*types.Transaction, error) {
-	return _Bindings.Contract.SubmitEncryptedTransaction(&_Bindings.TransactOpts, blockNumber, encryptedTransaction, gasLimit, excessFeeRecipient)
-}
-
 // Unpause is a paid mutator transaction binding the contract method 0x3f4ba83a.
 //
 // Solidity: function unpause() returns()
@@ -747,319 +521,6 @@ func (_Bindings *BindingsSession) Unpause() (*types.Transaction, error) {
 // Solidity: function unpause() returns()
 func (_Bindings *BindingsTransactorSession) Unpause() (*types.Transaction, error) {
 	return _Bindings.Contract.Unpause(&_Bindings.TransactOpts)
-}
-
-// Withdraw is a paid mutator transaction binding the contract method 0x51cff8d9.
-//
-// Solidity: function withdraw(address recipient) returns()
-func (_Bindings *BindingsTransactor) Withdraw(opts *bind.TransactOpts, recipient common.Address) (*types.Transaction, error) {
-	return _Bindings.contract.Transact(opts, "withdraw", recipient)
-}
-
-// Withdraw is a paid mutator transaction binding the contract method 0x51cff8d9.
-//
-// Solidity: function withdraw(address recipient) returns()
-func (_Bindings *BindingsSession) Withdraw(recipient common.Address) (*types.Transaction, error) {
-	return _Bindings.Contract.Withdraw(&_Bindings.TransactOpts, recipient)
-}
-
-// Withdraw is a paid mutator transaction binding the contract method 0x51cff8d9.
-//
-// Solidity: function withdraw(address recipient) returns()
-func (_Bindings *BindingsTransactorSession) Withdraw(recipient common.Address) (*types.Transaction, error) {
-	return _Bindings.Contract.Withdraw(&_Bindings.TransactOpts, recipient)
-}
-
-// BindingsEncryptedTransactionSubmittedIterator is returned from FilterEncryptedTransactionSubmitted and is used to iterate over the raw logs and unpacked data for EncryptedTransactionSubmitted events raised by the Bindings contract.
-type BindingsEncryptedTransactionSubmittedIterator struct {
-	Event *BindingsEncryptedTransactionSubmitted // Event containing the contract specifics and raw log
-
-	contract *bind.BoundContract // Generic contract to use for unpacking event data
-	event    string              // Event name to use for unpacking event data
-
-	logs chan types.Log        // Log channel receiving the found contract events
-	sub  ethereum.Subscription // Subscription for errors, completion and termination
-	done bool                  // Whether the subscription completed delivering logs
-	fail error                 // Occurred error to stop iteration
-}
-
-// Next advances the iterator to the subsequent event, returning whether there
-// are any more events found. In case of a retrieval or parsing error, false is
-// returned and Error() can be queried for the exact failure.
-func (it *BindingsEncryptedTransactionSubmittedIterator) Next() bool {
-	// If the iterator failed, stop iterating
-	if it.fail != nil {
-		return false
-	}
-	// If the iterator completed, deliver directly whatever's available
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(BindingsEncryptedTransactionSubmitted)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-	// Iterator still in progress, wait for either a data or an error event
-	select {
-	case log := <-it.logs:
-		it.Event = new(BindingsEncryptedTransactionSubmitted)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-// Error returns any retrieval or parsing error occurred during filtering.
-func (it *BindingsEncryptedTransactionSubmittedIterator) Error() error {
-	return it.fail
-}
-
-// Close terminates the iteration process, releasing any pending underlying
-// resources.
-func (it *BindingsEncryptedTransactionSubmittedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-// BindingsEncryptedTransactionSubmitted represents a EncryptedTransactionSubmitted event raised by the Bindings contract.
-type BindingsEncryptedTransactionSubmitted struct {
-	Index                uint64
-	Block                uint64
-	EncryptedTransaction []byte
-	Sender               common.Address
-	GasLimit             uint64
-	CumulativeGasLimit   uint64
-	Fee                  *big.Int
-	Raw                  types.Log // Blockchain specific contextual infos
-}
-
-// FilterEncryptedTransactionSubmitted is a free log retrieval operation binding the contract event 0x0ac44a68e7048007d82fa113a6c5d84bec8a110ed9e953d4f234fab3c9ecac53.
-//
-// Solidity: event EncryptedTransactionSubmitted(uint64 indexed index, uint64 indexed block, bytes encryptedTransaction, address sender, uint64 gasLimit, uint64 cumulativeGasLimit, uint256 fee)
-func (_Bindings *BindingsFilterer) FilterEncryptedTransactionSubmitted(opts *bind.FilterOpts, index []uint64, block []uint64) (*BindingsEncryptedTransactionSubmittedIterator, error) {
-
-	var indexRule []interface{}
-	for _, indexItem := range index {
-		indexRule = append(indexRule, indexItem)
-	}
-	var blockRule []interface{}
-	for _, blockItem := range block {
-		blockRule = append(blockRule, blockItem)
-	}
-
-	logs, sub, err := _Bindings.contract.FilterLogs(opts, "EncryptedTransactionSubmitted", indexRule, blockRule)
-	if err != nil {
-		return nil, err
-	}
-	return &BindingsEncryptedTransactionSubmittedIterator{contract: _Bindings.contract, event: "EncryptedTransactionSubmitted", logs: logs, sub: sub}, nil
-}
-
-// WatchEncryptedTransactionSubmitted is a free log subscription operation binding the contract event 0x0ac44a68e7048007d82fa113a6c5d84bec8a110ed9e953d4f234fab3c9ecac53.
-//
-// Solidity: event EncryptedTransactionSubmitted(uint64 indexed index, uint64 indexed block, bytes encryptedTransaction, address sender, uint64 gasLimit, uint64 cumulativeGasLimit, uint256 fee)
-func (_Bindings *BindingsFilterer) WatchEncryptedTransactionSubmitted(opts *bind.WatchOpts, sink chan<- *BindingsEncryptedTransactionSubmitted, index []uint64, block []uint64) (event.Subscription, error) {
-
-	var indexRule []interface{}
-	for _, indexItem := range index {
-		indexRule = append(indexRule, indexItem)
-	}
-	var blockRule []interface{}
-	for _, blockItem := range block {
-		blockRule = append(blockRule, blockItem)
-	}
-
-	logs, sub, err := _Bindings.contract.WatchLogs(opts, "EncryptedTransactionSubmitted", indexRule, blockRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-				// New log arrived, parse the event and forward to the user
-				event := new(BindingsEncryptedTransactionSubmitted)
-				if err := _Bindings.contract.UnpackLog(event, "EncryptedTransactionSubmitted", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-// ParseEncryptedTransactionSubmitted is a log parse operation binding the contract event 0x0ac44a68e7048007d82fa113a6c5d84bec8a110ed9e953d4f234fab3c9ecac53.
-//
-// Solidity: event EncryptedTransactionSubmitted(uint64 indexed index, uint64 indexed block, bytes encryptedTransaction, address sender, uint64 gasLimit, uint64 cumulativeGasLimit, uint256 fee)
-func (_Bindings *BindingsFilterer) ParseEncryptedTransactionSubmitted(log types.Log) (*BindingsEncryptedTransactionSubmitted, error) {
-	event := new(BindingsEncryptedTransactionSubmitted)
-	if err := _Bindings.contract.UnpackLog(event, "EncryptedTransactionSubmitted", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-// BindingsFeesWithdrawnIterator is returned from FilterFeesWithdrawn and is used to iterate over the raw logs and unpacked data for FeesWithdrawn events raised by the Bindings contract.
-type BindingsFeesWithdrawnIterator struct {
-	Event *BindingsFeesWithdrawn // Event containing the contract specifics and raw log
-
-	contract *bind.BoundContract // Generic contract to use for unpacking event data
-	event    string              // Event name to use for unpacking event data
-
-	logs chan types.Log        // Log channel receiving the found contract events
-	sub  ethereum.Subscription // Subscription for errors, completion and termination
-	done bool                  // Whether the subscription completed delivering logs
-	fail error                 // Occurred error to stop iteration
-}
-
-// Next advances the iterator to the subsequent event, returning whether there
-// are any more events found. In case of a retrieval or parsing error, false is
-// returned and Error() can be queried for the exact failure.
-func (it *BindingsFeesWithdrawnIterator) Next() bool {
-	// If the iterator failed, stop iterating
-	if it.fail != nil {
-		return false
-	}
-	// If the iterator completed, deliver directly whatever's available
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(BindingsFeesWithdrawn)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-	// Iterator still in progress, wait for either a data or an error event
-	select {
-	case log := <-it.logs:
-		it.Event = new(BindingsFeesWithdrawn)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-// Error returns any retrieval or parsing error occurred during filtering.
-func (it *BindingsFeesWithdrawnIterator) Error() error {
-	return it.fail
-}
-
-// Close terminates the iteration process, releasing any pending underlying
-// resources.
-func (it *BindingsFeesWithdrawnIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-// BindingsFeesWithdrawn represents a FeesWithdrawn event raised by the Bindings contract.
-type BindingsFeesWithdrawn struct {
-	Recipient common.Address
-	Raw       types.Log // Blockchain specific contextual infos
-}
-
-// FilterFeesWithdrawn is a free log retrieval operation binding the contract event 0x792248b395a0ac81e65e6d79494b5382c8de690233f36c2e5e672f77044887c7.
-//
-// Solidity: event FeesWithdrawn(address recipient)
-func (_Bindings *BindingsFilterer) FilterFeesWithdrawn(opts *bind.FilterOpts) (*BindingsFeesWithdrawnIterator, error) {
-
-	logs, sub, err := _Bindings.contract.FilterLogs(opts, "FeesWithdrawn")
-	if err != nil {
-		return nil, err
-	}
-	return &BindingsFeesWithdrawnIterator{contract: _Bindings.contract, event: "FeesWithdrawn", logs: logs, sub: sub}, nil
-}
-
-// WatchFeesWithdrawn is a free log subscription operation binding the contract event 0x792248b395a0ac81e65e6d79494b5382c8de690233f36c2e5e672f77044887c7.
-//
-// Solidity: event FeesWithdrawn(address recipient)
-func (_Bindings *BindingsFilterer) WatchFeesWithdrawn(opts *bind.WatchOpts, sink chan<- *BindingsFeesWithdrawn) (event.Subscription, error) {
-
-	logs, sub, err := _Bindings.contract.WatchLogs(opts, "FeesWithdrawn")
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-				// New log arrived, parse the event and forward to the user
-				event := new(BindingsFeesWithdrawn)
-				if err := _Bindings.contract.UnpackLog(event, "FeesWithdrawn", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-// ParseFeesWithdrawn is a log parse operation binding the contract event 0x792248b395a0ac81e65e6d79494b5382c8de690233f36c2e5e672f77044887c7.
-//
-// Solidity: event FeesWithdrawn(address recipient)
-func (_Bindings *BindingsFilterer) ParseFeesWithdrawn(log types.Log) (*BindingsFeesWithdrawn, error) {
-	event := new(BindingsFeesWithdrawn)
-	if err := _Bindings.contract.UnpackLog(event, "FeesWithdrawn", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
 }
 
 // BindingsPausedIterator is returned from FilterPaused and is used to iterate over the raw logs and unpacked data for Paused events raised by the Bindings contract.
