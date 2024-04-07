@@ -29,113 +29,113 @@ var (
 	_ = abi.ConvertType
 )
 
-// BindingsMetaData contains all meta data concerning the Bindings contract.
-var BindingsMetaData = &bind.MetaData{
+// RestrictedPausableMetaData contains all meta data concerning the RestrictedPausable contract.
+var RestrictedPausableMetaData = &bind.MetaData{
 	ABI: "[{\"type\":\"function\",\"name\":\"DEFAULT_ADMIN_ROLE\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"PAUSER_ROLE\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"getRoleAdmin\",\"inputs\":[{\"name\":\"role\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"grantRole\",\"inputs\":[{\"name\":\"role\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"account\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"hasRole\",\"inputs\":[{\"name\":\"role\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"account\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bool\",\"internalType\":\"bool\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"initialize\",\"inputs\":[{\"name\":\"admin\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"pauser\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"initializer\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"address\",\"internalType\":\"address\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"pause\",\"inputs\":[],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"paused\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"bool\",\"internalType\":\"bool\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"renounceRole\",\"inputs\":[{\"name\":\"role\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"callerConfirmation\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"revokeRole\",\"inputs\":[{\"name\":\"role\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"account\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"supportsInterface\",\"inputs\":[{\"name\":\"interfaceId\",\"type\":\"bytes4\",\"internalType\":\"bytes4\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bool\",\"internalType\":\"bool\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"unpause\",\"inputs\":[],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"event\",\"name\":\"Paused\",\"inputs\":[{\"name\":\"account\",\"type\":\"address\",\"indexed\":false,\"internalType\":\"address\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"RoleAdminChanged\",\"inputs\":[{\"name\":\"role\",\"type\":\"bytes32\",\"indexed\":true,\"internalType\":\"bytes32\"},{\"name\":\"previousAdminRole\",\"type\":\"bytes32\",\"indexed\":true,\"internalType\":\"bytes32\"},{\"name\":\"newAdminRole\",\"type\":\"bytes32\",\"indexed\":true,\"internalType\":\"bytes32\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"RoleGranted\",\"inputs\":[{\"name\":\"role\",\"type\":\"bytes32\",\"indexed\":true,\"internalType\":\"bytes32\"},{\"name\":\"account\",\"type\":\"address\",\"indexed\":true,\"internalType\":\"address\"},{\"name\":\"sender\",\"type\":\"address\",\"indexed\":true,\"internalType\":\"address\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"RoleRevoked\",\"inputs\":[{\"name\":\"role\",\"type\":\"bytes32\",\"indexed\":true,\"internalType\":\"bytes32\"},{\"name\":\"account\",\"type\":\"address\",\"indexed\":true,\"internalType\":\"address\"},{\"name\":\"sender\",\"type\":\"address\",\"indexed\":true,\"internalType\":\"address\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"Unpaused\",\"inputs\":[{\"name\":\"account\",\"type\":\"address\",\"indexed\":false,\"internalType\":\"address\"}],\"anonymous\":false},{\"type\":\"error\",\"name\":\"AccessControlBadConfirmation\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"AccessControlUnauthorizedAccount\",\"inputs\":[{\"name\":\"account\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"neededRole\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]},{\"type\":\"error\",\"name\":\"AlreadyInitialized\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"EnforcedPause\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"ExpectedPause\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"UnauthorizedInitializer\",\"inputs\":[]}]",
 }
 
-// BindingsABI is the input ABI used to generate the binding from.
-// Deprecated: Use BindingsMetaData.ABI instead.
-var BindingsABI = BindingsMetaData.ABI
+// RestrictedPausableABI is the input ABI used to generate the binding from.
+// Deprecated: Use RestrictedPausableMetaData.ABI instead.
+var RestrictedPausableABI = RestrictedPausableMetaData.ABI
 
-// Bindings is an auto generated Go binding around an Ethereum contract.
-type Bindings struct {
-	BindingsCaller     // Read-only binding to the contract
-	BindingsTransactor // Write-only binding to the contract
-	BindingsFilterer   // Log filterer for contract events
+// RestrictedPausable is an auto generated Go binding around an Ethereum contract.
+type RestrictedPausable struct {
+	RestrictedPausableCaller     // Read-only binding to the contract
+	RestrictedPausableTransactor // Write-only binding to the contract
+	RestrictedPausableFilterer   // Log filterer for contract events
 }
 
-// BindingsCaller is an auto generated read-only Go binding around an Ethereum contract.
-type BindingsCaller struct {
+// RestrictedPausableCaller is an auto generated read-only Go binding around an Ethereum contract.
+type RestrictedPausableCaller struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// BindingsTransactor is an auto generated write-only Go binding around an Ethereum contract.
-type BindingsTransactor struct {
+// RestrictedPausableTransactor is an auto generated write-only Go binding around an Ethereum contract.
+type RestrictedPausableTransactor struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// BindingsFilterer is an auto generated log filtering Go binding around an Ethereum contract events.
-type BindingsFilterer struct {
+// RestrictedPausableFilterer is an auto generated log filtering Go binding around an Ethereum contract events.
+type RestrictedPausableFilterer struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// BindingsSession is an auto generated Go binding around an Ethereum contract,
+// RestrictedPausableSession is an auto generated Go binding around an Ethereum contract,
 // with pre-set call and transact options.
-type BindingsSession struct {
-	Contract     *Bindings         // Generic contract binding to set the session for
-	CallOpts     bind.CallOpts     // Call options to use throughout this session
-	TransactOpts bind.TransactOpts // Transaction auth options to use throughout this session
-}
-
-// BindingsCallerSession is an auto generated read-only Go binding around an Ethereum contract,
-// with pre-set call options.
-type BindingsCallerSession struct {
-	Contract *BindingsCaller // Generic contract caller binding to set the session for
-	CallOpts bind.CallOpts   // Call options to use throughout this session
-}
-
-// BindingsTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
-// with pre-set transact options.
-type BindingsTransactorSession struct {
-	Contract     *BindingsTransactor // Generic contract transactor binding to set the session for
+type RestrictedPausableSession struct {
+	Contract     *RestrictedPausable // Generic contract binding to set the session for
+	CallOpts     bind.CallOpts       // Call options to use throughout this session
 	TransactOpts bind.TransactOpts   // Transaction auth options to use throughout this session
 }
 
-// BindingsRaw is an auto generated low-level Go binding around an Ethereum contract.
-type BindingsRaw struct {
-	Contract *Bindings // Generic contract binding to access the raw methods on
+// RestrictedPausableCallerSession is an auto generated read-only Go binding around an Ethereum contract,
+// with pre-set call options.
+type RestrictedPausableCallerSession struct {
+	Contract *RestrictedPausableCaller // Generic contract caller binding to set the session for
+	CallOpts bind.CallOpts             // Call options to use throughout this session
 }
 
-// BindingsCallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
-type BindingsCallerRaw struct {
-	Contract *BindingsCaller // Generic read-only contract binding to access the raw methods on
+// RestrictedPausableTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
+// with pre-set transact options.
+type RestrictedPausableTransactorSession struct {
+	Contract     *RestrictedPausableTransactor // Generic contract transactor binding to set the session for
+	TransactOpts bind.TransactOpts             // Transaction auth options to use throughout this session
 }
 
-// BindingsTransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
-type BindingsTransactorRaw struct {
-	Contract *BindingsTransactor // Generic write-only contract binding to access the raw methods on
+// RestrictedPausableRaw is an auto generated low-level Go binding around an Ethereum contract.
+type RestrictedPausableRaw struct {
+	Contract *RestrictedPausable // Generic contract binding to access the raw methods on
 }
 
-// NewBindings creates a new instance of Bindings, bound to a specific deployed contract.
-func NewBindings(address common.Address, backend bind.ContractBackend) (*Bindings, error) {
-	contract, err := bindBindings(address, backend, backend, backend)
+// RestrictedPausableCallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
+type RestrictedPausableCallerRaw struct {
+	Contract *RestrictedPausableCaller // Generic read-only contract binding to access the raw methods on
+}
+
+// RestrictedPausableTransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
+type RestrictedPausableTransactorRaw struct {
+	Contract *RestrictedPausableTransactor // Generic write-only contract binding to access the raw methods on
+}
+
+// NewRestrictedPausable creates a new instance of RestrictedPausable, bound to a specific deployed contract.
+func NewRestrictedPausable(address common.Address, backend bind.ContractBackend) (*RestrictedPausable, error) {
+	contract, err := bindRestrictedPausable(address, backend, backend, backend)
 	if err != nil {
 		return nil, err
 	}
-	return &Bindings{BindingsCaller: BindingsCaller{contract: contract}, BindingsTransactor: BindingsTransactor{contract: contract}, BindingsFilterer: BindingsFilterer{contract: contract}}, nil
+	return &RestrictedPausable{RestrictedPausableCaller: RestrictedPausableCaller{contract: contract}, RestrictedPausableTransactor: RestrictedPausableTransactor{contract: contract}, RestrictedPausableFilterer: RestrictedPausableFilterer{contract: contract}}, nil
 }
 
-// NewBindingsCaller creates a new read-only instance of Bindings, bound to a specific deployed contract.
-func NewBindingsCaller(address common.Address, caller bind.ContractCaller) (*BindingsCaller, error) {
-	contract, err := bindBindings(address, caller, nil, nil)
+// NewRestrictedPausableCaller creates a new read-only instance of RestrictedPausable, bound to a specific deployed contract.
+func NewRestrictedPausableCaller(address common.Address, caller bind.ContractCaller) (*RestrictedPausableCaller, error) {
+	contract, err := bindRestrictedPausable(address, caller, nil, nil)
 	if err != nil {
 		return nil, err
 	}
-	return &BindingsCaller{contract: contract}, nil
+	return &RestrictedPausableCaller{contract: contract}, nil
 }
 
-// NewBindingsTransactor creates a new write-only instance of Bindings, bound to a specific deployed contract.
-func NewBindingsTransactor(address common.Address, transactor bind.ContractTransactor) (*BindingsTransactor, error) {
-	contract, err := bindBindings(address, nil, transactor, nil)
+// NewRestrictedPausableTransactor creates a new write-only instance of RestrictedPausable, bound to a specific deployed contract.
+func NewRestrictedPausableTransactor(address common.Address, transactor bind.ContractTransactor) (*RestrictedPausableTransactor, error) {
+	contract, err := bindRestrictedPausable(address, nil, transactor, nil)
 	if err != nil {
 		return nil, err
 	}
-	return &BindingsTransactor{contract: contract}, nil
+	return &RestrictedPausableTransactor{contract: contract}, nil
 }
 
-// NewBindingsFilterer creates a new log filterer instance of Bindings, bound to a specific deployed contract.
-func NewBindingsFilterer(address common.Address, filterer bind.ContractFilterer) (*BindingsFilterer, error) {
-	contract, err := bindBindings(address, nil, nil, filterer)
+// NewRestrictedPausableFilterer creates a new log filterer instance of RestrictedPausable, bound to a specific deployed contract.
+func NewRestrictedPausableFilterer(address common.Address, filterer bind.ContractFilterer) (*RestrictedPausableFilterer, error) {
+	contract, err := bindRestrictedPausable(address, nil, nil, filterer)
 	if err != nil {
 		return nil, err
 	}
-	return &BindingsFilterer{contract: contract}, nil
+	return &RestrictedPausableFilterer{contract: contract}, nil
 }
 
-// bindBindings binds a generic wrapper to an already deployed contract.
-func bindBindings(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
-	parsed, err := BindingsMetaData.GetAbi()
+// bindRestrictedPausable binds a generic wrapper to an already deployed contract.
+func bindRestrictedPausable(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
+	parsed, err := RestrictedPausableMetaData.GetAbi()
 	if err != nil {
 		return nil, err
 	}
@@ -146,46 +146,46 @@ func bindBindings(address common.Address, caller bind.ContractCaller, transactor
 // sets the output to result. The result type might be a single field for simple
 // returns, a slice of interfaces for anonymous returns and a struct for named
 // returns.
-func (_Bindings *BindingsRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _Bindings.Contract.BindingsCaller.contract.Call(opts, result, method, params...)
+func (_RestrictedPausable *RestrictedPausableRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _RestrictedPausable.Contract.RestrictedPausableCaller.contract.Call(opts, result, method, params...)
 }
 
 // Transfer initiates a plain transaction to move funds to the contract, calling
 // its default method if one is available.
-func (_Bindings *BindingsRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _Bindings.Contract.BindingsTransactor.contract.Transfer(opts)
+func (_RestrictedPausable *RestrictedPausableRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _RestrictedPausable.Contract.RestrictedPausableTransactor.contract.Transfer(opts)
 }
 
 // Transact invokes the (paid) contract method with params as input values.
-func (_Bindings *BindingsRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _Bindings.Contract.BindingsTransactor.contract.Transact(opts, method, params...)
+func (_RestrictedPausable *RestrictedPausableRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _RestrictedPausable.Contract.RestrictedPausableTransactor.contract.Transact(opts, method, params...)
 }
 
 // Call invokes the (constant) contract method with params as input values and
 // sets the output to result. The result type might be a single field for simple
 // returns, a slice of interfaces for anonymous returns and a struct for named
 // returns.
-func (_Bindings *BindingsCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _Bindings.Contract.contract.Call(opts, result, method, params...)
+func (_RestrictedPausable *RestrictedPausableCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _RestrictedPausable.Contract.contract.Call(opts, result, method, params...)
 }
 
 // Transfer initiates a plain transaction to move funds to the contract, calling
 // its default method if one is available.
-func (_Bindings *BindingsTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _Bindings.Contract.contract.Transfer(opts)
+func (_RestrictedPausable *RestrictedPausableTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _RestrictedPausable.Contract.contract.Transfer(opts)
 }
 
 // Transact invokes the (paid) contract method with params as input values.
-func (_Bindings *BindingsTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _Bindings.Contract.contract.Transact(opts, method, params...)
+func (_RestrictedPausable *RestrictedPausableTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _RestrictedPausable.Contract.contract.Transact(opts, method, params...)
 }
 
 // DEFAULTADMINROLE is a free data retrieval call binding the contract method 0xa217fddf.
 //
 // Solidity: function DEFAULT_ADMIN_ROLE() view returns(bytes32)
-func (_Bindings *BindingsCaller) DEFAULTADMINROLE(opts *bind.CallOpts) ([32]byte, error) {
+func (_RestrictedPausable *RestrictedPausableCaller) DEFAULTADMINROLE(opts *bind.CallOpts) ([32]byte, error) {
 	var out []interface{}
-	err := _Bindings.contract.Call(opts, &out, "DEFAULT_ADMIN_ROLE")
+	err := _RestrictedPausable.contract.Call(opts, &out, "DEFAULT_ADMIN_ROLE")
 
 	if err != nil {
 		return *new([32]byte), err
@@ -200,23 +200,23 @@ func (_Bindings *BindingsCaller) DEFAULTADMINROLE(opts *bind.CallOpts) ([32]byte
 // DEFAULTADMINROLE is a free data retrieval call binding the contract method 0xa217fddf.
 //
 // Solidity: function DEFAULT_ADMIN_ROLE() view returns(bytes32)
-func (_Bindings *BindingsSession) DEFAULTADMINROLE() ([32]byte, error) {
-	return _Bindings.Contract.DEFAULTADMINROLE(&_Bindings.CallOpts)
+func (_RestrictedPausable *RestrictedPausableSession) DEFAULTADMINROLE() ([32]byte, error) {
+	return _RestrictedPausable.Contract.DEFAULTADMINROLE(&_RestrictedPausable.CallOpts)
 }
 
 // DEFAULTADMINROLE is a free data retrieval call binding the contract method 0xa217fddf.
 //
 // Solidity: function DEFAULT_ADMIN_ROLE() view returns(bytes32)
-func (_Bindings *BindingsCallerSession) DEFAULTADMINROLE() ([32]byte, error) {
-	return _Bindings.Contract.DEFAULTADMINROLE(&_Bindings.CallOpts)
+func (_RestrictedPausable *RestrictedPausableCallerSession) DEFAULTADMINROLE() ([32]byte, error) {
+	return _RestrictedPausable.Contract.DEFAULTADMINROLE(&_RestrictedPausable.CallOpts)
 }
 
 // PAUSERROLE is a free data retrieval call binding the contract method 0xe63ab1e9.
 //
 // Solidity: function PAUSER_ROLE() view returns(bytes32)
-func (_Bindings *BindingsCaller) PAUSERROLE(opts *bind.CallOpts) ([32]byte, error) {
+func (_RestrictedPausable *RestrictedPausableCaller) PAUSERROLE(opts *bind.CallOpts) ([32]byte, error) {
 	var out []interface{}
-	err := _Bindings.contract.Call(opts, &out, "PAUSER_ROLE")
+	err := _RestrictedPausable.contract.Call(opts, &out, "PAUSER_ROLE")
 
 	if err != nil {
 		return *new([32]byte), err
@@ -231,23 +231,23 @@ func (_Bindings *BindingsCaller) PAUSERROLE(opts *bind.CallOpts) ([32]byte, erro
 // PAUSERROLE is a free data retrieval call binding the contract method 0xe63ab1e9.
 //
 // Solidity: function PAUSER_ROLE() view returns(bytes32)
-func (_Bindings *BindingsSession) PAUSERROLE() ([32]byte, error) {
-	return _Bindings.Contract.PAUSERROLE(&_Bindings.CallOpts)
+func (_RestrictedPausable *RestrictedPausableSession) PAUSERROLE() ([32]byte, error) {
+	return _RestrictedPausable.Contract.PAUSERROLE(&_RestrictedPausable.CallOpts)
 }
 
 // PAUSERROLE is a free data retrieval call binding the contract method 0xe63ab1e9.
 //
 // Solidity: function PAUSER_ROLE() view returns(bytes32)
-func (_Bindings *BindingsCallerSession) PAUSERROLE() ([32]byte, error) {
-	return _Bindings.Contract.PAUSERROLE(&_Bindings.CallOpts)
+func (_RestrictedPausable *RestrictedPausableCallerSession) PAUSERROLE() ([32]byte, error) {
+	return _RestrictedPausable.Contract.PAUSERROLE(&_RestrictedPausable.CallOpts)
 }
 
 // GetRoleAdmin is a free data retrieval call binding the contract method 0x248a9ca3.
 //
 // Solidity: function getRoleAdmin(bytes32 role) view returns(bytes32)
-func (_Bindings *BindingsCaller) GetRoleAdmin(opts *bind.CallOpts, role [32]byte) ([32]byte, error) {
+func (_RestrictedPausable *RestrictedPausableCaller) GetRoleAdmin(opts *bind.CallOpts, role [32]byte) ([32]byte, error) {
 	var out []interface{}
-	err := _Bindings.contract.Call(opts, &out, "getRoleAdmin", role)
+	err := _RestrictedPausable.contract.Call(opts, &out, "getRoleAdmin", role)
 
 	if err != nil {
 		return *new([32]byte), err
@@ -262,23 +262,23 @@ func (_Bindings *BindingsCaller) GetRoleAdmin(opts *bind.CallOpts, role [32]byte
 // GetRoleAdmin is a free data retrieval call binding the contract method 0x248a9ca3.
 //
 // Solidity: function getRoleAdmin(bytes32 role) view returns(bytes32)
-func (_Bindings *BindingsSession) GetRoleAdmin(role [32]byte) ([32]byte, error) {
-	return _Bindings.Contract.GetRoleAdmin(&_Bindings.CallOpts, role)
+func (_RestrictedPausable *RestrictedPausableSession) GetRoleAdmin(role [32]byte) ([32]byte, error) {
+	return _RestrictedPausable.Contract.GetRoleAdmin(&_RestrictedPausable.CallOpts, role)
 }
 
 // GetRoleAdmin is a free data retrieval call binding the contract method 0x248a9ca3.
 //
 // Solidity: function getRoleAdmin(bytes32 role) view returns(bytes32)
-func (_Bindings *BindingsCallerSession) GetRoleAdmin(role [32]byte) ([32]byte, error) {
-	return _Bindings.Contract.GetRoleAdmin(&_Bindings.CallOpts, role)
+func (_RestrictedPausable *RestrictedPausableCallerSession) GetRoleAdmin(role [32]byte) ([32]byte, error) {
+	return _RestrictedPausable.Contract.GetRoleAdmin(&_RestrictedPausable.CallOpts, role)
 }
 
 // HasRole is a free data retrieval call binding the contract method 0x91d14854.
 //
 // Solidity: function hasRole(bytes32 role, address account) view returns(bool)
-func (_Bindings *BindingsCaller) HasRole(opts *bind.CallOpts, role [32]byte, account common.Address) (bool, error) {
+func (_RestrictedPausable *RestrictedPausableCaller) HasRole(opts *bind.CallOpts, role [32]byte, account common.Address) (bool, error) {
 	var out []interface{}
-	err := _Bindings.contract.Call(opts, &out, "hasRole", role, account)
+	err := _RestrictedPausable.contract.Call(opts, &out, "hasRole", role, account)
 
 	if err != nil {
 		return *new(bool), err
@@ -293,23 +293,23 @@ func (_Bindings *BindingsCaller) HasRole(opts *bind.CallOpts, role [32]byte, acc
 // HasRole is a free data retrieval call binding the contract method 0x91d14854.
 //
 // Solidity: function hasRole(bytes32 role, address account) view returns(bool)
-func (_Bindings *BindingsSession) HasRole(role [32]byte, account common.Address) (bool, error) {
-	return _Bindings.Contract.HasRole(&_Bindings.CallOpts, role, account)
+func (_RestrictedPausable *RestrictedPausableSession) HasRole(role [32]byte, account common.Address) (bool, error) {
+	return _RestrictedPausable.Contract.HasRole(&_RestrictedPausable.CallOpts, role, account)
 }
 
 // HasRole is a free data retrieval call binding the contract method 0x91d14854.
 //
 // Solidity: function hasRole(bytes32 role, address account) view returns(bool)
-func (_Bindings *BindingsCallerSession) HasRole(role [32]byte, account common.Address) (bool, error) {
-	return _Bindings.Contract.HasRole(&_Bindings.CallOpts, role, account)
+func (_RestrictedPausable *RestrictedPausableCallerSession) HasRole(role [32]byte, account common.Address) (bool, error) {
+	return _RestrictedPausable.Contract.HasRole(&_RestrictedPausable.CallOpts, role, account)
 }
 
 // Initializer is a free data retrieval call binding the contract method 0x9ce110d7.
 //
 // Solidity: function initializer() view returns(address)
-func (_Bindings *BindingsCaller) Initializer(opts *bind.CallOpts) (common.Address, error) {
+func (_RestrictedPausable *RestrictedPausableCaller) Initializer(opts *bind.CallOpts) (common.Address, error) {
 	var out []interface{}
-	err := _Bindings.contract.Call(opts, &out, "initializer")
+	err := _RestrictedPausable.contract.Call(opts, &out, "initializer")
 
 	if err != nil {
 		return *new(common.Address), err
@@ -324,23 +324,23 @@ func (_Bindings *BindingsCaller) Initializer(opts *bind.CallOpts) (common.Addres
 // Initializer is a free data retrieval call binding the contract method 0x9ce110d7.
 //
 // Solidity: function initializer() view returns(address)
-func (_Bindings *BindingsSession) Initializer() (common.Address, error) {
-	return _Bindings.Contract.Initializer(&_Bindings.CallOpts)
+func (_RestrictedPausable *RestrictedPausableSession) Initializer() (common.Address, error) {
+	return _RestrictedPausable.Contract.Initializer(&_RestrictedPausable.CallOpts)
 }
 
 // Initializer is a free data retrieval call binding the contract method 0x9ce110d7.
 //
 // Solidity: function initializer() view returns(address)
-func (_Bindings *BindingsCallerSession) Initializer() (common.Address, error) {
-	return _Bindings.Contract.Initializer(&_Bindings.CallOpts)
+func (_RestrictedPausable *RestrictedPausableCallerSession) Initializer() (common.Address, error) {
+	return _RestrictedPausable.Contract.Initializer(&_RestrictedPausable.CallOpts)
 }
 
 // Paused is a free data retrieval call binding the contract method 0x5c975abb.
 //
 // Solidity: function paused() view returns(bool)
-func (_Bindings *BindingsCaller) Paused(opts *bind.CallOpts) (bool, error) {
+func (_RestrictedPausable *RestrictedPausableCaller) Paused(opts *bind.CallOpts) (bool, error) {
 	var out []interface{}
-	err := _Bindings.contract.Call(opts, &out, "paused")
+	err := _RestrictedPausable.contract.Call(opts, &out, "paused")
 
 	if err != nil {
 		return *new(bool), err
@@ -355,23 +355,23 @@ func (_Bindings *BindingsCaller) Paused(opts *bind.CallOpts) (bool, error) {
 // Paused is a free data retrieval call binding the contract method 0x5c975abb.
 //
 // Solidity: function paused() view returns(bool)
-func (_Bindings *BindingsSession) Paused() (bool, error) {
-	return _Bindings.Contract.Paused(&_Bindings.CallOpts)
+func (_RestrictedPausable *RestrictedPausableSession) Paused() (bool, error) {
+	return _RestrictedPausable.Contract.Paused(&_RestrictedPausable.CallOpts)
 }
 
 // Paused is a free data retrieval call binding the contract method 0x5c975abb.
 //
 // Solidity: function paused() view returns(bool)
-func (_Bindings *BindingsCallerSession) Paused() (bool, error) {
-	return _Bindings.Contract.Paused(&_Bindings.CallOpts)
+func (_RestrictedPausable *RestrictedPausableCallerSession) Paused() (bool, error) {
+	return _RestrictedPausable.Contract.Paused(&_RestrictedPausable.CallOpts)
 }
 
 // SupportsInterface is a free data retrieval call binding the contract method 0x01ffc9a7.
 //
 // Solidity: function supportsInterface(bytes4 interfaceId) view returns(bool)
-func (_Bindings *BindingsCaller) SupportsInterface(opts *bind.CallOpts, interfaceId [4]byte) (bool, error) {
+func (_RestrictedPausable *RestrictedPausableCaller) SupportsInterface(opts *bind.CallOpts, interfaceId [4]byte) (bool, error) {
 	var out []interface{}
-	err := _Bindings.contract.Call(opts, &out, "supportsInterface", interfaceId)
+	err := _RestrictedPausable.contract.Call(opts, &out, "supportsInterface", interfaceId)
 
 	if err != nil {
 		return *new(bool), err
@@ -386,146 +386,146 @@ func (_Bindings *BindingsCaller) SupportsInterface(opts *bind.CallOpts, interfac
 // SupportsInterface is a free data retrieval call binding the contract method 0x01ffc9a7.
 //
 // Solidity: function supportsInterface(bytes4 interfaceId) view returns(bool)
-func (_Bindings *BindingsSession) SupportsInterface(interfaceId [4]byte) (bool, error) {
-	return _Bindings.Contract.SupportsInterface(&_Bindings.CallOpts, interfaceId)
+func (_RestrictedPausable *RestrictedPausableSession) SupportsInterface(interfaceId [4]byte) (bool, error) {
+	return _RestrictedPausable.Contract.SupportsInterface(&_RestrictedPausable.CallOpts, interfaceId)
 }
 
 // SupportsInterface is a free data retrieval call binding the contract method 0x01ffc9a7.
 //
 // Solidity: function supportsInterface(bytes4 interfaceId) view returns(bool)
-func (_Bindings *BindingsCallerSession) SupportsInterface(interfaceId [4]byte) (bool, error) {
-	return _Bindings.Contract.SupportsInterface(&_Bindings.CallOpts, interfaceId)
+func (_RestrictedPausable *RestrictedPausableCallerSession) SupportsInterface(interfaceId [4]byte) (bool, error) {
+	return _RestrictedPausable.Contract.SupportsInterface(&_RestrictedPausable.CallOpts, interfaceId)
 }
 
 // GrantRole is a paid mutator transaction binding the contract method 0x2f2ff15d.
 //
 // Solidity: function grantRole(bytes32 role, address account) returns()
-func (_Bindings *BindingsTransactor) GrantRole(opts *bind.TransactOpts, role [32]byte, account common.Address) (*types.Transaction, error) {
-	return _Bindings.contract.Transact(opts, "grantRole", role, account)
+func (_RestrictedPausable *RestrictedPausableTransactor) GrantRole(opts *bind.TransactOpts, role [32]byte, account common.Address) (*types.Transaction, error) {
+	return _RestrictedPausable.contract.Transact(opts, "grantRole", role, account)
 }
 
 // GrantRole is a paid mutator transaction binding the contract method 0x2f2ff15d.
 //
 // Solidity: function grantRole(bytes32 role, address account) returns()
-func (_Bindings *BindingsSession) GrantRole(role [32]byte, account common.Address) (*types.Transaction, error) {
-	return _Bindings.Contract.GrantRole(&_Bindings.TransactOpts, role, account)
+func (_RestrictedPausable *RestrictedPausableSession) GrantRole(role [32]byte, account common.Address) (*types.Transaction, error) {
+	return _RestrictedPausable.Contract.GrantRole(&_RestrictedPausable.TransactOpts, role, account)
 }
 
 // GrantRole is a paid mutator transaction binding the contract method 0x2f2ff15d.
 //
 // Solidity: function grantRole(bytes32 role, address account) returns()
-func (_Bindings *BindingsTransactorSession) GrantRole(role [32]byte, account common.Address) (*types.Transaction, error) {
-	return _Bindings.Contract.GrantRole(&_Bindings.TransactOpts, role, account)
+func (_RestrictedPausable *RestrictedPausableTransactorSession) GrantRole(role [32]byte, account common.Address) (*types.Transaction, error) {
+	return _RestrictedPausable.Contract.GrantRole(&_RestrictedPausable.TransactOpts, role, account)
 }
 
 // Initialize is a paid mutator transaction binding the contract method 0x485cc955.
 //
 // Solidity: function initialize(address admin, address pauser) returns()
-func (_Bindings *BindingsTransactor) Initialize(opts *bind.TransactOpts, admin common.Address, pauser common.Address) (*types.Transaction, error) {
-	return _Bindings.contract.Transact(opts, "initialize", admin, pauser)
+func (_RestrictedPausable *RestrictedPausableTransactor) Initialize(opts *bind.TransactOpts, admin common.Address, pauser common.Address) (*types.Transaction, error) {
+	return _RestrictedPausable.contract.Transact(opts, "initialize", admin, pauser)
 }
 
 // Initialize is a paid mutator transaction binding the contract method 0x485cc955.
 //
 // Solidity: function initialize(address admin, address pauser) returns()
-func (_Bindings *BindingsSession) Initialize(admin common.Address, pauser common.Address) (*types.Transaction, error) {
-	return _Bindings.Contract.Initialize(&_Bindings.TransactOpts, admin, pauser)
+func (_RestrictedPausable *RestrictedPausableSession) Initialize(admin common.Address, pauser common.Address) (*types.Transaction, error) {
+	return _RestrictedPausable.Contract.Initialize(&_RestrictedPausable.TransactOpts, admin, pauser)
 }
 
 // Initialize is a paid mutator transaction binding the contract method 0x485cc955.
 //
 // Solidity: function initialize(address admin, address pauser) returns()
-func (_Bindings *BindingsTransactorSession) Initialize(admin common.Address, pauser common.Address) (*types.Transaction, error) {
-	return _Bindings.Contract.Initialize(&_Bindings.TransactOpts, admin, pauser)
+func (_RestrictedPausable *RestrictedPausableTransactorSession) Initialize(admin common.Address, pauser common.Address) (*types.Transaction, error) {
+	return _RestrictedPausable.Contract.Initialize(&_RestrictedPausable.TransactOpts, admin, pauser)
 }
 
 // Pause is a paid mutator transaction binding the contract method 0x8456cb59.
 //
 // Solidity: function pause() returns()
-func (_Bindings *BindingsTransactor) Pause(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _Bindings.contract.Transact(opts, "pause")
+func (_RestrictedPausable *RestrictedPausableTransactor) Pause(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _RestrictedPausable.contract.Transact(opts, "pause")
 }
 
 // Pause is a paid mutator transaction binding the contract method 0x8456cb59.
 //
 // Solidity: function pause() returns()
-func (_Bindings *BindingsSession) Pause() (*types.Transaction, error) {
-	return _Bindings.Contract.Pause(&_Bindings.TransactOpts)
+func (_RestrictedPausable *RestrictedPausableSession) Pause() (*types.Transaction, error) {
+	return _RestrictedPausable.Contract.Pause(&_RestrictedPausable.TransactOpts)
 }
 
 // Pause is a paid mutator transaction binding the contract method 0x8456cb59.
 //
 // Solidity: function pause() returns()
-func (_Bindings *BindingsTransactorSession) Pause() (*types.Transaction, error) {
-	return _Bindings.Contract.Pause(&_Bindings.TransactOpts)
+func (_RestrictedPausable *RestrictedPausableTransactorSession) Pause() (*types.Transaction, error) {
+	return _RestrictedPausable.Contract.Pause(&_RestrictedPausable.TransactOpts)
 }
 
 // RenounceRole is a paid mutator transaction binding the contract method 0x36568abe.
 //
 // Solidity: function renounceRole(bytes32 role, address callerConfirmation) returns()
-func (_Bindings *BindingsTransactor) RenounceRole(opts *bind.TransactOpts, role [32]byte, callerConfirmation common.Address) (*types.Transaction, error) {
-	return _Bindings.contract.Transact(opts, "renounceRole", role, callerConfirmation)
+func (_RestrictedPausable *RestrictedPausableTransactor) RenounceRole(opts *bind.TransactOpts, role [32]byte, callerConfirmation common.Address) (*types.Transaction, error) {
+	return _RestrictedPausable.contract.Transact(opts, "renounceRole", role, callerConfirmation)
 }
 
 // RenounceRole is a paid mutator transaction binding the contract method 0x36568abe.
 //
 // Solidity: function renounceRole(bytes32 role, address callerConfirmation) returns()
-func (_Bindings *BindingsSession) RenounceRole(role [32]byte, callerConfirmation common.Address) (*types.Transaction, error) {
-	return _Bindings.Contract.RenounceRole(&_Bindings.TransactOpts, role, callerConfirmation)
+func (_RestrictedPausable *RestrictedPausableSession) RenounceRole(role [32]byte, callerConfirmation common.Address) (*types.Transaction, error) {
+	return _RestrictedPausable.Contract.RenounceRole(&_RestrictedPausable.TransactOpts, role, callerConfirmation)
 }
 
 // RenounceRole is a paid mutator transaction binding the contract method 0x36568abe.
 //
 // Solidity: function renounceRole(bytes32 role, address callerConfirmation) returns()
-func (_Bindings *BindingsTransactorSession) RenounceRole(role [32]byte, callerConfirmation common.Address) (*types.Transaction, error) {
-	return _Bindings.Contract.RenounceRole(&_Bindings.TransactOpts, role, callerConfirmation)
+func (_RestrictedPausable *RestrictedPausableTransactorSession) RenounceRole(role [32]byte, callerConfirmation common.Address) (*types.Transaction, error) {
+	return _RestrictedPausable.Contract.RenounceRole(&_RestrictedPausable.TransactOpts, role, callerConfirmation)
 }
 
 // RevokeRole is a paid mutator transaction binding the contract method 0xd547741f.
 //
 // Solidity: function revokeRole(bytes32 role, address account) returns()
-func (_Bindings *BindingsTransactor) RevokeRole(opts *bind.TransactOpts, role [32]byte, account common.Address) (*types.Transaction, error) {
-	return _Bindings.contract.Transact(opts, "revokeRole", role, account)
+func (_RestrictedPausable *RestrictedPausableTransactor) RevokeRole(opts *bind.TransactOpts, role [32]byte, account common.Address) (*types.Transaction, error) {
+	return _RestrictedPausable.contract.Transact(opts, "revokeRole", role, account)
 }
 
 // RevokeRole is a paid mutator transaction binding the contract method 0xd547741f.
 //
 // Solidity: function revokeRole(bytes32 role, address account) returns()
-func (_Bindings *BindingsSession) RevokeRole(role [32]byte, account common.Address) (*types.Transaction, error) {
-	return _Bindings.Contract.RevokeRole(&_Bindings.TransactOpts, role, account)
+func (_RestrictedPausable *RestrictedPausableSession) RevokeRole(role [32]byte, account common.Address) (*types.Transaction, error) {
+	return _RestrictedPausable.Contract.RevokeRole(&_RestrictedPausable.TransactOpts, role, account)
 }
 
 // RevokeRole is a paid mutator transaction binding the contract method 0xd547741f.
 //
 // Solidity: function revokeRole(bytes32 role, address account) returns()
-func (_Bindings *BindingsTransactorSession) RevokeRole(role [32]byte, account common.Address) (*types.Transaction, error) {
-	return _Bindings.Contract.RevokeRole(&_Bindings.TransactOpts, role, account)
+func (_RestrictedPausable *RestrictedPausableTransactorSession) RevokeRole(role [32]byte, account common.Address) (*types.Transaction, error) {
+	return _RestrictedPausable.Contract.RevokeRole(&_RestrictedPausable.TransactOpts, role, account)
 }
 
 // Unpause is a paid mutator transaction binding the contract method 0x3f4ba83a.
 //
 // Solidity: function unpause() returns()
-func (_Bindings *BindingsTransactor) Unpause(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _Bindings.contract.Transact(opts, "unpause")
+func (_RestrictedPausable *RestrictedPausableTransactor) Unpause(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _RestrictedPausable.contract.Transact(opts, "unpause")
 }
 
 // Unpause is a paid mutator transaction binding the contract method 0x3f4ba83a.
 //
 // Solidity: function unpause() returns()
-func (_Bindings *BindingsSession) Unpause() (*types.Transaction, error) {
-	return _Bindings.Contract.Unpause(&_Bindings.TransactOpts)
+func (_RestrictedPausable *RestrictedPausableSession) Unpause() (*types.Transaction, error) {
+	return _RestrictedPausable.Contract.Unpause(&_RestrictedPausable.TransactOpts)
 }
 
 // Unpause is a paid mutator transaction binding the contract method 0x3f4ba83a.
 //
 // Solidity: function unpause() returns()
-func (_Bindings *BindingsTransactorSession) Unpause() (*types.Transaction, error) {
-	return _Bindings.Contract.Unpause(&_Bindings.TransactOpts)
+func (_RestrictedPausable *RestrictedPausableTransactorSession) Unpause() (*types.Transaction, error) {
+	return _RestrictedPausable.Contract.Unpause(&_RestrictedPausable.TransactOpts)
 }
 
-// BindingsPausedIterator is returned from FilterPaused and is used to iterate over the raw logs and unpacked data for Paused events raised by the Bindings contract.
-type BindingsPausedIterator struct {
-	Event *BindingsPaused // Event containing the contract specifics and raw log
+// RestrictedPausablePausedIterator is returned from FilterPaused and is used to iterate over the raw logs and unpacked data for Paused events raised by the RestrictedPausable contract.
+type RestrictedPausablePausedIterator struct {
+	Event *RestrictedPausablePaused // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -539,7 +539,7 @@ type BindingsPausedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *BindingsPausedIterator) Next() bool {
+func (it *RestrictedPausablePausedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -548,7 +548,7 @@ func (it *BindingsPausedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(BindingsPaused)
+			it.Event = new(RestrictedPausablePaused)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -563,7 +563,7 @@ func (it *BindingsPausedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(BindingsPaused)
+		it.Event = new(RestrictedPausablePaused)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -579,19 +579,19 @@ func (it *BindingsPausedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *BindingsPausedIterator) Error() error {
+func (it *RestrictedPausablePausedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *BindingsPausedIterator) Close() error {
+func (it *RestrictedPausablePausedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// BindingsPaused represents a Paused event raised by the Bindings contract.
-type BindingsPaused struct {
+// RestrictedPausablePaused represents a Paused event raised by the RestrictedPausable contract.
+type RestrictedPausablePaused struct {
 	Account common.Address
 	Raw     types.Log // Blockchain specific contextual infos
 }
@@ -599,21 +599,21 @@ type BindingsPaused struct {
 // FilterPaused is a free log retrieval operation binding the contract event 0x62e78cea01bee320cd4e420270b5ea74000d11b0c9f74754ebdbfc544b05a258.
 //
 // Solidity: event Paused(address account)
-func (_Bindings *BindingsFilterer) FilterPaused(opts *bind.FilterOpts) (*BindingsPausedIterator, error) {
+func (_RestrictedPausable *RestrictedPausableFilterer) FilterPaused(opts *bind.FilterOpts) (*RestrictedPausablePausedIterator, error) {
 
-	logs, sub, err := _Bindings.contract.FilterLogs(opts, "Paused")
+	logs, sub, err := _RestrictedPausable.contract.FilterLogs(opts, "Paused")
 	if err != nil {
 		return nil, err
 	}
-	return &BindingsPausedIterator{contract: _Bindings.contract, event: "Paused", logs: logs, sub: sub}, nil
+	return &RestrictedPausablePausedIterator{contract: _RestrictedPausable.contract, event: "Paused", logs: logs, sub: sub}, nil
 }
 
 // WatchPaused is a free log subscription operation binding the contract event 0x62e78cea01bee320cd4e420270b5ea74000d11b0c9f74754ebdbfc544b05a258.
 //
 // Solidity: event Paused(address account)
-func (_Bindings *BindingsFilterer) WatchPaused(opts *bind.WatchOpts, sink chan<- *BindingsPaused) (event.Subscription, error) {
+func (_RestrictedPausable *RestrictedPausableFilterer) WatchPaused(opts *bind.WatchOpts, sink chan<- *RestrictedPausablePaused) (event.Subscription, error) {
 
-	logs, sub, err := _Bindings.contract.WatchLogs(opts, "Paused")
+	logs, sub, err := _RestrictedPausable.contract.WatchLogs(opts, "Paused")
 	if err != nil {
 		return nil, err
 	}
@@ -623,8 +623,8 @@ func (_Bindings *BindingsFilterer) WatchPaused(opts *bind.WatchOpts, sink chan<-
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(BindingsPaused)
-				if err := _Bindings.contract.UnpackLog(event, "Paused", log); err != nil {
+				event := new(RestrictedPausablePaused)
+				if err := _RestrictedPausable.contract.UnpackLog(event, "Paused", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -648,18 +648,18 @@ func (_Bindings *BindingsFilterer) WatchPaused(opts *bind.WatchOpts, sink chan<-
 // ParsePaused is a log parse operation binding the contract event 0x62e78cea01bee320cd4e420270b5ea74000d11b0c9f74754ebdbfc544b05a258.
 //
 // Solidity: event Paused(address account)
-func (_Bindings *BindingsFilterer) ParsePaused(log types.Log) (*BindingsPaused, error) {
-	event := new(BindingsPaused)
-	if err := _Bindings.contract.UnpackLog(event, "Paused", log); err != nil {
+func (_RestrictedPausable *RestrictedPausableFilterer) ParsePaused(log types.Log) (*RestrictedPausablePaused, error) {
+	event := new(RestrictedPausablePaused)
+	if err := _RestrictedPausable.contract.UnpackLog(event, "Paused", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
 	return event, nil
 }
 
-// BindingsRoleAdminChangedIterator is returned from FilterRoleAdminChanged and is used to iterate over the raw logs and unpacked data for RoleAdminChanged events raised by the Bindings contract.
-type BindingsRoleAdminChangedIterator struct {
-	Event *BindingsRoleAdminChanged // Event containing the contract specifics and raw log
+// RestrictedPausableRoleAdminChangedIterator is returned from FilterRoleAdminChanged and is used to iterate over the raw logs and unpacked data for RoleAdminChanged events raised by the RestrictedPausable contract.
+type RestrictedPausableRoleAdminChangedIterator struct {
+	Event *RestrictedPausableRoleAdminChanged // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -673,7 +673,7 @@ type BindingsRoleAdminChangedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *BindingsRoleAdminChangedIterator) Next() bool {
+func (it *RestrictedPausableRoleAdminChangedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -682,7 +682,7 @@ func (it *BindingsRoleAdminChangedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(BindingsRoleAdminChanged)
+			it.Event = new(RestrictedPausableRoleAdminChanged)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -697,7 +697,7 @@ func (it *BindingsRoleAdminChangedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(BindingsRoleAdminChanged)
+		it.Event = new(RestrictedPausableRoleAdminChanged)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -713,19 +713,19 @@ func (it *BindingsRoleAdminChangedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *BindingsRoleAdminChangedIterator) Error() error {
+func (it *RestrictedPausableRoleAdminChangedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *BindingsRoleAdminChangedIterator) Close() error {
+func (it *RestrictedPausableRoleAdminChangedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// BindingsRoleAdminChanged represents a RoleAdminChanged event raised by the Bindings contract.
-type BindingsRoleAdminChanged struct {
+// RestrictedPausableRoleAdminChanged represents a RoleAdminChanged event raised by the RestrictedPausable contract.
+type RestrictedPausableRoleAdminChanged struct {
 	Role              [32]byte
 	PreviousAdminRole [32]byte
 	NewAdminRole      [32]byte
@@ -735,7 +735,7 @@ type BindingsRoleAdminChanged struct {
 // FilterRoleAdminChanged is a free log retrieval operation binding the contract event 0xbd79b86ffe0ab8e8776151514217cd7cacd52c909f66475c3af44e129f0b00ff.
 //
 // Solidity: event RoleAdminChanged(bytes32 indexed role, bytes32 indexed previousAdminRole, bytes32 indexed newAdminRole)
-func (_Bindings *BindingsFilterer) FilterRoleAdminChanged(opts *bind.FilterOpts, role [][32]byte, previousAdminRole [][32]byte, newAdminRole [][32]byte) (*BindingsRoleAdminChangedIterator, error) {
+func (_RestrictedPausable *RestrictedPausableFilterer) FilterRoleAdminChanged(opts *bind.FilterOpts, role [][32]byte, previousAdminRole [][32]byte, newAdminRole [][32]byte) (*RestrictedPausableRoleAdminChangedIterator, error) {
 
 	var roleRule []interface{}
 	for _, roleItem := range role {
@@ -750,17 +750,17 @@ func (_Bindings *BindingsFilterer) FilterRoleAdminChanged(opts *bind.FilterOpts,
 		newAdminRoleRule = append(newAdminRoleRule, newAdminRoleItem)
 	}
 
-	logs, sub, err := _Bindings.contract.FilterLogs(opts, "RoleAdminChanged", roleRule, previousAdminRoleRule, newAdminRoleRule)
+	logs, sub, err := _RestrictedPausable.contract.FilterLogs(opts, "RoleAdminChanged", roleRule, previousAdminRoleRule, newAdminRoleRule)
 	if err != nil {
 		return nil, err
 	}
-	return &BindingsRoleAdminChangedIterator{contract: _Bindings.contract, event: "RoleAdminChanged", logs: logs, sub: sub}, nil
+	return &RestrictedPausableRoleAdminChangedIterator{contract: _RestrictedPausable.contract, event: "RoleAdminChanged", logs: logs, sub: sub}, nil
 }
 
 // WatchRoleAdminChanged is a free log subscription operation binding the contract event 0xbd79b86ffe0ab8e8776151514217cd7cacd52c909f66475c3af44e129f0b00ff.
 //
 // Solidity: event RoleAdminChanged(bytes32 indexed role, bytes32 indexed previousAdminRole, bytes32 indexed newAdminRole)
-func (_Bindings *BindingsFilterer) WatchRoleAdminChanged(opts *bind.WatchOpts, sink chan<- *BindingsRoleAdminChanged, role [][32]byte, previousAdminRole [][32]byte, newAdminRole [][32]byte) (event.Subscription, error) {
+func (_RestrictedPausable *RestrictedPausableFilterer) WatchRoleAdminChanged(opts *bind.WatchOpts, sink chan<- *RestrictedPausableRoleAdminChanged, role [][32]byte, previousAdminRole [][32]byte, newAdminRole [][32]byte) (event.Subscription, error) {
 
 	var roleRule []interface{}
 	for _, roleItem := range role {
@@ -775,7 +775,7 @@ func (_Bindings *BindingsFilterer) WatchRoleAdminChanged(opts *bind.WatchOpts, s
 		newAdminRoleRule = append(newAdminRoleRule, newAdminRoleItem)
 	}
 
-	logs, sub, err := _Bindings.contract.WatchLogs(opts, "RoleAdminChanged", roleRule, previousAdminRoleRule, newAdminRoleRule)
+	logs, sub, err := _RestrictedPausable.contract.WatchLogs(opts, "RoleAdminChanged", roleRule, previousAdminRoleRule, newAdminRoleRule)
 	if err != nil {
 		return nil, err
 	}
@@ -785,8 +785,8 @@ func (_Bindings *BindingsFilterer) WatchRoleAdminChanged(opts *bind.WatchOpts, s
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(BindingsRoleAdminChanged)
-				if err := _Bindings.contract.UnpackLog(event, "RoleAdminChanged", log); err != nil {
+				event := new(RestrictedPausableRoleAdminChanged)
+				if err := _RestrictedPausable.contract.UnpackLog(event, "RoleAdminChanged", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -810,18 +810,18 @@ func (_Bindings *BindingsFilterer) WatchRoleAdminChanged(opts *bind.WatchOpts, s
 // ParseRoleAdminChanged is a log parse operation binding the contract event 0xbd79b86ffe0ab8e8776151514217cd7cacd52c909f66475c3af44e129f0b00ff.
 //
 // Solidity: event RoleAdminChanged(bytes32 indexed role, bytes32 indexed previousAdminRole, bytes32 indexed newAdminRole)
-func (_Bindings *BindingsFilterer) ParseRoleAdminChanged(log types.Log) (*BindingsRoleAdminChanged, error) {
-	event := new(BindingsRoleAdminChanged)
-	if err := _Bindings.contract.UnpackLog(event, "RoleAdminChanged", log); err != nil {
+func (_RestrictedPausable *RestrictedPausableFilterer) ParseRoleAdminChanged(log types.Log) (*RestrictedPausableRoleAdminChanged, error) {
+	event := new(RestrictedPausableRoleAdminChanged)
+	if err := _RestrictedPausable.contract.UnpackLog(event, "RoleAdminChanged", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
 	return event, nil
 }
 
-// BindingsRoleGrantedIterator is returned from FilterRoleGranted and is used to iterate over the raw logs and unpacked data for RoleGranted events raised by the Bindings contract.
-type BindingsRoleGrantedIterator struct {
-	Event *BindingsRoleGranted // Event containing the contract specifics and raw log
+// RestrictedPausableRoleGrantedIterator is returned from FilterRoleGranted and is used to iterate over the raw logs and unpacked data for RoleGranted events raised by the RestrictedPausable contract.
+type RestrictedPausableRoleGrantedIterator struct {
+	Event *RestrictedPausableRoleGranted // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -835,7 +835,7 @@ type BindingsRoleGrantedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *BindingsRoleGrantedIterator) Next() bool {
+func (it *RestrictedPausableRoleGrantedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -844,7 +844,7 @@ func (it *BindingsRoleGrantedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(BindingsRoleGranted)
+			it.Event = new(RestrictedPausableRoleGranted)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -859,7 +859,7 @@ func (it *BindingsRoleGrantedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(BindingsRoleGranted)
+		it.Event = new(RestrictedPausableRoleGranted)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -875,19 +875,19 @@ func (it *BindingsRoleGrantedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *BindingsRoleGrantedIterator) Error() error {
+func (it *RestrictedPausableRoleGrantedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *BindingsRoleGrantedIterator) Close() error {
+func (it *RestrictedPausableRoleGrantedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// BindingsRoleGranted represents a RoleGranted event raised by the Bindings contract.
-type BindingsRoleGranted struct {
+// RestrictedPausableRoleGranted represents a RoleGranted event raised by the RestrictedPausable contract.
+type RestrictedPausableRoleGranted struct {
 	Role    [32]byte
 	Account common.Address
 	Sender  common.Address
@@ -897,7 +897,7 @@ type BindingsRoleGranted struct {
 // FilterRoleGranted is a free log retrieval operation binding the contract event 0x2f8788117e7eff1d82e926ec794901d17c78024a50270940304540a733656f0d.
 //
 // Solidity: event RoleGranted(bytes32 indexed role, address indexed account, address indexed sender)
-func (_Bindings *BindingsFilterer) FilterRoleGranted(opts *bind.FilterOpts, role [][32]byte, account []common.Address, sender []common.Address) (*BindingsRoleGrantedIterator, error) {
+func (_RestrictedPausable *RestrictedPausableFilterer) FilterRoleGranted(opts *bind.FilterOpts, role [][32]byte, account []common.Address, sender []common.Address) (*RestrictedPausableRoleGrantedIterator, error) {
 
 	var roleRule []interface{}
 	for _, roleItem := range role {
@@ -912,17 +912,17 @@ func (_Bindings *BindingsFilterer) FilterRoleGranted(opts *bind.FilterOpts, role
 		senderRule = append(senderRule, senderItem)
 	}
 
-	logs, sub, err := _Bindings.contract.FilterLogs(opts, "RoleGranted", roleRule, accountRule, senderRule)
+	logs, sub, err := _RestrictedPausable.contract.FilterLogs(opts, "RoleGranted", roleRule, accountRule, senderRule)
 	if err != nil {
 		return nil, err
 	}
-	return &BindingsRoleGrantedIterator{contract: _Bindings.contract, event: "RoleGranted", logs: logs, sub: sub}, nil
+	return &RestrictedPausableRoleGrantedIterator{contract: _RestrictedPausable.contract, event: "RoleGranted", logs: logs, sub: sub}, nil
 }
 
 // WatchRoleGranted is a free log subscription operation binding the contract event 0x2f8788117e7eff1d82e926ec794901d17c78024a50270940304540a733656f0d.
 //
 // Solidity: event RoleGranted(bytes32 indexed role, address indexed account, address indexed sender)
-func (_Bindings *BindingsFilterer) WatchRoleGranted(opts *bind.WatchOpts, sink chan<- *BindingsRoleGranted, role [][32]byte, account []common.Address, sender []common.Address) (event.Subscription, error) {
+func (_RestrictedPausable *RestrictedPausableFilterer) WatchRoleGranted(opts *bind.WatchOpts, sink chan<- *RestrictedPausableRoleGranted, role [][32]byte, account []common.Address, sender []common.Address) (event.Subscription, error) {
 
 	var roleRule []interface{}
 	for _, roleItem := range role {
@@ -937,7 +937,7 @@ func (_Bindings *BindingsFilterer) WatchRoleGranted(opts *bind.WatchOpts, sink c
 		senderRule = append(senderRule, senderItem)
 	}
 
-	logs, sub, err := _Bindings.contract.WatchLogs(opts, "RoleGranted", roleRule, accountRule, senderRule)
+	logs, sub, err := _RestrictedPausable.contract.WatchLogs(opts, "RoleGranted", roleRule, accountRule, senderRule)
 	if err != nil {
 		return nil, err
 	}
@@ -947,8 +947,8 @@ func (_Bindings *BindingsFilterer) WatchRoleGranted(opts *bind.WatchOpts, sink c
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(BindingsRoleGranted)
-				if err := _Bindings.contract.UnpackLog(event, "RoleGranted", log); err != nil {
+				event := new(RestrictedPausableRoleGranted)
+				if err := _RestrictedPausable.contract.UnpackLog(event, "RoleGranted", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -972,18 +972,18 @@ func (_Bindings *BindingsFilterer) WatchRoleGranted(opts *bind.WatchOpts, sink c
 // ParseRoleGranted is a log parse operation binding the contract event 0x2f8788117e7eff1d82e926ec794901d17c78024a50270940304540a733656f0d.
 //
 // Solidity: event RoleGranted(bytes32 indexed role, address indexed account, address indexed sender)
-func (_Bindings *BindingsFilterer) ParseRoleGranted(log types.Log) (*BindingsRoleGranted, error) {
-	event := new(BindingsRoleGranted)
-	if err := _Bindings.contract.UnpackLog(event, "RoleGranted", log); err != nil {
+func (_RestrictedPausable *RestrictedPausableFilterer) ParseRoleGranted(log types.Log) (*RestrictedPausableRoleGranted, error) {
+	event := new(RestrictedPausableRoleGranted)
+	if err := _RestrictedPausable.contract.UnpackLog(event, "RoleGranted", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
 	return event, nil
 }
 
-// BindingsRoleRevokedIterator is returned from FilterRoleRevoked and is used to iterate over the raw logs and unpacked data for RoleRevoked events raised by the Bindings contract.
-type BindingsRoleRevokedIterator struct {
-	Event *BindingsRoleRevoked // Event containing the contract specifics and raw log
+// RestrictedPausableRoleRevokedIterator is returned from FilterRoleRevoked and is used to iterate over the raw logs and unpacked data for RoleRevoked events raised by the RestrictedPausable contract.
+type RestrictedPausableRoleRevokedIterator struct {
+	Event *RestrictedPausableRoleRevoked // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -997,7 +997,7 @@ type BindingsRoleRevokedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *BindingsRoleRevokedIterator) Next() bool {
+func (it *RestrictedPausableRoleRevokedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -1006,7 +1006,7 @@ func (it *BindingsRoleRevokedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(BindingsRoleRevoked)
+			it.Event = new(RestrictedPausableRoleRevoked)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -1021,7 +1021,7 @@ func (it *BindingsRoleRevokedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(BindingsRoleRevoked)
+		it.Event = new(RestrictedPausableRoleRevoked)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -1037,19 +1037,19 @@ func (it *BindingsRoleRevokedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *BindingsRoleRevokedIterator) Error() error {
+func (it *RestrictedPausableRoleRevokedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *BindingsRoleRevokedIterator) Close() error {
+func (it *RestrictedPausableRoleRevokedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// BindingsRoleRevoked represents a RoleRevoked event raised by the Bindings contract.
-type BindingsRoleRevoked struct {
+// RestrictedPausableRoleRevoked represents a RoleRevoked event raised by the RestrictedPausable contract.
+type RestrictedPausableRoleRevoked struct {
 	Role    [32]byte
 	Account common.Address
 	Sender  common.Address
@@ -1059,7 +1059,7 @@ type BindingsRoleRevoked struct {
 // FilterRoleRevoked is a free log retrieval operation binding the contract event 0xf6391f5c32d9c69d2a47ea670b442974b53935d1edc7fd64eb21e047a839171b.
 //
 // Solidity: event RoleRevoked(bytes32 indexed role, address indexed account, address indexed sender)
-func (_Bindings *BindingsFilterer) FilterRoleRevoked(opts *bind.FilterOpts, role [][32]byte, account []common.Address, sender []common.Address) (*BindingsRoleRevokedIterator, error) {
+func (_RestrictedPausable *RestrictedPausableFilterer) FilterRoleRevoked(opts *bind.FilterOpts, role [][32]byte, account []common.Address, sender []common.Address) (*RestrictedPausableRoleRevokedIterator, error) {
 
 	var roleRule []interface{}
 	for _, roleItem := range role {
@@ -1074,17 +1074,17 @@ func (_Bindings *BindingsFilterer) FilterRoleRevoked(opts *bind.FilterOpts, role
 		senderRule = append(senderRule, senderItem)
 	}
 
-	logs, sub, err := _Bindings.contract.FilterLogs(opts, "RoleRevoked", roleRule, accountRule, senderRule)
+	logs, sub, err := _RestrictedPausable.contract.FilterLogs(opts, "RoleRevoked", roleRule, accountRule, senderRule)
 	if err != nil {
 		return nil, err
 	}
-	return &BindingsRoleRevokedIterator{contract: _Bindings.contract, event: "RoleRevoked", logs: logs, sub: sub}, nil
+	return &RestrictedPausableRoleRevokedIterator{contract: _RestrictedPausable.contract, event: "RoleRevoked", logs: logs, sub: sub}, nil
 }
 
 // WatchRoleRevoked is a free log subscription operation binding the contract event 0xf6391f5c32d9c69d2a47ea670b442974b53935d1edc7fd64eb21e047a839171b.
 //
 // Solidity: event RoleRevoked(bytes32 indexed role, address indexed account, address indexed sender)
-func (_Bindings *BindingsFilterer) WatchRoleRevoked(opts *bind.WatchOpts, sink chan<- *BindingsRoleRevoked, role [][32]byte, account []common.Address, sender []common.Address) (event.Subscription, error) {
+func (_RestrictedPausable *RestrictedPausableFilterer) WatchRoleRevoked(opts *bind.WatchOpts, sink chan<- *RestrictedPausableRoleRevoked, role [][32]byte, account []common.Address, sender []common.Address) (event.Subscription, error) {
 
 	var roleRule []interface{}
 	for _, roleItem := range role {
@@ -1099,7 +1099,7 @@ func (_Bindings *BindingsFilterer) WatchRoleRevoked(opts *bind.WatchOpts, sink c
 		senderRule = append(senderRule, senderItem)
 	}
 
-	logs, sub, err := _Bindings.contract.WatchLogs(opts, "RoleRevoked", roleRule, accountRule, senderRule)
+	logs, sub, err := _RestrictedPausable.contract.WatchLogs(opts, "RoleRevoked", roleRule, accountRule, senderRule)
 	if err != nil {
 		return nil, err
 	}
@@ -1109,8 +1109,8 @@ func (_Bindings *BindingsFilterer) WatchRoleRevoked(opts *bind.WatchOpts, sink c
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(BindingsRoleRevoked)
-				if err := _Bindings.contract.UnpackLog(event, "RoleRevoked", log); err != nil {
+				event := new(RestrictedPausableRoleRevoked)
+				if err := _RestrictedPausable.contract.UnpackLog(event, "RoleRevoked", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -1134,18 +1134,18 @@ func (_Bindings *BindingsFilterer) WatchRoleRevoked(opts *bind.WatchOpts, sink c
 // ParseRoleRevoked is a log parse operation binding the contract event 0xf6391f5c32d9c69d2a47ea670b442974b53935d1edc7fd64eb21e047a839171b.
 //
 // Solidity: event RoleRevoked(bytes32 indexed role, address indexed account, address indexed sender)
-func (_Bindings *BindingsFilterer) ParseRoleRevoked(log types.Log) (*BindingsRoleRevoked, error) {
-	event := new(BindingsRoleRevoked)
-	if err := _Bindings.contract.UnpackLog(event, "RoleRevoked", log); err != nil {
+func (_RestrictedPausable *RestrictedPausableFilterer) ParseRoleRevoked(log types.Log) (*RestrictedPausableRoleRevoked, error) {
+	event := new(RestrictedPausableRoleRevoked)
+	if err := _RestrictedPausable.contract.UnpackLog(event, "RoleRevoked", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
 	return event, nil
 }
 
-// BindingsUnpausedIterator is returned from FilterUnpaused and is used to iterate over the raw logs and unpacked data for Unpaused events raised by the Bindings contract.
-type BindingsUnpausedIterator struct {
-	Event *BindingsUnpaused // Event containing the contract specifics and raw log
+// RestrictedPausableUnpausedIterator is returned from FilterUnpaused and is used to iterate over the raw logs and unpacked data for Unpaused events raised by the RestrictedPausable contract.
+type RestrictedPausableUnpausedIterator struct {
+	Event *RestrictedPausableUnpaused // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -1159,7 +1159,7 @@ type BindingsUnpausedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *BindingsUnpausedIterator) Next() bool {
+func (it *RestrictedPausableUnpausedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -1168,7 +1168,7 @@ func (it *BindingsUnpausedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(BindingsUnpaused)
+			it.Event = new(RestrictedPausableUnpaused)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -1183,7 +1183,7 @@ func (it *BindingsUnpausedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(BindingsUnpaused)
+		it.Event = new(RestrictedPausableUnpaused)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -1199,19 +1199,19 @@ func (it *BindingsUnpausedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *BindingsUnpausedIterator) Error() error {
+func (it *RestrictedPausableUnpausedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *BindingsUnpausedIterator) Close() error {
+func (it *RestrictedPausableUnpausedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// BindingsUnpaused represents a Unpaused event raised by the Bindings contract.
-type BindingsUnpaused struct {
+// RestrictedPausableUnpaused represents a Unpaused event raised by the RestrictedPausable contract.
+type RestrictedPausableUnpaused struct {
 	Account common.Address
 	Raw     types.Log // Blockchain specific contextual infos
 }
@@ -1219,21 +1219,21 @@ type BindingsUnpaused struct {
 // FilterUnpaused is a free log retrieval operation binding the contract event 0x5db9ee0a495bf2e6ff9c91a7834c1ba4fdd244a5e8aa4e537bd38aeae4b073aa.
 //
 // Solidity: event Unpaused(address account)
-func (_Bindings *BindingsFilterer) FilterUnpaused(opts *bind.FilterOpts) (*BindingsUnpausedIterator, error) {
+func (_RestrictedPausable *RestrictedPausableFilterer) FilterUnpaused(opts *bind.FilterOpts) (*RestrictedPausableUnpausedIterator, error) {
 
-	logs, sub, err := _Bindings.contract.FilterLogs(opts, "Unpaused")
+	logs, sub, err := _RestrictedPausable.contract.FilterLogs(opts, "Unpaused")
 	if err != nil {
 		return nil, err
 	}
-	return &BindingsUnpausedIterator{contract: _Bindings.contract, event: "Unpaused", logs: logs, sub: sub}, nil
+	return &RestrictedPausableUnpausedIterator{contract: _RestrictedPausable.contract, event: "Unpaused", logs: logs, sub: sub}, nil
 }
 
 // WatchUnpaused is a free log subscription operation binding the contract event 0x5db9ee0a495bf2e6ff9c91a7834c1ba4fdd244a5e8aa4e537bd38aeae4b073aa.
 //
 // Solidity: event Unpaused(address account)
-func (_Bindings *BindingsFilterer) WatchUnpaused(opts *bind.WatchOpts, sink chan<- *BindingsUnpaused) (event.Subscription, error) {
+func (_RestrictedPausable *RestrictedPausableFilterer) WatchUnpaused(opts *bind.WatchOpts, sink chan<- *RestrictedPausableUnpaused) (event.Subscription, error) {
 
-	logs, sub, err := _Bindings.contract.WatchLogs(opts, "Unpaused")
+	logs, sub, err := _RestrictedPausable.contract.WatchLogs(opts, "Unpaused")
 	if err != nil {
 		return nil, err
 	}
@@ -1243,8 +1243,8 @@ func (_Bindings *BindingsFilterer) WatchUnpaused(opts *bind.WatchOpts, sink chan
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(BindingsUnpaused)
-				if err := _Bindings.contract.UnpackLog(event, "Unpaused", log); err != nil {
+				event := new(RestrictedPausableUnpaused)
+				if err := _RestrictedPausable.contract.UnpackLog(event, "Unpaused", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -1268,9 +1268,9 @@ func (_Bindings *BindingsFilterer) WatchUnpaused(opts *bind.WatchOpts, sink chan
 // ParseUnpaused is a log parse operation binding the contract event 0x5db9ee0a495bf2e6ff9c91a7834c1ba4fdd244a5e8aa4e537bd38aeae4b073aa.
 //
 // Solidity: event Unpaused(address account)
-func (_Bindings *BindingsFilterer) ParseUnpaused(log types.Log) (*BindingsUnpaused, error) {
-	event := new(BindingsUnpaused)
-	if err := _Bindings.contract.UnpackLog(event, "Unpaused", log); err != nil {
+func (_RestrictedPausable *RestrictedPausableFilterer) ParseUnpaused(log types.Log) (*RestrictedPausableUnpaused, error) {
+	event := new(RestrictedPausableUnpaused)
+	if err := _RestrictedPausable.contract.UnpackLog(event, "Unpaused", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log

@@ -29,113 +29,113 @@ var (
 	_ = abi.ConvertType
 )
 
-// BindingsMetaData contains all meta data concerning the Bindings contract.
-var BindingsMetaData = &bind.MetaData{
+// EonKeyPublishMetaData contains all meta data concerning the EonKeyPublish contract.
+var EonKeyPublishMetaData = &bind.MetaData{
 	ABI: "[{\"type\":\"constructor\",\"inputs\":[{\"name\":\"_keyperSet\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"_broadcaster\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"_eon\",\"type\":\"uint64\",\"internalType\":\"uint64\"}],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"eonKeyConfirmed\",\"inputs\":[{\"name\":\"eonKey\",\"type\":\"bytes\",\"internalType\":\"bytes\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bool\",\"internalType\":\"bool\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"publishEonKey\",\"inputs\":[{\"name\":\"eonKey\",\"type\":\"bytes\",\"internalType\":\"bytes\"},{\"name\":\"keyperId\",\"type\":\"uint64\",\"internalType\":\"uint64\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"event\",\"name\":\"EonVoteRegistered\",\"inputs\":[{\"name\":\"eon\",\"type\":\"uint64\",\"indexed\":false,\"internalType\":\"uint64\"},{\"name\":\"key\",\"type\":\"bytes\",\"indexed\":false,\"internalType\":\"bytes\"}],\"anonymous\":false},{\"type\":\"error\",\"name\":\"AlreadyVoted\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"InvalidKey\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"KeyperSetNotFinalized\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"NotAllowed\",\"inputs\":[]}]",
 }
 
-// BindingsABI is the input ABI used to generate the binding from.
-// Deprecated: Use BindingsMetaData.ABI instead.
-var BindingsABI = BindingsMetaData.ABI
+// EonKeyPublishABI is the input ABI used to generate the binding from.
+// Deprecated: Use EonKeyPublishMetaData.ABI instead.
+var EonKeyPublishABI = EonKeyPublishMetaData.ABI
 
-// Bindings is an auto generated Go binding around an Ethereum contract.
-type Bindings struct {
-	BindingsCaller     // Read-only binding to the contract
-	BindingsTransactor // Write-only binding to the contract
-	BindingsFilterer   // Log filterer for contract events
+// EonKeyPublish is an auto generated Go binding around an Ethereum contract.
+type EonKeyPublish struct {
+	EonKeyPublishCaller     // Read-only binding to the contract
+	EonKeyPublishTransactor // Write-only binding to the contract
+	EonKeyPublishFilterer   // Log filterer for contract events
 }
 
-// BindingsCaller is an auto generated read-only Go binding around an Ethereum contract.
-type BindingsCaller struct {
+// EonKeyPublishCaller is an auto generated read-only Go binding around an Ethereum contract.
+type EonKeyPublishCaller struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// BindingsTransactor is an auto generated write-only Go binding around an Ethereum contract.
-type BindingsTransactor struct {
+// EonKeyPublishTransactor is an auto generated write-only Go binding around an Ethereum contract.
+type EonKeyPublishTransactor struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// BindingsFilterer is an auto generated log filtering Go binding around an Ethereum contract events.
-type BindingsFilterer struct {
+// EonKeyPublishFilterer is an auto generated log filtering Go binding around an Ethereum contract events.
+type EonKeyPublishFilterer struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// BindingsSession is an auto generated Go binding around an Ethereum contract,
+// EonKeyPublishSession is an auto generated Go binding around an Ethereum contract,
 // with pre-set call and transact options.
-type BindingsSession struct {
-	Contract     *Bindings         // Generic contract binding to set the session for
+type EonKeyPublishSession struct {
+	Contract     *EonKeyPublish    // Generic contract binding to set the session for
 	CallOpts     bind.CallOpts     // Call options to use throughout this session
 	TransactOpts bind.TransactOpts // Transaction auth options to use throughout this session
 }
 
-// BindingsCallerSession is an auto generated read-only Go binding around an Ethereum contract,
+// EonKeyPublishCallerSession is an auto generated read-only Go binding around an Ethereum contract,
 // with pre-set call options.
-type BindingsCallerSession struct {
-	Contract *BindingsCaller // Generic contract caller binding to set the session for
-	CallOpts bind.CallOpts   // Call options to use throughout this session
+type EonKeyPublishCallerSession struct {
+	Contract *EonKeyPublishCaller // Generic contract caller binding to set the session for
+	CallOpts bind.CallOpts        // Call options to use throughout this session
 }
 
-// BindingsTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
+// EonKeyPublishTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
 // with pre-set transact options.
-type BindingsTransactorSession struct {
-	Contract     *BindingsTransactor // Generic contract transactor binding to set the session for
-	TransactOpts bind.TransactOpts   // Transaction auth options to use throughout this session
+type EonKeyPublishTransactorSession struct {
+	Contract     *EonKeyPublishTransactor // Generic contract transactor binding to set the session for
+	TransactOpts bind.TransactOpts        // Transaction auth options to use throughout this session
 }
 
-// BindingsRaw is an auto generated low-level Go binding around an Ethereum contract.
-type BindingsRaw struct {
-	Contract *Bindings // Generic contract binding to access the raw methods on
+// EonKeyPublishRaw is an auto generated low-level Go binding around an Ethereum contract.
+type EonKeyPublishRaw struct {
+	Contract *EonKeyPublish // Generic contract binding to access the raw methods on
 }
 
-// BindingsCallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
-type BindingsCallerRaw struct {
-	Contract *BindingsCaller // Generic read-only contract binding to access the raw methods on
+// EonKeyPublishCallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
+type EonKeyPublishCallerRaw struct {
+	Contract *EonKeyPublishCaller // Generic read-only contract binding to access the raw methods on
 }
 
-// BindingsTransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
-type BindingsTransactorRaw struct {
-	Contract *BindingsTransactor // Generic write-only contract binding to access the raw methods on
+// EonKeyPublishTransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
+type EonKeyPublishTransactorRaw struct {
+	Contract *EonKeyPublishTransactor // Generic write-only contract binding to access the raw methods on
 }
 
-// NewBindings creates a new instance of Bindings, bound to a specific deployed contract.
-func NewBindings(address common.Address, backend bind.ContractBackend) (*Bindings, error) {
-	contract, err := bindBindings(address, backend, backend, backend)
+// NewEonKeyPublish creates a new instance of EonKeyPublish, bound to a specific deployed contract.
+func NewEonKeyPublish(address common.Address, backend bind.ContractBackend) (*EonKeyPublish, error) {
+	contract, err := bindEonKeyPublish(address, backend, backend, backend)
 	if err != nil {
 		return nil, err
 	}
-	return &Bindings{BindingsCaller: BindingsCaller{contract: contract}, BindingsTransactor: BindingsTransactor{contract: contract}, BindingsFilterer: BindingsFilterer{contract: contract}}, nil
+	return &EonKeyPublish{EonKeyPublishCaller: EonKeyPublishCaller{contract: contract}, EonKeyPublishTransactor: EonKeyPublishTransactor{contract: contract}, EonKeyPublishFilterer: EonKeyPublishFilterer{contract: contract}}, nil
 }
 
-// NewBindingsCaller creates a new read-only instance of Bindings, bound to a specific deployed contract.
-func NewBindingsCaller(address common.Address, caller bind.ContractCaller) (*BindingsCaller, error) {
-	contract, err := bindBindings(address, caller, nil, nil)
+// NewEonKeyPublishCaller creates a new read-only instance of EonKeyPublish, bound to a specific deployed contract.
+func NewEonKeyPublishCaller(address common.Address, caller bind.ContractCaller) (*EonKeyPublishCaller, error) {
+	contract, err := bindEonKeyPublish(address, caller, nil, nil)
 	if err != nil {
 		return nil, err
 	}
-	return &BindingsCaller{contract: contract}, nil
+	return &EonKeyPublishCaller{contract: contract}, nil
 }
 
-// NewBindingsTransactor creates a new write-only instance of Bindings, bound to a specific deployed contract.
-func NewBindingsTransactor(address common.Address, transactor bind.ContractTransactor) (*BindingsTransactor, error) {
-	contract, err := bindBindings(address, nil, transactor, nil)
+// NewEonKeyPublishTransactor creates a new write-only instance of EonKeyPublish, bound to a specific deployed contract.
+func NewEonKeyPublishTransactor(address common.Address, transactor bind.ContractTransactor) (*EonKeyPublishTransactor, error) {
+	contract, err := bindEonKeyPublish(address, nil, transactor, nil)
 	if err != nil {
 		return nil, err
 	}
-	return &BindingsTransactor{contract: contract}, nil
+	return &EonKeyPublishTransactor{contract: contract}, nil
 }
 
-// NewBindingsFilterer creates a new log filterer instance of Bindings, bound to a specific deployed contract.
-func NewBindingsFilterer(address common.Address, filterer bind.ContractFilterer) (*BindingsFilterer, error) {
-	contract, err := bindBindings(address, nil, nil, filterer)
+// NewEonKeyPublishFilterer creates a new log filterer instance of EonKeyPublish, bound to a specific deployed contract.
+func NewEonKeyPublishFilterer(address common.Address, filterer bind.ContractFilterer) (*EonKeyPublishFilterer, error) {
+	contract, err := bindEonKeyPublish(address, nil, nil, filterer)
 	if err != nil {
 		return nil, err
 	}
-	return &BindingsFilterer{contract: contract}, nil
+	return &EonKeyPublishFilterer{contract: contract}, nil
 }
 
-// bindBindings binds a generic wrapper to an already deployed contract.
-func bindBindings(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
-	parsed, err := BindingsMetaData.GetAbi()
+// bindEonKeyPublish binds a generic wrapper to an already deployed contract.
+func bindEonKeyPublish(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
+	parsed, err := EonKeyPublishMetaData.GetAbi()
 	if err != nil {
 		return nil, err
 	}
@@ -146,46 +146,46 @@ func bindBindings(address common.Address, caller bind.ContractCaller, transactor
 // sets the output to result. The result type might be a single field for simple
 // returns, a slice of interfaces for anonymous returns and a struct for named
 // returns.
-func (_Bindings *BindingsRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _Bindings.Contract.BindingsCaller.contract.Call(opts, result, method, params...)
+func (_EonKeyPublish *EonKeyPublishRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _EonKeyPublish.Contract.EonKeyPublishCaller.contract.Call(opts, result, method, params...)
 }
 
 // Transfer initiates a plain transaction to move funds to the contract, calling
 // its default method if one is available.
-func (_Bindings *BindingsRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _Bindings.Contract.BindingsTransactor.contract.Transfer(opts)
+func (_EonKeyPublish *EonKeyPublishRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _EonKeyPublish.Contract.EonKeyPublishTransactor.contract.Transfer(opts)
 }
 
 // Transact invokes the (paid) contract method with params as input values.
-func (_Bindings *BindingsRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _Bindings.Contract.BindingsTransactor.contract.Transact(opts, method, params...)
+func (_EonKeyPublish *EonKeyPublishRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _EonKeyPublish.Contract.EonKeyPublishTransactor.contract.Transact(opts, method, params...)
 }
 
 // Call invokes the (constant) contract method with params as input values and
 // sets the output to result. The result type might be a single field for simple
 // returns, a slice of interfaces for anonymous returns and a struct for named
 // returns.
-func (_Bindings *BindingsCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _Bindings.Contract.contract.Call(opts, result, method, params...)
+func (_EonKeyPublish *EonKeyPublishCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _EonKeyPublish.Contract.contract.Call(opts, result, method, params...)
 }
 
 // Transfer initiates a plain transaction to move funds to the contract, calling
 // its default method if one is available.
-func (_Bindings *BindingsTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _Bindings.Contract.contract.Transfer(opts)
+func (_EonKeyPublish *EonKeyPublishTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _EonKeyPublish.Contract.contract.Transfer(opts)
 }
 
 // Transact invokes the (paid) contract method with params as input values.
-func (_Bindings *BindingsTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _Bindings.Contract.contract.Transact(opts, method, params...)
+func (_EonKeyPublish *EonKeyPublishTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _EonKeyPublish.Contract.contract.Transact(opts, method, params...)
 }
 
 // EonKeyConfirmed is a free data retrieval call binding the contract method 0x517e1cf7.
 //
 // Solidity: function eonKeyConfirmed(bytes eonKey) view returns(bool)
-func (_Bindings *BindingsCaller) EonKeyConfirmed(opts *bind.CallOpts, eonKey []byte) (bool, error) {
+func (_EonKeyPublish *EonKeyPublishCaller) EonKeyConfirmed(opts *bind.CallOpts, eonKey []byte) (bool, error) {
 	var out []interface{}
-	err := _Bindings.contract.Call(opts, &out, "eonKeyConfirmed", eonKey)
+	err := _EonKeyPublish.contract.Call(opts, &out, "eonKeyConfirmed", eonKey)
 
 	if err != nil {
 		return *new(bool), err
@@ -200,41 +200,41 @@ func (_Bindings *BindingsCaller) EonKeyConfirmed(opts *bind.CallOpts, eonKey []b
 // EonKeyConfirmed is a free data retrieval call binding the contract method 0x517e1cf7.
 //
 // Solidity: function eonKeyConfirmed(bytes eonKey) view returns(bool)
-func (_Bindings *BindingsSession) EonKeyConfirmed(eonKey []byte) (bool, error) {
-	return _Bindings.Contract.EonKeyConfirmed(&_Bindings.CallOpts, eonKey)
+func (_EonKeyPublish *EonKeyPublishSession) EonKeyConfirmed(eonKey []byte) (bool, error) {
+	return _EonKeyPublish.Contract.EonKeyConfirmed(&_EonKeyPublish.CallOpts, eonKey)
 }
 
 // EonKeyConfirmed is a free data retrieval call binding the contract method 0x517e1cf7.
 //
 // Solidity: function eonKeyConfirmed(bytes eonKey) view returns(bool)
-func (_Bindings *BindingsCallerSession) EonKeyConfirmed(eonKey []byte) (bool, error) {
-	return _Bindings.Contract.EonKeyConfirmed(&_Bindings.CallOpts, eonKey)
+func (_EonKeyPublish *EonKeyPublishCallerSession) EonKeyConfirmed(eonKey []byte) (bool, error) {
+	return _EonKeyPublish.Contract.EonKeyConfirmed(&_EonKeyPublish.CallOpts, eonKey)
 }
 
 // PublishEonKey is a paid mutator transaction binding the contract method 0xa1dd75ba.
 //
 // Solidity: function publishEonKey(bytes eonKey, uint64 keyperId) returns()
-func (_Bindings *BindingsTransactor) PublishEonKey(opts *bind.TransactOpts, eonKey []byte, keyperId uint64) (*types.Transaction, error) {
-	return _Bindings.contract.Transact(opts, "publishEonKey", eonKey, keyperId)
+func (_EonKeyPublish *EonKeyPublishTransactor) PublishEonKey(opts *bind.TransactOpts, eonKey []byte, keyperId uint64) (*types.Transaction, error) {
+	return _EonKeyPublish.contract.Transact(opts, "publishEonKey", eonKey, keyperId)
 }
 
 // PublishEonKey is a paid mutator transaction binding the contract method 0xa1dd75ba.
 //
 // Solidity: function publishEonKey(bytes eonKey, uint64 keyperId) returns()
-func (_Bindings *BindingsSession) PublishEonKey(eonKey []byte, keyperId uint64) (*types.Transaction, error) {
-	return _Bindings.Contract.PublishEonKey(&_Bindings.TransactOpts, eonKey, keyperId)
+func (_EonKeyPublish *EonKeyPublishSession) PublishEonKey(eonKey []byte, keyperId uint64) (*types.Transaction, error) {
+	return _EonKeyPublish.Contract.PublishEonKey(&_EonKeyPublish.TransactOpts, eonKey, keyperId)
 }
 
 // PublishEonKey is a paid mutator transaction binding the contract method 0xa1dd75ba.
 //
 // Solidity: function publishEonKey(bytes eonKey, uint64 keyperId) returns()
-func (_Bindings *BindingsTransactorSession) PublishEonKey(eonKey []byte, keyperId uint64) (*types.Transaction, error) {
-	return _Bindings.Contract.PublishEonKey(&_Bindings.TransactOpts, eonKey, keyperId)
+func (_EonKeyPublish *EonKeyPublishTransactorSession) PublishEonKey(eonKey []byte, keyperId uint64) (*types.Transaction, error) {
+	return _EonKeyPublish.Contract.PublishEonKey(&_EonKeyPublish.TransactOpts, eonKey, keyperId)
 }
 
-// BindingsEonVoteRegisteredIterator is returned from FilterEonVoteRegistered and is used to iterate over the raw logs and unpacked data for EonVoteRegistered events raised by the Bindings contract.
-type BindingsEonVoteRegisteredIterator struct {
-	Event *BindingsEonVoteRegistered // Event containing the contract specifics and raw log
+// EonKeyPublishEonVoteRegisteredIterator is returned from FilterEonVoteRegistered and is used to iterate over the raw logs and unpacked data for EonVoteRegistered events raised by the EonKeyPublish contract.
+type EonKeyPublishEonVoteRegisteredIterator struct {
+	Event *EonKeyPublishEonVoteRegistered // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -248,7 +248,7 @@ type BindingsEonVoteRegisteredIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *BindingsEonVoteRegisteredIterator) Next() bool {
+func (it *EonKeyPublishEonVoteRegisteredIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -257,7 +257,7 @@ func (it *BindingsEonVoteRegisteredIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(BindingsEonVoteRegistered)
+			it.Event = new(EonKeyPublishEonVoteRegistered)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -272,7 +272,7 @@ func (it *BindingsEonVoteRegisteredIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(BindingsEonVoteRegistered)
+		it.Event = new(EonKeyPublishEonVoteRegistered)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -288,19 +288,19 @@ func (it *BindingsEonVoteRegisteredIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *BindingsEonVoteRegisteredIterator) Error() error {
+func (it *EonKeyPublishEonVoteRegisteredIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *BindingsEonVoteRegisteredIterator) Close() error {
+func (it *EonKeyPublishEonVoteRegisteredIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// BindingsEonVoteRegistered represents a EonVoteRegistered event raised by the Bindings contract.
-type BindingsEonVoteRegistered struct {
+// EonKeyPublishEonVoteRegistered represents a EonVoteRegistered event raised by the EonKeyPublish contract.
+type EonKeyPublishEonVoteRegistered struct {
 	Eon uint64
 	Key []byte
 	Raw types.Log // Blockchain specific contextual infos
@@ -309,21 +309,21 @@ type BindingsEonVoteRegistered struct {
 // FilterEonVoteRegistered is a free log retrieval operation binding the contract event 0xd521fd602f7dce253c2e07c489358eb9e00e3af335a362168a0300d30e401a8a.
 //
 // Solidity: event EonVoteRegistered(uint64 eon, bytes key)
-func (_Bindings *BindingsFilterer) FilterEonVoteRegistered(opts *bind.FilterOpts) (*BindingsEonVoteRegisteredIterator, error) {
+func (_EonKeyPublish *EonKeyPublishFilterer) FilterEonVoteRegistered(opts *bind.FilterOpts) (*EonKeyPublishEonVoteRegisteredIterator, error) {
 
-	logs, sub, err := _Bindings.contract.FilterLogs(opts, "EonVoteRegistered")
+	logs, sub, err := _EonKeyPublish.contract.FilterLogs(opts, "EonVoteRegistered")
 	if err != nil {
 		return nil, err
 	}
-	return &BindingsEonVoteRegisteredIterator{contract: _Bindings.contract, event: "EonVoteRegistered", logs: logs, sub: sub}, nil
+	return &EonKeyPublishEonVoteRegisteredIterator{contract: _EonKeyPublish.contract, event: "EonVoteRegistered", logs: logs, sub: sub}, nil
 }
 
 // WatchEonVoteRegistered is a free log subscription operation binding the contract event 0xd521fd602f7dce253c2e07c489358eb9e00e3af335a362168a0300d30e401a8a.
 //
 // Solidity: event EonVoteRegistered(uint64 eon, bytes key)
-func (_Bindings *BindingsFilterer) WatchEonVoteRegistered(opts *bind.WatchOpts, sink chan<- *BindingsEonVoteRegistered) (event.Subscription, error) {
+func (_EonKeyPublish *EonKeyPublishFilterer) WatchEonVoteRegistered(opts *bind.WatchOpts, sink chan<- *EonKeyPublishEonVoteRegistered) (event.Subscription, error) {
 
-	logs, sub, err := _Bindings.contract.WatchLogs(opts, "EonVoteRegistered")
+	logs, sub, err := _EonKeyPublish.contract.WatchLogs(opts, "EonVoteRegistered")
 	if err != nil {
 		return nil, err
 	}
@@ -333,8 +333,8 @@ func (_Bindings *BindingsFilterer) WatchEonVoteRegistered(opts *bind.WatchOpts, 
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(BindingsEonVoteRegistered)
-				if err := _Bindings.contract.UnpackLog(event, "EonVoteRegistered", log); err != nil {
+				event := new(EonKeyPublishEonVoteRegistered)
+				if err := _EonKeyPublish.contract.UnpackLog(event, "EonVoteRegistered", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -358,9 +358,9 @@ func (_Bindings *BindingsFilterer) WatchEonVoteRegistered(opts *bind.WatchOpts, 
 // ParseEonVoteRegistered is a log parse operation binding the contract event 0xd521fd602f7dce253c2e07c489358eb9e00e3af335a362168a0300d30e401a8a.
 //
 // Solidity: event EonVoteRegistered(uint64 eon, bytes key)
-func (_Bindings *BindingsFilterer) ParseEonVoteRegistered(log types.Log) (*BindingsEonVoteRegistered, error) {
-	event := new(BindingsEonVoteRegistered)
-	if err := _Bindings.contract.UnpackLog(event, "EonVoteRegistered", log); err != nil {
+func (_EonKeyPublish *EonKeyPublishFilterer) ParseEonVoteRegistered(log types.Log) (*EonKeyPublishEonVoteRegistered, error) {
+	event := new(EonKeyPublishEonVoteRegistered)
+	if err := _EonKeyPublish.contract.UnpackLog(event, "EonVoteRegistered", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log

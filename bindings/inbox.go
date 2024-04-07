@@ -37,113 +37,113 @@ type InboxTransaction struct {
 	CumulativeGasLimit   uint64
 }
 
-// BindingsMetaData contains all meta data concerning the Bindings contract.
-var BindingsMetaData = &bind.MetaData{
+// InboxMetaData contains all meta data concerning the Inbox contract.
+var InboxMetaData = &bind.MetaData{
 	ABI: "[{\"type\":\"constructor\",\"inputs\":[{\"name\":\"_blockGasLimit\",\"type\":\"uint64\",\"internalType\":\"uint64\"},{\"name\":\"initializer\",\"type\":\"address\",\"internalType\":\"address\"}],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"BLOCK_GAS_LIMIT_SETTER_ROLE\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"DEFAULT_ADMIN_ROLE\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"PAUSER_ROLE\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"SEQUENCER_ROLE\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"WITHDRAW_ROLE\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"clear\",\"inputs\":[],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"getBlockGasLimit\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint64\",\"internalType\":\"uint64\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"getRoleAdmin\",\"inputs\":[{\"name\":\"role\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"getTransactions\",\"inputs\":[{\"name\":\"blockNumber\",\"type\":\"uint64\",\"internalType\":\"uint64\"}],\"outputs\":[{\"name\":\"\",\"type\":\"tuple[]\",\"internalType\":\"structInbox.Transaction[]\",\"components\":[{\"name\":\"encryptedTransaction\",\"type\":\"bytes\",\"internalType\":\"bytes\"},{\"name\":\"sender\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"gasLimit\",\"type\":\"uint64\",\"internalType\":\"uint64\"},{\"name\":\"cumulativeGasLimit\",\"type\":\"uint64\",\"internalType\":\"uint64\"}]}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"grantRole\",\"inputs\":[{\"name\":\"role\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"account\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"hasRole\",\"inputs\":[{\"name\":\"role\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"account\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bool\",\"internalType\":\"bool\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"initialize\",\"inputs\":[{\"name\":\"dao\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"sequencer\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"initializer\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"address\",\"internalType\":\"address\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"pause\",\"inputs\":[],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"paused\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"bool\",\"internalType\":\"bool\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"renounceRole\",\"inputs\":[{\"name\":\"role\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"callerConfirmation\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"revokeRole\",\"inputs\":[{\"name\":\"role\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"account\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"setBlockGasLimit\",\"inputs\":[{\"name\":\"newBlockGasLimit\",\"type\":\"uint64\",\"internalType\":\"uint64\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"submitEncryptedTransaction\",\"inputs\":[{\"name\":\"blockNumber\",\"type\":\"uint64\",\"internalType\":\"uint64\"},{\"name\":\"encryptedTransaction\",\"type\":\"bytes\",\"internalType\":\"bytes\"},{\"name\":\"gasLimit\",\"type\":\"uint64\",\"internalType\":\"uint64\"},{\"name\":\"excessFeeRecipient\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[],\"stateMutability\":\"payable\"},{\"type\":\"function\",\"name\":\"supportsInterface\",\"inputs\":[{\"name\":\"interfaceId\",\"type\":\"bytes4\",\"internalType\":\"bytes4\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bool\",\"internalType\":\"bool\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"unpause\",\"inputs\":[],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"withdraw\",\"inputs\":[{\"name\":\"recipient\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"event\",\"name\":\"EncryptedTransactionSubmitted\",\"inputs\":[{\"name\":\"index\",\"type\":\"uint64\",\"indexed\":true,\"internalType\":\"uint64\"},{\"name\":\"block\",\"type\":\"uint64\",\"indexed\":true,\"internalType\":\"uint64\"},{\"name\":\"encryptedTransaction\",\"type\":\"bytes\",\"indexed\":false,\"internalType\":\"bytes\"},{\"name\":\"sender\",\"type\":\"address\",\"indexed\":false,\"internalType\":\"address\"},{\"name\":\"gasLimit\",\"type\":\"uint64\",\"indexed\":false,\"internalType\":\"uint64\"},{\"name\":\"cumulativeGasLimit\",\"type\":\"uint64\",\"indexed\":false,\"internalType\":\"uint64\"},{\"name\":\"fee\",\"type\":\"uint256\",\"indexed\":false,\"internalType\":\"uint256\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"FeesWithdrawn\",\"inputs\":[{\"name\":\"recipient\",\"type\":\"address\",\"indexed\":false,\"internalType\":\"address\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"Paused\",\"inputs\":[{\"name\":\"account\",\"type\":\"address\",\"indexed\":false,\"internalType\":\"address\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"RoleAdminChanged\",\"inputs\":[{\"name\":\"role\",\"type\":\"bytes32\",\"indexed\":true,\"internalType\":\"bytes32\"},{\"name\":\"previousAdminRole\",\"type\":\"bytes32\",\"indexed\":true,\"internalType\":\"bytes32\"},{\"name\":\"newAdminRole\",\"type\":\"bytes32\",\"indexed\":true,\"internalType\":\"bytes32\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"RoleGranted\",\"inputs\":[{\"name\":\"role\",\"type\":\"bytes32\",\"indexed\":true,\"internalType\":\"bytes32\"},{\"name\":\"account\",\"type\":\"address\",\"indexed\":true,\"internalType\":\"address\"},{\"name\":\"sender\",\"type\":\"address\",\"indexed\":true,\"internalType\":\"address\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"RoleRevoked\",\"inputs\":[{\"name\":\"role\",\"type\":\"bytes32\",\"indexed\":true,\"internalType\":\"bytes32\"},{\"name\":\"account\",\"type\":\"address\",\"indexed\":true,\"internalType\":\"address\"},{\"name\":\"sender\",\"type\":\"address\",\"indexed\":true,\"internalType\":\"address\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"Unpaused\",\"inputs\":[{\"name\":\"account\",\"type\":\"address\",\"indexed\":false,\"internalType\":\"address\"}],\"anonymous\":false},{\"type\":\"error\",\"name\":\"AccessControlBadConfirmation\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"AccessControlUnauthorizedAccount\",\"inputs\":[{\"name\":\"account\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"neededRole\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]},{\"type\":\"error\",\"name\":\"AlreadyInitialized\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"BlockAlreadyFinalized\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"BlockGasLimitExceeded\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"EnforcedPause\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"ExpectedPause\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"InsufficientFunds\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"TransferEtherFailed\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"UnauthorizedInitializer\",\"inputs\":[]}]",
 }
 
-// BindingsABI is the input ABI used to generate the binding from.
-// Deprecated: Use BindingsMetaData.ABI instead.
-var BindingsABI = BindingsMetaData.ABI
+// InboxABI is the input ABI used to generate the binding from.
+// Deprecated: Use InboxMetaData.ABI instead.
+var InboxABI = InboxMetaData.ABI
 
-// Bindings is an auto generated Go binding around an Ethereum contract.
-type Bindings struct {
-	BindingsCaller     // Read-only binding to the contract
-	BindingsTransactor // Write-only binding to the contract
-	BindingsFilterer   // Log filterer for contract events
+// Inbox is an auto generated Go binding around an Ethereum contract.
+type Inbox struct {
+	InboxCaller     // Read-only binding to the contract
+	InboxTransactor // Write-only binding to the contract
+	InboxFilterer   // Log filterer for contract events
 }
 
-// BindingsCaller is an auto generated read-only Go binding around an Ethereum contract.
-type BindingsCaller struct {
+// InboxCaller is an auto generated read-only Go binding around an Ethereum contract.
+type InboxCaller struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// BindingsTransactor is an auto generated write-only Go binding around an Ethereum contract.
-type BindingsTransactor struct {
+// InboxTransactor is an auto generated write-only Go binding around an Ethereum contract.
+type InboxTransactor struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// BindingsFilterer is an auto generated log filtering Go binding around an Ethereum contract events.
-type BindingsFilterer struct {
+// InboxFilterer is an auto generated log filtering Go binding around an Ethereum contract events.
+type InboxFilterer struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// BindingsSession is an auto generated Go binding around an Ethereum contract,
+// InboxSession is an auto generated Go binding around an Ethereum contract,
 // with pre-set call and transact options.
-type BindingsSession struct {
-	Contract     *Bindings         // Generic contract binding to set the session for
+type InboxSession struct {
+	Contract     *Inbox            // Generic contract binding to set the session for
 	CallOpts     bind.CallOpts     // Call options to use throughout this session
 	TransactOpts bind.TransactOpts // Transaction auth options to use throughout this session
 }
 
-// BindingsCallerSession is an auto generated read-only Go binding around an Ethereum contract,
+// InboxCallerSession is an auto generated read-only Go binding around an Ethereum contract,
 // with pre-set call options.
-type BindingsCallerSession struct {
-	Contract *BindingsCaller // Generic contract caller binding to set the session for
-	CallOpts bind.CallOpts   // Call options to use throughout this session
+type InboxCallerSession struct {
+	Contract *InboxCaller  // Generic contract caller binding to set the session for
+	CallOpts bind.CallOpts // Call options to use throughout this session
 }
 
-// BindingsTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
+// InboxTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
 // with pre-set transact options.
-type BindingsTransactorSession struct {
-	Contract     *BindingsTransactor // Generic contract transactor binding to set the session for
-	TransactOpts bind.TransactOpts   // Transaction auth options to use throughout this session
+type InboxTransactorSession struct {
+	Contract     *InboxTransactor  // Generic contract transactor binding to set the session for
+	TransactOpts bind.TransactOpts // Transaction auth options to use throughout this session
 }
 
-// BindingsRaw is an auto generated low-level Go binding around an Ethereum contract.
-type BindingsRaw struct {
-	Contract *Bindings // Generic contract binding to access the raw methods on
+// InboxRaw is an auto generated low-level Go binding around an Ethereum contract.
+type InboxRaw struct {
+	Contract *Inbox // Generic contract binding to access the raw methods on
 }
 
-// BindingsCallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
-type BindingsCallerRaw struct {
-	Contract *BindingsCaller // Generic read-only contract binding to access the raw methods on
+// InboxCallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
+type InboxCallerRaw struct {
+	Contract *InboxCaller // Generic read-only contract binding to access the raw methods on
 }
 
-// BindingsTransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
-type BindingsTransactorRaw struct {
-	Contract *BindingsTransactor // Generic write-only contract binding to access the raw methods on
+// InboxTransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
+type InboxTransactorRaw struct {
+	Contract *InboxTransactor // Generic write-only contract binding to access the raw methods on
 }
 
-// NewBindings creates a new instance of Bindings, bound to a specific deployed contract.
-func NewBindings(address common.Address, backend bind.ContractBackend) (*Bindings, error) {
-	contract, err := bindBindings(address, backend, backend, backend)
+// NewInbox creates a new instance of Inbox, bound to a specific deployed contract.
+func NewInbox(address common.Address, backend bind.ContractBackend) (*Inbox, error) {
+	contract, err := bindInbox(address, backend, backend, backend)
 	if err != nil {
 		return nil, err
 	}
-	return &Bindings{BindingsCaller: BindingsCaller{contract: contract}, BindingsTransactor: BindingsTransactor{contract: contract}, BindingsFilterer: BindingsFilterer{contract: contract}}, nil
+	return &Inbox{InboxCaller: InboxCaller{contract: contract}, InboxTransactor: InboxTransactor{contract: contract}, InboxFilterer: InboxFilterer{contract: contract}}, nil
 }
 
-// NewBindingsCaller creates a new read-only instance of Bindings, bound to a specific deployed contract.
-func NewBindingsCaller(address common.Address, caller bind.ContractCaller) (*BindingsCaller, error) {
-	contract, err := bindBindings(address, caller, nil, nil)
+// NewInboxCaller creates a new read-only instance of Inbox, bound to a specific deployed contract.
+func NewInboxCaller(address common.Address, caller bind.ContractCaller) (*InboxCaller, error) {
+	contract, err := bindInbox(address, caller, nil, nil)
 	if err != nil {
 		return nil, err
 	}
-	return &BindingsCaller{contract: contract}, nil
+	return &InboxCaller{contract: contract}, nil
 }
 
-// NewBindingsTransactor creates a new write-only instance of Bindings, bound to a specific deployed contract.
-func NewBindingsTransactor(address common.Address, transactor bind.ContractTransactor) (*BindingsTransactor, error) {
-	contract, err := bindBindings(address, nil, transactor, nil)
+// NewInboxTransactor creates a new write-only instance of Inbox, bound to a specific deployed contract.
+func NewInboxTransactor(address common.Address, transactor bind.ContractTransactor) (*InboxTransactor, error) {
+	contract, err := bindInbox(address, nil, transactor, nil)
 	if err != nil {
 		return nil, err
 	}
-	return &BindingsTransactor{contract: contract}, nil
+	return &InboxTransactor{contract: contract}, nil
 }
 
-// NewBindingsFilterer creates a new log filterer instance of Bindings, bound to a specific deployed contract.
-func NewBindingsFilterer(address common.Address, filterer bind.ContractFilterer) (*BindingsFilterer, error) {
-	contract, err := bindBindings(address, nil, nil, filterer)
+// NewInboxFilterer creates a new log filterer instance of Inbox, bound to a specific deployed contract.
+func NewInboxFilterer(address common.Address, filterer bind.ContractFilterer) (*InboxFilterer, error) {
+	contract, err := bindInbox(address, nil, nil, filterer)
 	if err != nil {
 		return nil, err
 	}
-	return &BindingsFilterer{contract: contract}, nil
+	return &InboxFilterer{contract: contract}, nil
 }
 
-// bindBindings binds a generic wrapper to an already deployed contract.
-func bindBindings(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
-	parsed, err := BindingsMetaData.GetAbi()
+// bindInbox binds a generic wrapper to an already deployed contract.
+func bindInbox(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
+	parsed, err := InboxMetaData.GetAbi()
 	if err != nil {
 		return nil, err
 	}
@@ -154,46 +154,46 @@ func bindBindings(address common.Address, caller bind.ContractCaller, transactor
 // sets the output to result. The result type might be a single field for simple
 // returns, a slice of interfaces for anonymous returns and a struct for named
 // returns.
-func (_Bindings *BindingsRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _Bindings.Contract.BindingsCaller.contract.Call(opts, result, method, params...)
+func (_Inbox *InboxRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _Inbox.Contract.InboxCaller.contract.Call(opts, result, method, params...)
 }
 
 // Transfer initiates a plain transaction to move funds to the contract, calling
 // its default method if one is available.
-func (_Bindings *BindingsRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _Bindings.Contract.BindingsTransactor.contract.Transfer(opts)
+func (_Inbox *InboxRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _Inbox.Contract.InboxTransactor.contract.Transfer(opts)
 }
 
 // Transact invokes the (paid) contract method with params as input values.
-func (_Bindings *BindingsRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _Bindings.Contract.BindingsTransactor.contract.Transact(opts, method, params...)
+func (_Inbox *InboxRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _Inbox.Contract.InboxTransactor.contract.Transact(opts, method, params...)
 }
 
 // Call invokes the (constant) contract method with params as input values and
 // sets the output to result. The result type might be a single field for simple
 // returns, a slice of interfaces for anonymous returns and a struct for named
 // returns.
-func (_Bindings *BindingsCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _Bindings.Contract.contract.Call(opts, result, method, params...)
+func (_Inbox *InboxCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _Inbox.Contract.contract.Call(opts, result, method, params...)
 }
 
 // Transfer initiates a plain transaction to move funds to the contract, calling
 // its default method if one is available.
-func (_Bindings *BindingsTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _Bindings.Contract.contract.Transfer(opts)
+func (_Inbox *InboxTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _Inbox.Contract.contract.Transfer(opts)
 }
 
 // Transact invokes the (paid) contract method with params as input values.
-func (_Bindings *BindingsTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _Bindings.Contract.contract.Transact(opts, method, params...)
+func (_Inbox *InboxTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _Inbox.Contract.contract.Transact(opts, method, params...)
 }
 
 // BLOCKGASLIMITSETTERROLE is a free data retrieval call binding the contract method 0x91de737e.
 //
 // Solidity: function BLOCK_GAS_LIMIT_SETTER_ROLE() view returns(bytes32)
-func (_Bindings *BindingsCaller) BLOCKGASLIMITSETTERROLE(opts *bind.CallOpts) ([32]byte, error) {
+func (_Inbox *InboxCaller) BLOCKGASLIMITSETTERROLE(opts *bind.CallOpts) ([32]byte, error) {
 	var out []interface{}
-	err := _Bindings.contract.Call(opts, &out, "BLOCK_GAS_LIMIT_SETTER_ROLE")
+	err := _Inbox.contract.Call(opts, &out, "BLOCK_GAS_LIMIT_SETTER_ROLE")
 
 	if err != nil {
 		return *new([32]byte), err
@@ -208,23 +208,23 @@ func (_Bindings *BindingsCaller) BLOCKGASLIMITSETTERROLE(opts *bind.CallOpts) ([
 // BLOCKGASLIMITSETTERROLE is a free data retrieval call binding the contract method 0x91de737e.
 //
 // Solidity: function BLOCK_GAS_LIMIT_SETTER_ROLE() view returns(bytes32)
-func (_Bindings *BindingsSession) BLOCKGASLIMITSETTERROLE() ([32]byte, error) {
-	return _Bindings.Contract.BLOCKGASLIMITSETTERROLE(&_Bindings.CallOpts)
+func (_Inbox *InboxSession) BLOCKGASLIMITSETTERROLE() ([32]byte, error) {
+	return _Inbox.Contract.BLOCKGASLIMITSETTERROLE(&_Inbox.CallOpts)
 }
 
 // BLOCKGASLIMITSETTERROLE is a free data retrieval call binding the contract method 0x91de737e.
 //
 // Solidity: function BLOCK_GAS_LIMIT_SETTER_ROLE() view returns(bytes32)
-func (_Bindings *BindingsCallerSession) BLOCKGASLIMITSETTERROLE() ([32]byte, error) {
-	return _Bindings.Contract.BLOCKGASLIMITSETTERROLE(&_Bindings.CallOpts)
+func (_Inbox *InboxCallerSession) BLOCKGASLIMITSETTERROLE() ([32]byte, error) {
+	return _Inbox.Contract.BLOCKGASLIMITSETTERROLE(&_Inbox.CallOpts)
 }
 
 // DEFAULTADMINROLE is a free data retrieval call binding the contract method 0xa217fddf.
 //
 // Solidity: function DEFAULT_ADMIN_ROLE() view returns(bytes32)
-func (_Bindings *BindingsCaller) DEFAULTADMINROLE(opts *bind.CallOpts) ([32]byte, error) {
+func (_Inbox *InboxCaller) DEFAULTADMINROLE(opts *bind.CallOpts) ([32]byte, error) {
 	var out []interface{}
-	err := _Bindings.contract.Call(opts, &out, "DEFAULT_ADMIN_ROLE")
+	err := _Inbox.contract.Call(opts, &out, "DEFAULT_ADMIN_ROLE")
 
 	if err != nil {
 		return *new([32]byte), err
@@ -239,23 +239,23 @@ func (_Bindings *BindingsCaller) DEFAULTADMINROLE(opts *bind.CallOpts) ([32]byte
 // DEFAULTADMINROLE is a free data retrieval call binding the contract method 0xa217fddf.
 //
 // Solidity: function DEFAULT_ADMIN_ROLE() view returns(bytes32)
-func (_Bindings *BindingsSession) DEFAULTADMINROLE() ([32]byte, error) {
-	return _Bindings.Contract.DEFAULTADMINROLE(&_Bindings.CallOpts)
+func (_Inbox *InboxSession) DEFAULTADMINROLE() ([32]byte, error) {
+	return _Inbox.Contract.DEFAULTADMINROLE(&_Inbox.CallOpts)
 }
 
 // DEFAULTADMINROLE is a free data retrieval call binding the contract method 0xa217fddf.
 //
 // Solidity: function DEFAULT_ADMIN_ROLE() view returns(bytes32)
-func (_Bindings *BindingsCallerSession) DEFAULTADMINROLE() ([32]byte, error) {
-	return _Bindings.Contract.DEFAULTADMINROLE(&_Bindings.CallOpts)
+func (_Inbox *InboxCallerSession) DEFAULTADMINROLE() ([32]byte, error) {
+	return _Inbox.Contract.DEFAULTADMINROLE(&_Inbox.CallOpts)
 }
 
 // PAUSERROLE is a free data retrieval call binding the contract method 0xe63ab1e9.
 //
 // Solidity: function PAUSER_ROLE() view returns(bytes32)
-func (_Bindings *BindingsCaller) PAUSERROLE(opts *bind.CallOpts) ([32]byte, error) {
+func (_Inbox *InboxCaller) PAUSERROLE(opts *bind.CallOpts) ([32]byte, error) {
 	var out []interface{}
-	err := _Bindings.contract.Call(opts, &out, "PAUSER_ROLE")
+	err := _Inbox.contract.Call(opts, &out, "PAUSER_ROLE")
 
 	if err != nil {
 		return *new([32]byte), err
@@ -270,23 +270,23 @@ func (_Bindings *BindingsCaller) PAUSERROLE(opts *bind.CallOpts) ([32]byte, erro
 // PAUSERROLE is a free data retrieval call binding the contract method 0xe63ab1e9.
 //
 // Solidity: function PAUSER_ROLE() view returns(bytes32)
-func (_Bindings *BindingsSession) PAUSERROLE() ([32]byte, error) {
-	return _Bindings.Contract.PAUSERROLE(&_Bindings.CallOpts)
+func (_Inbox *InboxSession) PAUSERROLE() ([32]byte, error) {
+	return _Inbox.Contract.PAUSERROLE(&_Inbox.CallOpts)
 }
 
 // PAUSERROLE is a free data retrieval call binding the contract method 0xe63ab1e9.
 //
 // Solidity: function PAUSER_ROLE() view returns(bytes32)
-func (_Bindings *BindingsCallerSession) PAUSERROLE() ([32]byte, error) {
-	return _Bindings.Contract.PAUSERROLE(&_Bindings.CallOpts)
+func (_Inbox *InboxCallerSession) PAUSERROLE() ([32]byte, error) {
+	return _Inbox.Contract.PAUSERROLE(&_Inbox.CallOpts)
 }
 
 // SEQUENCERROLE is a free data retrieval call binding the contract method 0x4842855c.
 //
 // Solidity: function SEQUENCER_ROLE() view returns(bytes32)
-func (_Bindings *BindingsCaller) SEQUENCERROLE(opts *bind.CallOpts) ([32]byte, error) {
+func (_Inbox *InboxCaller) SEQUENCERROLE(opts *bind.CallOpts) ([32]byte, error) {
 	var out []interface{}
-	err := _Bindings.contract.Call(opts, &out, "SEQUENCER_ROLE")
+	err := _Inbox.contract.Call(opts, &out, "SEQUENCER_ROLE")
 
 	if err != nil {
 		return *new([32]byte), err
@@ -301,23 +301,23 @@ func (_Bindings *BindingsCaller) SEQUENCERROLE(opts *bind.CallOpts) ([32]byte, e
 // SEQUENCERROLE is a free data retrieval call binding the contract method 0x4842855c.
 //
 // Solidity: function SEQUENCER_ROLE() view returns(bytes32)
-func (_Bindings *BindingsSession) SEQUENCERROLE() ([32]byte, error) {
-	return _Bindings.Contract.SEQUENCERROLE(&_Bindings.CallOpts)
+func (_Inbox *InboxSession) SEQUENCERROLE() ([32]byte, error) {
+	return _Inbox.Contract.SEQUENCERROLE(&_Inbox.CallOpts)
 }
 
 // SEQUENCERROLE is a free data retrieval call binding the contract method 0x4842855c.
 //
 // Solidity: function SEQUENCER_ROLE() view returns(bytes32)
-func (_Bindings *BindingsCallerSession) SEQUENCERROLE() ([32]byte, error) {
-	return _Bindings.Contract.SEQUENCERROLE(&_Bindings.CallOpts)
+func (_Inbox *InboxCallerSession) SEQUENCERROLE() ([32]byte, error) {
+	return _Inbox.Contract.SEQUENCERROLE(&_Inbox.CallOpts)
 }
 
 // WITHDRAWROLE is a free data retrieval call binding the contract method 0xe02023a1.
 //
 // Solidity: function WITHDRAW_ROLE() view returns(bytes32)
-func (_Bindings *BindingsCaller) WITHDRAWROLE(opts *bind.CallOpts) ([32]byte, error) {
+func (_Inbox *InboxCaller) WITHDRAWROLE(opts *bind.CallOpts) ([32]byte, error) {
 	var out []interface{}
-	err := _Bindings.contract.Call(opts, &out, "WITHDRAW_ROLE")
+	err := _Inbox.contract.Call(opts, &out, "WITHDRAW_ROLE")
 
 	if err != nil {
 		return *new([32]byte), err
@@ -332,23 +332,23 @@ func (_Bindings *BindingsCaller) WITHDRAWROLE(opts *bind.CallOpts) ([32]byte, er
 // WITHDRAWROLE is a free data retrieval call binding the contract method 0xe02023a1.
 //
 // Solidity: function WITHDRAW_ROLE() view returns(bytes32)
-func (_Bindings *BindingsSession) WITHDRAWROLE() ([32]byte, error) {
-	return _Bindings.Contract.WITHDRAWROLE(&_Bindings.CallOpts)
+func (_Inbox *InboxSession) WITHDRAWROLE() ([32]byte, error) {
+	return _Inbox.Contract.WITHDRAWROLE(&_Inbox.CallOpts)
 }
 
 // WITHDRAWROLE is a free data retrieval call binding the contract method 0xe02023a1.
 //
 // Solidity: function WITHDRAW_ROLE() view returns(bytes32)
-func (_Bindings *BindingsCallerSession) WITHDRAWROLE() ([32]byte, error) {
-	return _Bindings.Contract.WITHDRAWROLE(&_Bindings.CallOpts)
+func (_Inbox *InboxCallerSession) WITHDRAWROLE() ([32]byte, error) {
+	return _Inbox.Contract.WITHDRAWROLE(&_Inbox.CallOpts)
 }
 
 // GetBlockGasLimit is a free data retrieval call binding the contract method 0x2cc8377d.
 //
 // Solidity: function getBlockGasLimit() view returns(uint64)
-func (_Bindings *BindingsCaller) GetBlockGasLimit(opts *bind.CallOpts) (uint64, error) {
+func (_Inbox *InboxCaller) GetBlockGasLimit(opts *bind.CallOpts) (uint64, error) {
 	var out []interface{}
-	err := _Bindings.contract.Call(opts, &out, "getBlockGasLimit")
+	err := _Inbox.contract.Call(opts, &out, "getBlockGasLimit")
 
 	if err != nil {
 		return *new(uint64), err
@@ -363,23 +363,23 @@ func (_Bindings *BindingsCaller) GetBlockGasLimit(opts *bind.CallOpts) (uint64, 
 // GetBlockGasLimit is a free data retrieval call binding the contract method 0x2cc8377d.
 //
 // Solidity: function getBlockGasLimit() view returns(uint64)
-func (_Bindings *BindingsSession) GetBlockGasLimit() (uint64, error) {
-	return _Bindings.Contract.GetBlockGasLimit(&_Bindings.CallOpts)
+func (_Inbox *InboxSession) GetBlockGasLimit() (uint64, error) {
+	return _Inbox.Contract.GetBlockGasLimit(&_Inbox.CallOpts)
 }
 
 // GetBlockGasLimit is a free data retrieval call binding the contract method 0x2cc8377d.
 //
 // Solidity: function getBlockGasLimit() view returns(uint64)
-func (_Bindings *BindingsCallerSession) GetBlockGasLimit() (uint64, error) {
-	return _Bindings.Contract.GetBlockGasLimit(&_Bindings.CallOpts)
+func (_Inbox *InboxCallerSession) GetBlockGasLimit() (uint64, error) {
+	return _Inbox.Contract.GetBlockGasLimit(&_Inbox.CallOpts)
 }
 
 // GetRoleAdmin is a free data retrieval call binding the contract method 0x248a9ca3.
 //
 // Solidity: function getRoleAdmin(bytes32 role) view returns(bytes32)
-func (_Bindings *BindingsCaller) GetRoleAdmin(opts *bind.CallOpts, role [32]byte) ([32]byte, error) {
+func (_Inbox *InboxCaller) GetRoleAdmin(opts *bind.CallOpts, role [32]byte) ([32]byte, error) {
 	var out []interface{}
-	err := _Bindings.contract.Call(opts, &out, "getRoleAdmin", role)
+	err := _Inbox.contract.Call(opts, &out, "getRoleAdmin", role)
 
 	if err != nil {
 		return *new([32]byte), err
@@ -394,23 +394,23 @@ func (_Bindings *BindingsCaller) GetRoleAdmin(opts *bind.CallOpts, role [32]byte
 // GetRoleAdmin is a free data retrieval call binding the contract method 0x248a9ca3.
 //
 // Solidity: function getRoleAdmin(bytes32 role) view returns(bytes32)
-func (_Bindings *BindingsSession) GetRoleAdmin(role [32]byte) ([32]byte, error) {
-	return _Bindings.Contract.GetRoleAdmin(&_Bindings.CallOpts, role)
+func (_Inbox *InboxSession) GetRoleAdmin(role [32]byte) ([32]byte, error) {
+	return _Inbox.Contract.GetRoleAdmin(&_Inbox.CallOpts, role)
 }
 
 // GetRoleAdmin is a free data retrieval call binding the contract method 0x248a9ca3.
 //
 // Solidity: function getRoleAdmin(bytes32 role) view returns(bytes32)
-func (_Bindings *BindingsCallerSession) GetRoleAdmin(role [32]byte) ([32]byte, error) {
-	return _Bindings.Contract.GetRoleAdmin(&_Bindings.CallOpts, role)
+func (_Inbox *InboxCallerSession) GetRoleAdmin(role [32]byte) ([32]byte, error) {
+	return _Inbox.Contract.GetRoleAdmin(&_Inbox.CallOpts, role)
 }
 
 // GetTransactions is a free data retrieval call binding the contract method 0x552fd4aa.
 //
 // Solidity: function getTransactions(uint64 blockNumber) view returns((bytes,address,uint64,uint64)[])
-func (_Bindings *BindingsCaller) GetTransactions(opts *bind.CallOpts, blockNumber uint64) ([]InboxTransaction, error) {
+func (_Inbox *InboxCaller) GetTransactions(opts *bind.CallOpts, blockNumber uint64) ([]InboxTransaction, error) {
 	var out []interface{}
-	err := _Bindings.contract.Call(opts, &out, "getTransactions", blockNumber)
+	err := _Inbox.contract.Call(opts, &out, "getTransactions", blockNumber)
 
 	if err != nil {
 		return *new([]InboxTransaction), err
@@ -425,23 +425,23 @@ func (_Bindings *BindingsCaller) GetTransactions(opts *bind.CallOpts, blockNumbe
 // GetTransactions is a free data retrieval call binding the contract method 0x552fd4aa.
 //
 // Solidity: function getTransactions(uint64 blockNumber) view returns((bytes,address,uint64,uint64)[])
-func (_Bindings *BindingsSession) GetTransactions(blockNumber uint64) ([]InboxTransaction, error) {
-	return _Bindings.Contract.GetTransactions(&_Bindings.CallOpts, blockNumber)
+func (_Inbox *InboxSession) GetTransactions(blockNumber uint64) ([]InboxTransaction, error) {
+	return _Inbox.Contract.GetTransactions(&_Inbox.CallOpts, blockNumber)
 }
 
 // GetTransactions is a free data retrieval call binding the contract method 0x552fd4aa.
 //
 // Solidity: function getTransactions(uint64 blockNumber) view returns((bytes,address,uint64,uint64)[])
-func (_Bindings *BindingsCallerSession) GetTransactions(blockNumber uint64) ([]InboxTransaction, error) {
-	return _Bindings.Contract.GetTransactions(&_Bindings.CallOpts, blockNumber)
+func (_Inbox *InboxCallerSession) GetTransactions(blockNumber uint64) ([]InboxTransaction, error) {
+	return _Inbox.Contract.GetTransactions(&_Inbox.CallOpts, blockNumber)
 }
 
 // HasRole is a free data retrieval call binding the contract method 0x91d14854.
 //
 // Solidity: function hasRole(bytes32 role, address account) view returns(bool)
-func (_Bindings *BindingsCaller) HasRole(opts *bind.CallOpts, role [32]byte, account common.Address) (bool, error) {
+func (_Inbox *InboxCaller) HasRole(opts *bind.CallOpts, role [32]byte, account common.Address) (bool, error) {
 	var out []interface{}
-	err := _Bindings.contract.Call(opts, &out, "hasRole", role, account)
+	err := _Inbox.contract.Call(opts, &out, "hasRole", role, account)
 
 	if err != nil {
 		return *new(bool), err
@@ -456,23 +456,23 @@ func (_Bindings *BindingsCaller) HasRole(opts *bind.CallOpts, role [32]byte, acc
 // HasRole is a free data retrieval call binding the contract method 0x91d14854.
 //
 // Solidity: function hasRole(bytes32 role, address account) view returns(bool)
-func (_Bindings *BindingsSession) HasRole(role [32]byte, account common.Address) (bool, error) {
-	return _Bindings.Contract.HasRole(&_Bindings.CallOpts, role, account)
+func (_Inbox *InboxSession) HasRole(role [32]byte, account common.Address) (bool, error) {
+	return _Inbox.Contract.HasRole(&_Inbox.CallOpts, role, account)
 }
 
 // HasRole is a free data retrieval call binding the contract method 0x91d14854.
 //
 // Solidity: function hasRole(bytes32 role, address account) view returns(bool)
-func (_Bindings *BindingsCallerSession) HasRole(role [32]byte, account common.Address) (bool, error) {
-	return _Bindings.Contract.HasRole(&_Bindings.CallOpts, role, account)
+func (_Inbox *InboxCallerSession) HasRole(role [32]byte, account common.Address) (bool, error) {
+	return _Inbox.Contract.HasRole(&_Inbox.CallOpts, role, account)
 }
 
 // Initializer is a free data retrieval call binding the contract method 0x9ce110d7.
 //
 // Solidity: function initializer() view returns(address)
-func (_Bindings *BindingsCaller) Initializer(opts *bind.CallOpts) (common.Address, error) {
+func (_Inbox *InboxCaller) Initializer(opts *bind.CallOpts) (common.Address, error) {
 	var out []interface{}
-	err := _Bindings.contract.Call(opts, &out, "initializer")
+	err := _Inbox.contract.Call(opts, &out, "initializer")
 
 	if err != nil {
 		return *new(common.Address), err
@@ -487,23 +487,23 @@ func (_Bindings *BindingsCaller) Initializer(opts *bind.CallOpts) (common.Addres
 // Initializer is a free data retrieval call binding the contract method 0x9ce110d7.
 //
 // Solidity: function initializer() view returns(address)
-func (_Bindings *BindingsSession) Initializer() (common.Address, error) {
-	return _Bindings.Contract.Initializer(&_Bindings.CallOpts)
+func (_Inbox *InboxSession) Initializer() (common.Address, error) {
+	return _Inbox.Contract.Initializer(&_Inbox.CallOpts)
 }
 
 // Initializer is a free data retrieval call binding the contract method 0x9ce110d7.
 //
 // Solidity: function initializer() view returns(address)
-func (_Bindings *BindingsCallerSession) Initializer() (common.Address, error) {
-	return _Bindings.Contract.Initializer(&_Bindings.CallOpts)
+func (_Inbox *InboxCallerSession) Initializer() (common.Address, error) {
+	return _Inbox.Contract.Initializer(&_Inbox.CallOpts)
 }
 
 // Paused is a free data retrieval call binding the contract method 0x5c975abb.
 //
 // Solidity: function paused() view returns(bool)
-func (_Bindings *BindingsCaller) Paused(opts *bind.CallOpts) (bool, error) {
+func (_Inbox *InboxCaller) Paused(opts *bind.CallOpts) (bool, error) {
 	var out []interface{}
-	err := _Bindings.contract.Call(opts, &out, "paused")
+	err := _Inbox.contract.Call(opts, &out, "paused")
 
 	if err != nil {
 		return *new(bool), err
@@ -518,23 +518,23 @@ func (_Bindings *BindingsCaller) Paused(opts *bind.CallOpts) (bool, error) {
 // Paused is a free data retrieval call binding the contract method 0x5c975abb.
 //
 // Solidity: function paused() view returns(bool)
-func (_Bindings *BindingsSession) Paused() (bool, error) {
-	return _Bindings.Contract.Paused(&_Bindings.CallOpts)
+func (_Inbox *InboxSession) Paused() (bool, error) {
+	return _Inbox.Contract.Paused(&_Inbox.CallOpts)
 }
 
 // Paused is a free data retrieval call binding the contract method 0x5c975abb.
 //
 // Solidity: function paused() view returns(bool)
-func (_Bindings *BindingsCallerSession) Paused() (bool, error) {
-	return _Bindings.Contract.Paused(&_Bindings.CallOpts)
+func (_Inbox *InboxCallerSession) Paused() (bool, error) {
+	return _Inbox.Contract.Paused(&_Inbox.CallOpts)
 }
 
 // SupportsInterface is a free data retrieval call binding the contract method 0x01ffc9a7.
 //
 // Solidity: function supportsInterface(bytes4 interfaceId) view returns(bool)
-func (_Bindings *BindingsCaller) SupportsInterface(opts *bind.CallOpts, interfaceId [4]byte) (bool, error) {
+func (_Inbox *InboxCaller) SupportsInterface(opts *bind.CallOpts, interfaceId [4]byte) (bool, error) {
 	var out []interface{}
-	err := _Bindings.contract.Call(opts, &out, "supportsInterface", interfaceId)
+	err := _Inbox.contract.Call(opts, &out, "supportsInterface", interfaceId)
 
 	if err != nil {
 		return *new(bool), err
@@ -549,230 +549,230 @@ func (_Bindings *BindingsCaller) SupportsInterface(opts *bind.CallOpts, interfac
 // SupportsInterface is a free data retrieval call binding the contract method 0x01ffc9a7.
 //
 // Solidity: function supportsInterface(bytes4 interfaceId) view returns(bool)
-func (_Bindings *BindingsSession) SupportsInterface(interfaceId [4]byte) (bool, error) {
-	return _Bindings.Contract.SupportsInterface(&_Bindings.CallOpts, interfaceId)
+func (_Inbox *InboxSession) SupportsInterface(interfaceId [4]byte) (bool, error) {
+	return _Inbox.Contract.SupportsInterface(&_Inbox.CallOpts, interfaceId)
 }
 
 // SupportsInterface is a free data retrieval call binding the contract method 0x01ffc9a7.
 //
 // Solidity: function supportsInterface(bytes4 interfaceId) view returns(bool)
-func (_Bindings *BindingsCallerSession) SupportsInterface(interfaceId [4]byte) (bool, error) {
-	return _Bindings.Contract.SupportsInterface(&_Bindings.CallOpts, interfaceId)
+func (_Inbox *InboxCallerSession) SupportsInterface(interfaceId [4]byte) (bool, error) {
+	return _Inbox.Contract.SupportsInterface(&_Inbox.CallOpts, interfaceId)
 }
 
 // Clear is a paid mutator transaction binding the contract method 0x52efea6e.
 //
 // Solidity: function clear() returns()
-func (_Bindings *BindingsTransactor) Clear(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _Bindings.contract.Transact(opts, "clear")
+func (_Inbox *InboxTransactor) Clear(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _Inbox.contract.Transact(opts, "clear")
 }
 
 // Clear is a paid mutator transaction binding the contract method 0x52efea6e.
 //
 // Solidity: function clear() returns()
-func (_Bindings *BindingsSession) Clear() (*types.Transaction, error) {
-	return _Bindings.Contract.Clear(&_Bindings.TransactOpts)
+func (_Inbox *InboxSession) Clear() (*types.Transaction, error) {
+	return _Inbox.Contract.Clear(&_Inbox.TransactOpts)
 }
 
 // Clear is a paid mutator transaction binding the contract method 0x52efea6e.
 //
 // Solidity: function clear() returns()
-func (_Bindings *BindingsTransactorSession) Clear() (*types.Transaction, error) {
-	return _Bindings.Contract.Clear(&_Bindings.TransactOpts)
+func (_Inbox *InboxTransactorSession) Clear() (*types.Transaction, error) {
+	return _Inbox.Contract.Clear(&_Inbox.TransactOpts)
 }
 
 // GrantRole is a paid mutator transaction binding the contract method 0x2f2ff15d.
 //
 // Solidity: function grantRole(bytes32 role, address account) returns()
-func (_Bindings *BindingsTransactor) GrantRole(opts *bind.TransactOpts, role [32]byte, account common.Address) (*types.Transaction, error) {
-	return _Bindings.contract.Transact(opts, "grantRole", role, account)
+func (_Inbox *InboxTransactor) GrantRole(opts *bind.TransactOpts, role [32]byte, account common.Address) (*types.Transaction, error) {
+	return _Inbox.contract.Transact(opts, "grantRole", role, account)
 }
 
 // GrantRole is a paid mutator transaction binding the contract method 0x2f2ff15d.
 //
 // Solidity: function grantRole(bytes32 role, address account) returns()
-func (_Bindings *BindingsSession) GrantRole(role [32]byte, account common.Address) (*types.Transaction, error) {
-	return _Bindings.Contract.GrantRole(&_Bindings.TransactOpts, role, account)
+func (_Inbox *InboxSession) GrantRole(role [32]byte, account common.Address) (*types.Transaction, error) {
+	return _Inbox.Contract.GrantRole(&_Inbox.TransactOpts, role, account)
 }
 
 // GrantRole is a paid mutator transaction binding the contract method 0x2f2ff15d.
 //
 // Solidity: function grantRole(bytes32 role, address account) returns()
-func (_Bindings *BindingsTransactorSession) GrantRole(role [32]byte, account common.Address) (*types.Transaction, error) {
-	return _Bindings.Contract.GrantRole(&_Bindings.TransactOpts, role, account)
+func (_Inbox *InboxTransactorSession) GrantRole(role [32]byte, account common.Address) (*types.Transaction, error) {
+	return _Inbox.Contract.GrantRole(&_Inbox.TransactOpts, role, account)
 }
 
 // Initialize is a paid mutator transaction binding the contract method 0x485cc955.
 //
 // Solidity: function initialize(address dao, address sequencer) returns()
-func (_Bindings *BindingsTransactor) Initialize(opts *bind.TransactOpts, dao common.Address, sequencer common.Address) (*types.Transaction, error) {
-	return _Bindings.contract.Transact(opts, "initialize", dao, sequencer)
+func (_Inbox *InboxTransactor) Initialize(opts *bind.TransactOpts, dao common.Address, sequencer common.Address) (*types.Transaction, error) {
+	return _Inbox.contract.Transact(opts, "initialize", dao, sequencer)
 }
 
 // Initialize is a paid mutator transaction binding the contract method 0x485cc955.
 //
 // Solidity: function initialize(address dao, address sequencer) returns()
-func (_Bindings *BindingsSession) Initialize(dao common.Address, sequencer common.Address) (*types.Transaction, error) {
-	return _Bindings.Contract.Initialize(&_Bindings.TransactOpts, dao, sequencer)
+func (_Inbox *InboxSession) Initialize(dao common.Address, sequencer common.Address) (*types.Transaction, error) {
+	return _Inbox.Contract.Initialize(&_Inbox.TransactOpts, dao, sequencer)
 }
 
 // Initialize is a paid mutator transaction binding the contract method 0x485cc955.
 //
 // Solidity: function initialize(address dao, address sequencer) returns()
-func (_Bindings *BindingsTransactorSession) Initialize(dao common.Address, sequencer common.Address) (*types.Transaction, error) {
-	return _Bindings.Contract.Initialize(&_Bindings.TransactOpts, dao, sequencer)
+func (_Inbox *InboxTransactorSession) Initialize(dao common.Address, sequencer common.Address) (*types.Transaction, error) {
+	return _Inbox.Contract.Initialize(&_Inbox.TransactOpts, dao, sequencer)
 }
 
 // Pause is a paid mutator transaction binding the contract method 0x8456cb59.
 //
 // Solidity: function pause() returns()
-func (_Bindings *BindingsTransactor) Pause(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _Bindings.contract.Transact(opts, "pause")
+func (_Inbox *InboxTransactor) Pause(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _Inbox.contract.Transact(opts, "pause")
 }
 
 // Pause is a paid mutator transaction binding the contract method 0x8456cb59.
 //
 // Solidity: function pause() returns()
-func (_Bindings *BindingsSession) Pause() (*types.Transaction, error) {
-	return _Bindings.Contract.Pause(&_Bindings.TransactOpts)
+func (_Inbox *InboxSession) Pause() (*types.Transaction, error) {
+	return _Inbox.Contract.Pause(&_Inbox.TransactOpts)
 }
 
 // Pause is a paid mutator transaction binding the contract method 0x8456cb59.
 //
 // Solidity: function pause() returns()
-func (_Bindings *BindingsTransactorSession) Pause() (*types.Transaction, error) {
-	return _Bindings.Contract.Pause(&_Bindings.TransactOpts)
+func (_Inbox *InboxTransactorSession) Pause() (*types.Transaction, error) {
+	return _Inbox.Contract.Pause(&_Inbox.TransactOpts)
 }
 
 // RenounceRole is a paid mutator transaction binding the contract method 0x36568abe.
 //
 // Solidity: function renounceRole(bytes32 role, address callerConfirmation) returns()
-func (_Bindings *BindingsTransactor) RenounceRole(opts *bind.TransactOpts, role [32]byte, callerConfirmation common.Address) (*types.Transaction, error) {
-	return _Bindings.contract.Transact(opts, "renounceRole", role, callerConfirmation)
+func (_Inbox *InboxTransactor) RenounceRole(opts *bind.TransactOpts, role [32]byte, callerConfirmation common.Address) (*types.Transaction, error) {
+	return _Inbox.contract.Transact(opts, "renounceRole", role, callerConfirmation)
 }
 
 // RenounceRole is a paid mutator transaction binding the contract method 0x36568abe.
 //
 // Solidity: function renounceRole(bytes32 role, address callerConfirmation) returns()
-func (_Bindings *BindingsSession) RenounceRole(role [32]byte, callerConfirmation common.Address) (*types.Transaction, error) {
-	return _Bindings.Contract.RenounceRole(&_Bindings.TransactOpts, role, callerConfirmation)
+func (_Inbox *InboxSession) RenounceRole(role [32]byte, callerConfirmation common.Address) (*types.Transaction, error) {
+	return _Inbox.Contract.RenounceRole(&_Inbox.TransactOpts, role, callerConfirmation)
 }
 
 // RenounceRole is a paid mutator transaction binding the contract method 0x36568abe.
 //
 // Solidity: function renounceRole(bytes32 role, address callerConfirmation) returns()
-func (_Bindings *BindingsTransactorSession) RenounceRole(role [32]byte, callerConfirmation common.Address) (*types.Transaction, error) {
-	return _Bindings.Contract.RenounceRole(&_Bindings.TransactOpts, role, callerConfirmation)
+func (_Inbox *InboxTransactorSession) RenounceRole(role [32]byte, callerConfirmation common.Address) (*types.Transaction, error) {
+	return _Inbox.Contract.RenounceRole(&_Inbox.TransactOpts, role, callerConfirmation)
 }
 
 // RevokeRole is a paid mutator transaction binding the contract method 0xd547741f.
 //
 // Solidity: function revokeRole(bytes32 role, address account) returns()
-func (_Bindings *BindingsTransactor) RevokeRole(opts *bind.TransactOpts, role [32]byte, account common.Address) (*types.Transaction, error) {
-	return _Bindings.contract.Transact(opts, "revokeRole", role, account)
+func (_Inbox *InboxTransactor) RevokeRole(opts *bind.TransactOpts, role [32]byte, account common.Address) (*types.Transaction, error) {
+	return _Inbox.contract.Transact(opts, "revokeRole", role, account)
 }
 
 // RevokeRole is a paid mutator transaction binding the contract method 0xd547741f.
 //
 // Solidity: function revokeRole(bytes32 role, address account) returns()
-func (_Bindings *BindingsSession) RevokeRole(role [32]byte, account common.Address) (*types.Transaction, error) {
-	return _Bindings.Contract.RevokeRole(&_Bindings.TransactOpts, role, account)
+func (_Inbox *InboxSession) RevokeRole(role [32]byte, account common.Address) (*types.Transaction, error) {
+	return _Inbox.Contract.RevokeRole(&_Inbox.TransactOpts, role, account)
 }
 
 // RevokeRole is a paid mutator transaction binding the contract method 0xd547741f.
 //
 // Solidity: function revokeRole(bytes32 role, address account) returns()
-func (_Bindings *BindingsTransactorSession) RevokeRole(role [32]byte, account common.Address) (*types.Transaction, error) {
-	return _Bindings.Contract.RevokeRole(&_Bindings.TransactOpts, role, account)
+func (_Inbox *InboxTransactorSession) RevokeRole(role [32]byte, account common.Address) (*types.Transaction, error) {
+	return _Inbox.Contract.RevokeRole(&_Inbox.TransactOpts, role, account)
 }
 
 // SetBlockGasLimit is a paid mutator transaction binding the contract method 0xae0dad60.
 //
 // Solidity: function setBlockGasLimit(uint64 newBlockGasLimit) returns()
-func (_Bindings *BindingsTransactor) SetBlockGasLimit(opts *bind.TransactOpts, newBlockGasLimit uint64) (*types.Transaction, error) {
-	return _Bindings.contract.Transact(opts, "setBlockGasLimit", newBlockGasLimit)
+func (_Inbox *InboxTransactor) SetBlockGasLimit(opts *bind.TransactOpts, newBlockGasLimit uint64) (*types.Transaction, error) {
+	return _Inbox.contract.Transact(opts, "setBlockGasLimit", newBlockGasLimit)
 }
 
 // SetBlockGasLimit is a paid mutator transaction binding the contract method 0xae0dad60.
 //
 // Solidity: function setBlockGasLimit(uint64 newBlockGasLimit) returns()
-func (_Bindings *BindingsSession) SetBlockGasLimit(newBlockGasLimit uint64) (*types.Transaction, error) {
-	return _Bindings.Contract.SetBlockGasLimit(&_Bindings.TransactOpts, newBlockGasLimit)
+func (_Inbox *InboxSession) SetBlockGasLimit(newBlockGasLimit uint64) (*types.Transaction, error) {
+	return _Inbox.Contract.SetBlockGasLimit(&_Inbox.TransactOpts, newBlockGasLimit)
 }
 
 // SetBlockGasLimit is a paid mutator transaction binding the contract method 0xae0dad60.
 //
 // Solidity: function setBlockGasLimit(uint64 newBlockGasLimit) returns()
-func (_Bindings *BindingsTransactorSession) SetBlockGasLimit(newBlockGasLimit uint64) (*types.Transaction, error) {
-	return _Bindings.Contract.SetBlockGasLimit(&_Bindings.TransactOpts, newBlockGasLimit)
+func (_Inbox *InboxTransactorSession) SetBlockGasLimit(newBlockGasLimit uint64) (*types.Transaction, error) {
+	return _Inbox.Contract.SetBlockGasLimit(&_Inbox.TransactOpts, newBlockGasLimit)
 }
 
 // SubmitEncryptedTransaction is a paid mutator transaction binding the contract method 0xa44e7cfe.
 //
 // Solidity: function submitEncryptedTransaction(uint64 blockNumber, bytes encryptedTransaction, uint64 gasLimit, address excessFeeRecipient) payable returns()
-func (_Bindings *BindingsTransactor) SubmitEncryptedTransaction(opts *bind.TransactOpts, blockNumber uint64, encryptedTransaction []byte, gasLimit uint64, excessFeeRecipient common.Address) (*types.Transaction, error) {
-	return _Bindings.contract.Transact(opts, "submitEncryptedTransaction", blockNumber, encryptedTransaction, gasLimit, excessFeeRecipient)
+func (_Inbox *InboxTransactor) SubmitEncryptedTransaction(opts *bind.TransactOpts, blockNumber uint64, encryptedTransaction []byte, gasLimit uint64, excessFeeRecipient common.Address) (*types.Transaction, error) {
+	return _Inbox.contract.Transact(opts, "submitEncryptedTransaction", blockNumber, encryptedTransaction, gasLimit, excessFeeRecipient)
 }
 
 // SubmitEncryptedTransaction is a paid mutator transaction binding the contract method 0xa44e7cfe.
 //
 // Solidity: function submitEncryptedTransaction(uint64 blockNumber, bytes encryptedTransaction, uint64 gasLimit, address excessFeeRecipient) payable returns()
-func (_Bindings *BindingsSession) SubmitEncryptedTransaction(blockNumber uint64, encryptedTransaction []byte, gasLimit uint64, excessFeeRecipient common.Address) (*types.Transaction, error) {
-	return _Bindings.Contract.SubmitEncryptedTransaction(&_Bindings.TransactOpts, blockNumber, encryptedTransaction, gasLimit, excessFeeRecipient)
+func (_Inbox *InboxSession) SubmitEncryptedTransaction(blockNumber uint64, encryptedTransaction []byte, gasLimit uint64, excessFeeRecipient common.Address) (*types.Transaction, error) {
+	return _Inbox.Contract.SubmitEncryptedTransaction(&_Inbox.TransactOpts, blockNumber, encryptedTransaction, gasLimit, excessFeeRecipient)
 }
 
 // SubmitEncryptedTransaction is a paid mutator transaction binding the contract method 0xa44e7cfe.
 //
 // Solidity: function submitEncryptedTransaction(uint64 blockNumber, bytes encryptedTransaction, uint64 gasLimit, address excessFeeRecipient) payable returns()
-func (_Bindings *BindingsTransactorSession) SubmitEncryptedTransaction(blockNumber uint64, encryptedTransaction []byte, gasLimit uint64, excessFeeRecipient common.Address) (*types.Transaction, error) {
-	return _Bindings.Contract.SubmitEncryptedTransaction(&_Bindings.TransactOpts, blockNumber, encryptedTransaction, gasLimit, excessFeeRecipient)
+func (_Inbox *InboxTransactorSession) SubmitEncryptedTransaction(blockNumber uint64, encryptedTransaction []byte, gasLimit uint64, excessFeeRecipient common.Address) (*types.Transaction, error) {
+	return _Inbox.Contract.SubmitEncryptedTransaction(&_Inbox.TransactOpts, blockNumber, encryptedTransaction, gasLimit, excessFeeRecipient)
 }
 
 // Unpause is a paid mutator transaction binding the contract method 0x3f4ba83a.
 //
 // Solidity: function unpause() returns()
-func (_Bindings *BindingsTransactor) Unpause(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _Bindings.contract.Transact(opts, "unpause")
+func (_Inbox *InboxTransactor) Unpause(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _Inbox.contract.Transact(opts, "unpause")
 }
 
 // Unpause is a paid mutator transaction binding the contract method 0x3f4ba83a.
 //
 // Solidity: function unpause() returns()
-func (_Bindings *BindingsSession) Unpause() (*types.Transaction, error) {
-	return _Bindings.Contract.Unpause(&_Bindings.TransactOpts)
+func (_Inbox *InboxSession) Unpause() (*types.Transaction, error) {
+	return _Inbox.Contract.Unpause(&_Inbox.TransactOpts)
 }
 
 // Unpause is a paid mutator transaction binding the contract method 0x3f4ba83a.
 //
 // Solidity: function unpause() returns()
-func (_Bindings *BindingsTransactorSession) Unpause() (*types.Transaction, error) {
-	return _Bindings.Contract.Unpause(&_Bindings.TransactOpts)
+func (_Inbox *InboxTransactorSession) Unpause() (*types.Transaction, error) {
+	return _Inbox.Contract.Unpause(&_Inbox.TransactOpts)
 }
 
 // Withdraw is a paid mutator transaction binding the contract method 0x51cff8d9.
 //
 // Solidity: function withdraw(address recipient) returns()
-func (_Bindings *BindingsTransactor) Withdraw(opts *bind.TransactOpts, recipient common.Address) (*types.Transaction, error) {
-	return _Bindings.contract.Transact(opts, "withdraw", recipient)
+func (_Inbox *InboxTransactor) Withdraw(opts *bind.TransactOpts, recipient common.Address) (*types.Transaction, error) {
+	return _Inbox.contract.Transact(opts, "withdraw", recipient)
 }
 
 // Withdraw is a paid mutator transaction binding the contract method 0x51cff8d9.
 //
 // Solidity: function withdraw(address recipient) returns()
-func (_Bindings *BindingsSession) Withdraw(recipient common.Address) (*types.Transaction, error) {
-	return _Bindings.Contract.Withdraw(&_Bindings.TransactOpts, recipient)
+func (_Inbox *InboxSession) Withdraw(recipient common.Address) (*types.Transaction, error) {
+	return _Inbox.Contract.Withdraw(&_Inbox.TransactOpts, recipient)
 }
 
 // Withdraw is a paid mutator transaction binding the contract method 0x51cff8d9.
 //
 // Solidity: function withdraw(address recipient) returns()
-func (_Bindings *BindingsTransactorSession) Withdraw(recipient common.Address) (*types.Transaction, error) {
-	return _Bindings.Contract.Withdraw(&_Bindings.TransactOpts, recipient)
+func (_Inbox *InboxTransactorSession) Withdraw(recipient common.Address) (*types.Transaction, error) {
+	return _Inbox.Contract.Withdraw(&_Inbox.TransactOpts, recipient)
 }
 
-// BindingsEncryptedTransactionSubmittedIterator is returned from FilterEncryptedTransactionSubmitted and is used to iterate over the raw logs and unpacked data for EncryptedTransactionSubmitted events raised by the Bindings contract.
-type BindingsEncryptedTransactionSubmittedIterator struct {
-	Event *BindingsEncryptedTransactionSubmitted // Event containing the contract specifics and raw log
+// InboxEncryptedTransactionSubmittedIterator is returned from FilterEncryptedTransactionSubmitted and is used to iterate over the raw logs and unpacked data for EncryptedTransactionSubmitted events raised by the Inbox contract.
+type InboxEncryptedTransactionSubmittedIterator struct {
+	Event *InboxEncryptedTransactionSubmitted // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -786,7 +786,7 @@ type BindingsEncryptedTransactionSubmittedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *BindingsEncryptedTransactionSubmittedIterator) Next() bool {
+func (it *InboxEncryptedTransactionSubmittedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -795,7 +795,7 @@ func (it *BindingsEncryptedTransactionSubmittedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(BindingsEncryptedTransactionSubmitted)
+			it.Event = new(InboxEncryptedTransactionSubmitted)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -810,7 +810,7 @@ func (it *BindingsEncryptedTransactionSubmittedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(BindingsEncryptedTransactionSubmitted)
+		it.Event = new(InboxEncryptedTransactionSubmitted)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -826,19 +826,19 @@ func (it *BindingsEncryptedTransactionSubmittedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *BindingsEncryptedTransactionSubmittedIterator) Error() error {
+func (it *InboxEncryptedTransactionSubmittedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *BindingsEncryptedTransactionSubmittedIterator) Close() error {
+func (it *InboxEncryptedTransactionSubmittedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// BindingsEncryptedTransactionSubmitted represents a EncryptedTransactionSubmitted event raised by the Bindings contract.
-type BindingsEncryptedTransactionSubmitted struct {
+// InboxEncryptedTransactionSubmitted represents a EncryptedTransactionSubmitted event raised by the Inbox contract.
+type InboxEncryptedTransactionSubmitted struct {
 	Index                uint64
 	Block                uint64
 	EncryptedTransaction []byte
@@ -852,7 +852,7 @@ type BindingsEncryptedTransactionSubmitted struct {
 // FilterEncryptedTransactionSubmitted is a free log retrieval operation binding the contract event 0x0ac44a68e7048007d82fa113a6c5d84bec8a110ed9e953d4f234fab3c9ecac53.
 //
 // Solidity: event EncryptedTransactionSubmitted(uint64 indexed index, uint64 indexed block, bytes encryptedTransaction, address sender, uint64 gasLimit, uint64 cumulativeGasLimit, uint256 fee)
-func (_Bindings *BindingsFilterer) FilterEncryptedTransactionSubmitted(opts *bind.FilterOpts, index []uint64, block []uint64) (*BindingsEncryptedTransactionSubmittedIterator, error) {
+func (_Inbox *InboxFilterer) FilterEncryptedTransactionSubmitted(opts *bind.FilterOpts, index []uint64, block []uint64) (*InboxEncryptedTransactionSubmittedIterator, error) {
 
 	var indexRule []interface{}
 	for _, indexItem := range index {
@@ -863,17 +863,17 @@ func (_Bindings *BindingsFilterer) FilterEncryptedTransactionSubmitted(opts *bin
 		blockRule = append(blockRule, blockItem)
 	}
 
-	logs, sub, err := _Bindings.contract.FilterLogs(opts, "EncryptedTransactionSubmitted", indexRule, blockRule)
+	logs, sub, err := _Inbox.contract.FilterLogs(opts, "EncryptedTransactionSubmitted", indexRule, blockRule)
 	if err != nil {
 		return nil, err
 	}
-	return &BindingsEncryptedTransactionSubmittedIterator{contract: _Bindings.contract, event: "EncryptedTransactionSubmitted", logs: logs, sub: sub}, nil
+	return &InboxEncryptedTransactionSubmittedIterator{contract: _Inbox.contract, event: "EncryptedTransactionSubmitted", logs: logs, sub: sub}, nil
 }
 
 // WatchEncryptedTransactionSubmitted is a free log subscription operation binding the contract event 0x0ac44a68e7048007d82fa113a6c5d84bec8a110ed9e953d4f234fab3c9ecac53.
 //
 // Solidity: event EncryptedTransactionSubmitted(uint64 indexed index, uint64 indexed block, bytes encryptedTransaction, address sender, uint64 gasLimit, uint64 cumulativeGasLimit, uint256 fee)
-func (_Bindings *BindingsFilterer) WatchEncryptedTransactionSubmitted(opts *bind.WatchOpts, sink chan<- *BindingsEncryptedTransactionSubmitted, index []uint64, block []uint64) (event.Subscription, error) {
+func (_Inbox *InboxFilterer) WatchEncryptedTransactionSubmitted(opts *bind.WatchOpts, sink chan<- *InboxEncryptedTransactionSubmitted, index []uint64, block []uint64) (event.Subscription, error) {
 
 	var indexRule []interface{}
 	for _, indexItem := range index {
@@ -884,7 +884,7 @@ func (_Bindings *BindingsFilterer) WatchEncryptedTransactionSubmitted(opts *bind
 		blockRule = append(blockRule, blockItem)
 	}
 
-	logs, sub, err := _Bindings.contract.WatchLogs(opts, "EncryptedTransactionSubmitted", indexRule, blockRule)
+	logs, sub, err := _Inbox.contract.WatchLogs(opts, "EncryptedTransactionSubmitted", indexRule, blockRule)
 	if err != nil {
 		return nil, err
 	}
@@ -894,8 +894,8 @@ func (_Bindings *BindingsFilterer) WatchEncryptedTransactionSubmitted(opts *bind
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(BindingsEncryptedTransactionSubmitted)
-				if err := _Bindings.contract.UnpackLog(event, "EncryptedTransactionSubmitted", log); err != nil {
+				event := new(InboxEncryptedTransactionSubmitted)
+				if err := _Inbox.contract.UnpackLog(event, "EncryptedTransactionSubmitted", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -919,18 +919,18 @@ func (_Bindings *BindingsFilterer) WatchEncryptedTransactionSubmitted(opts *bind
 // ParseEncryptedTransactionSubmitted is a log parse operation binding the contract event 0x0ac44a68e7048007d82fa113a6c5d84bec8a110ed9e953d4f234fab3c9ecac53.
 //
 // Solidity: event EncryptedTransactionSubmitted(uint64 indexed index, uint64 indexed block, bytes encryptedTransaction, address sender, uint64 gasLimit, uint64 cumulativeGasLimit, uint256 fee)
-func (_Bindings *BindingsFilterer) ParseEncryptedTransactionSubmitted(log types.Log) (*BindingsEncryptedTransactionSubmitted, error) {
-	event := new(BindingsEncryptedTransactionSubmitted)
-	if err := _Bindings.contract.UnpackLog(event, "EncryptedTransactionSubmitted", log); err != nil {
+func (_Inbox *InboxFilterer) ParseEncryptedTransactionSubmitted(log types.Log) (*InboxEncryptedTransactionSubmitted, error) {
+	event := new(InboxEncryptedTransactionSubmitted)
+	if err := _Inbox.contract.UnpackLog(event, "EncryptedTransactionSubmitted", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
 	return event, nil
 }
 
-// BindingsFeesWithdrawnIterator is returned from FilterFeesWithdrawn and is used to iterate over the raw logs and unpacked data for FeesWithdrawn events raised by the Bindings contract.
-type BindingsFeesWithdrawnIterator struct {
-	Event *BindingsFeesWithdrawn // Event containing the contract specifics and raw log
+// InboxFeesWithdrawnIterator is returned from FilterFeesWithdrawn and is used to iterate over the raw logs and unpacked data for FeesWithdrawn events raised by the Inbox contract.
+type InboxFeesWithdrawnIterator struct {
+	Event *InboxFeesWithdrawn // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -944,7 +944,7 @@ type BindingsFeesWithdrawnIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *BindingsFeesWithdrawnIterator) Next() bool {
+func (it *InboxFeesWithdrawnIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -953,7 +953,7 @@ func (it *BindingsFeesWithdrawnIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(BindingsFeesWithdrawn)
+			it.Event = new(InboxFeesWithdrawn)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -968,7 +968,7 @@ func (it *BindingsFeesWithdrawnIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(BindingsFeesWithdrawn)
+		it.Event = new(InboxFeesWithdrawn)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -984,19 +984,19 @@ func (it *BindingsFeesWithdrawnIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *BindingsFeesWithdrawnIterator) Error() error {
+func (it *InboxFeesWithdrawnIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *BindingsFeesWithdrawnIterator) Close() error {
+func (it *InboxFeesWithdrawnIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// BindingsFeesWithdrawn represents a FeesWithdrawn event raised by the Bindings contract.
-type BindingsFeesWithdrawn struct {
+// InboxFeesWithdrawn represents a FeesWithdrawn event raised by the Inbox contract.
+type InboxFeesWithdrawn struct {
 	Recipient common.Address
 	Raw       types.Log // Blockchain specific contextual infos
 }
@@ -1004,21 +1004,21 @@ type BindingsFeesWithdrawn struct {
 // FilterFeesWithdrawn is a free log retrieval operation binding the contract event 0x792248b395a0ac81e65e6d79494b5382c8de690233f36c2e5e672f77044887c7.
 //
 // Solidity: event FeesWithdrawn(address recipient)
-func (_Bindings *BindingsFilterer) FilterFeesWithdrawn(opts *bind.FilterOpts) (*BindingsFeesWithdrawnIterator, error) {
+func (_Inbox *InboxFilterer) FilterFeesWithdrawn(opts *bind.FilterOpts) (*InboxFeesWithdrawnIterator, error) {
 
-	logs, sub, err := _Bindings.contract.FilterLogs(opts, "FeesWithdrawn")
+	logs, sub, err := _Inbox.contract.FilterLogs(opts, "FeesWithdrawn")
 	if err != nil {
 		return nil, err
 	}
-	return &BindingsFeesWithdrawnIterator{contract: _Bindings.contract, event: "FeesWithdrawn", logs: logs, sub: sub}, nil
+	return &InboxFeesWithdrawnIterator{contract: _Inbox.contract, event: "FeesWithdrawn", logs: logs, sub: sub}, nil
 }
 
 // WatchFeesWithdrawn is a free log subscription operation binding the contract event 0x792248b395a0ac81e65e6d79494b5382c8de690233f36c2e5e672f77044887c7.
 //
 // Solidity: event FeesWithdrawn(address recipient)
-func (_Bindings *BindingsFilterer) WatchFeesWithdrawn(opts *bind.WatchOpts, sink chan<- *BindingsFeesWithdrawn) (event.Subscription, error) {
+func (_Inbox *InboxFilterer) WatchFeesWithdrawn(opts *bind.WatchOpts, sink chan<- *InboxFeesWithdrawn) (event.Subscription, error) {
 
-	logs, sub, err := _Bindings.contract.WatchLogs(opts, "FeesWithdrawn")
+	logs, sub, err := _Inbox.contract.WatchLogs(opts, "FeesWithdrawn")
 	if err != nil {
 		return nil, err
 	}
@@ -1028,8 +1028,8 @@ func (_Bindings *BindingsFilterer) WatchFeesWithdrawn(opts *bind.WatchOpts, sink
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(BindingsFeesWithdrawn)
-				if err := _Bindings.contract.UnpackLog(event, "FeesWithdrawn", log); err != nil {
+				event := new(InboxFeesWithdrawn)
+				if err := _Inbox.contract.UnpackLog(event, "FeesWithdrawn", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -1053,18 +1053,18 @@ func (_Bindings *BindingsFilterer) WatchFeesWithdrawn(opts *bind.WatchOpts, sink
 // ParseFeesWithdrawn is a log parse operation binding the contract event 0x792248b395a0ac81e65e6d79494b5382c8de690233f36c2e5e672f77044887c7.
 //
 // Solidity: event FeesWithdrawn(address recipient)
-func (_Bindings *BindingsFilterer) ParseFeesWithdrawn(log types.Log) (*BindingsFeesWithdrawn, error) {
-	event := new(BindingsFeesWithdrawn)
-	if err := _Bindings.contract.UnpackLog(event, "FeesWithdrawn", log); err != nil {
+func (_Inbox *InboxFilterer) ParseFeesWithdrawn(log types.Log) (*InboxFeesWithdrawn, error) {
+	event := new(InboxFeesWithdrawn)
+	if err := _Inbox.contract.UnpackLog(event, "FeesWithdrawn", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
 	return event, nil
 }
 
-// BindingsPausedIterator is returned from FilterPaused and is used to iterate over the raw logs and unpacked data for Paused events raised by the Bindings contract.
-type BindingsPausedIterator struct {
-	Event *BindingsPaused // Event containing the contract specifics and raw log
+// InboxPausedIterator is returned from FilterPaused and is used to iterate over the raw logs and unpacked data for Paused events raised by the Inbox contract.
+type InboxPausedIterator struct {
+	Event *InboxPaused // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -1078,7 +1078,7 @@ type BindingsPausedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *BindingsPausedIterator) Next() bool {
+func (it *InboxPausedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -1087,7 +1087,7 @@ func (it *BindingsPausedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(BindingsPaused)
+			it.Event = new(InboxPaused)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -1102,7 +1102,7 @@ func (it *BindingsPausedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(BindingsPaused)
+		it.Event = new(InboxPaused)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -1118,19 +1118,19 @@ func (it *BindingsPausedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *BindingsPausedIterator) Error() error {
+func (it *InboxPausedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *BindingsPausedIterator) Close() error {
+func (it *InboxPausedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// BindingsPaused represents a Paused event raised by the Bindings contract.
-type BindingsPaused struct {
+// InboxPaused represents a Paused event raised by the Inbox contract.
+type InboxPaused struct {
 	Account common.Address
 	Raw     types.Log // Blockchain specific contextual infos
 }
@@ -1138,21 +1138,21 @@ type BindingsPaused struct {
 // FilterPaused is a free log retrieval operation binding the contract event 0x62e78cea01bee320cd4e420270b5ea74000d11b0c9f74754ebdbfc544b05a258.
 //
 // Solidity: event Paused(address account)
-func (_Bindings *BindingsFilterer) FilterPaused(opts *bind.FilterOpts) (*BindingsPausedIterator, error) {
+func (_Inbox *InboxFilterer) FilterPaused(opts *bind.FilterOpts) (*InboxPausedIterator, error) {
 
-	logs, sub, err := _Bindings.contract.FilterLogs(opts, "Paused")
+	logs, sub, err := _Inbox.contract.FilterLogs(opts, "Paused")
 	if err != nil {
 		return nil, err
 	}
-	return &BindingsPausedIterator{contract: _Bindings.contract, event: "Paused", logs: logs, sub: sub}, nil
+	return &InboxPausedIterator{contract: _Inbox.contract, event: "Paused", logs: logs, sub: sub}, nil
 }
 
 // WatchPaused is a free log subscription operation binding the contract event 0x62e78cea01bee320cd4e420270b5ea74000d11b0c9f74754ebdbfc544b05a258.
 //
 // Solidity: event Paused(address account)
-func (_Bindings *BindingsFilterer) WatchPaused(opts *bind.WatchOpts, sink chan<- *BindingsPaused) (event.Subscription, error) {
+func (_Inbox *InboxFilterer) WatchPaused(opts *bind.WatchOpts, sink chan<- *InboxPaused) (event.Subscription, error) {
 
-	logs, sub, err := _Bindings.contract.WatchLogs(opts, "Paused")
+	logs, sub, err := _Inbox.contract.WatchLogs(opts, "Paused")
 	if err != nil {
 		return nil, err
 	}
@@ -1162,8 +1162,8 @@ func (_Bindings *BindingsFilterer) WatchPaused(opts *bind.WatchOpts, sink chan<-
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(BindingsPaused)
-				if err := _Bindings.contract.UnpackLog(event, "Paused", log); err != nil {
+				event := new(InboxPaused)
+				if err := _Inbox.contract.UnpackLog(event, "Paused", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -1187,18 +1187,18 @@ func (_Bindings *BindingsFilterer) WatchPaused(opts *bind.WatchOpts, sink chan<-
 // ParsePaused is a log parse operation binding the contract event 0x62e78cea01bee320cd4e420270b5ea74000d11b0c9f74754ebdbfc544b05a258.
 //
 // Solidity: event Paused(address account)
-func (_Bindings *BindingsFilterer) ParsePaused(log types.Log) (*BindingsPaused, error) {
-	event := new(BindingsPaused)
-	if err := _Bindings.contract.UnpackLog(event, "Paused", log); err != nil {
+func (_Inbox *InboxFilterer) ParsePaused(log types.Log) (*InboxPaused, error) {
+	event := new(InboxPaused)
+	if err := _Inbox.contract.UnpackLog(event, "Paused", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
 	return event, nil
 }
 
-// BindingsRoleAdminChangedIterator is returned from FilterRoleAdminChanged and is used to iterate over the raw logs and unpacked data for RoleAdminChanged events raised by the Bindings contract.
-type BindingsRoleAdminChangedIterator struct {
-	Event *BindingsRoleAdminChanged // Event containing the contract specifics and raw log
+// InboxRoleAdminChangedIterator is returned from FilterRoleAdminChanged and is used to iterate over the raw logs and unpacked data for RoleAdminChanged events raised by the Inbox contract.
+type InboxRoleAdminChangedIterator struct {
+	Event *InboxRoleAdminChanged // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -1212,7 +1212,7 @@ type BindingsRoleAdminChangedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *BindingsRoleAdminChangedIterator) Next() bool {
+func (it *InboxRoleAdminChangedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -1221,7 +1221,7 @@ func (it *BindingsRoleAdminChangedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(BindingsRoleAdminChanged)
+			it.Event = new(InboxRoleAdminChanged)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -1236,7 +1236,7 @@ func (it *BindingsRoleAdminChangedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(BindingsRoleAdminChanged)
+		it.Event = new(InboxRoleAdminChanged)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -1252,19 +1252,19 @@ func (it *BindingsRoleAdminChangedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *BindingsRoleAdminChangedIterator) Error() error {
+func (it *InboxRoleAdminChangedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *BindingsRoleAdminChangedIterator) Close() error {
+func (it *InboxRoleAdminChangedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// BindingsRoleAdminChanged represents a RoleAdminChanged event raised by the Bindings contract.
-type BindingsRoleAdminChanged struct {
+// InboxRoleAdminChanged represents a RoleAdminChanged event raised by the Inbox contract.
+type InboxRoleAdminChanged struct {
 	Role              [32]byte
 	PreviousAdminRole [32]byte
 	NewAdminRole      [32]byte
@@ -1274,7 +1274,7 @@ type BindingsRoleAdminChanged struct {
 // FilterRoleAdminChanged is a free log retrieval operation binding the contract event 0xbd79b86ffe0ab8e8776151514217cd7cacd52c909f66475c3af44e129f0b00ff.
 //
 // Solidity: event RoleAdminChanged(bytes32 indexed role, bytes32 indexed previousAdminRole, bytes32 indexed newAdminRole)
-func (_Bindings *BindingsFilterer) FilterRoleAdminChanged(opts *bind.FilterOpts, role [][32]byte, previousAdminRole [][32]byte, newAdminRole [][32]byte) (*BindingsRoleAdminChangedIterator, error) {
+func (_Inbox *InboxFilterer) FilterRoleAdminChanged(opts *bind.FilterOpts, role [][32]byte, previousAdminRole [][32]byte, newAdminRole [][32]byte) (*InboxRoleAdminChangedIterator, error) {
 
 	var roleRule []interface{}
 	for _, roleItem := range role {
@@ -1289,17 +1289,17 @@ func (_Bindings *BindingsFilterer) FilterRoleAdminChanged(opts *bind.FilterOpts,
 		newAdminRoleRule = append(newAdminRoleRule, newAdminRoleItem)
 	}
 
-	logs, sub, err := _Bindings.contract.FilterLogs(opts, "RoleAdminChanged", roleRule, previousAdminRoleRule, newAdminRoleRule)
+	logs, sub, err := _Inbox.contract.FilterLogs(opts, "RoleAdminChanged", roleRule, previousAdminRoleRule, newAdminRoleRule)
 	if err != nil {
 		return nil, err
 	}
-	return &BindingsRoleAdminChangedIterator{contract: _Bindings.contract, event: "RoleAdminChanged", logs: logs, sub: sub}, nil
+	return &InboxRoleAdminChangedIterator{contract: _Inbox.contract, event: "RoleAdminChanged", logs: logs, sub: sub}, nil
 }
 
 // WatchRoleAdminChanged is a free log subscription operation binding the contract event 0xbd79b86ffe0ab8e8776151514217cd7cacd52c909f66475c3af44e129f0b00ff.
 //
 // Solidity: event RoleAdminChanged(bytes32 indexed role, bytes32 indexed previousAdminRole, bytes32 indexed newAdminRole)
-func (_Bindings *BindingsFilterer) WatchRoleAdminChanged(opts *bind.WatchOpts, sink chan<- *BindingsRoleAdminChanged, role [][32]byte, previousAdminRole [][32]byte, newAdminRole [][32]byte) (event.Subscription, error) {
+func (_Inbox *InboxFilterer) WatchRoleAdminChanged(opts *bind.WatchOpts, sink chan<- *InboxRoleAdminChanged, role [][32]byte, previousAdminRole [][32]byte, newAdminRole [][32]byte) (event.Subscription, error) {
 
 	var roleRule []interface{}
 	for _, roleItem := range role {
@@ -1314,7 +1314,7 @@ func (_Bindings *BindingsFilterer) WatchRoleAdminChanged(opts *bind.WatchOpts, s
 		newAdminRoleRule = append(newAdminRoleRule, newAdminRoleItem)
 	}
 
-	logs, sub, err := _Bindings.contract.WatchLogs(opts, "RoleAdminChanged", roleRule, previousAdminRoleRule, newAdminRoleRule)
+	logs, sub, err := _Inbox.contract.WatchLogs(opts, "RoleAdminChanged", roleRule, previousAdminRoleRule, newAdminRoleRule)
 	if err != nil {
 		return nil, err
 	}
@@ -1324,8 +1324,8 @@ func (_Bindings *BindingsFilterer) WatchRoleAdminChanged(opts *bind.WatchOpts, s
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(BindingsRoleAdminChanged)
-				if err := _Bindings.contract.UnpackLog(event, "RoleAdminChanged", log); err != nil {
+				event := new(InboxRoleAdminChanged)
+				if err := _Inbox.contract.UnpackLog(event, "RoleAdminChanged", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -1349,18 +1349,18 @@ func (_Bindings *BindingsFilterer) WatchRoleAdminChanged(opts *bind.WatchOpts, s
 // ParseRoleAdminChanged is a log parse operation binding the contract event 0xbd79b86ffe0ab8e8776151514217cd7cacd52c909f66475c3af44e129f0b00ff.
 //
 // Solidity: event RoleAdminChanged(bytes32 indexed role, bytes32 indexed previousAdminRole, bytes32 indexed newAdminRole)
-func (_Bindings *BindingsFilterer) ParseRoleAdminChanged(log types.Log) (*BindingsRoleAdminChanged, error) {
-	event := new(BindingsRoleAdminChanged)
-	if err := _Bindings.contract.UnpackLog(event, "RoleAdminChanged", log); err != nil {
+func (_Inbox *InboxFilterer) ParseRoleAdminChanged(log types.Log) (*InboxRoleAdminChanged, error) {
+	event := new(InboxRoleAdminChanged)
+	if err := _Inbox.contract.UnpackLog(event, "RoleAdminChanged", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
 	return event, nil
 }
 
-// BindingsRoleGrantedIterator is returned from FilterRoleGranted and is used to iterate over the raw logs and unpacked data for RoleGranted events raised by the Bindings contract.
-type BindingsRoleGrantedIterator struct {
-	Event *BindingsRoleGranted // Event containing the contract specifics and raw log
+// InboxRoleGrantedIterator is returned from FilterRoleGranted and is used to iterate over the raw logs and unpacked data for RoleGranted events raised by the Inbox contract.
+type InboxRoleGrantedIterator struct {
+	Event *InboxRoleGranted // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -1374,7 +1374,7 @@ type BindingsRoleGrantedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *BindingsRoleGrantedIterator) Next() bool {
+func (it *InboxRoleGrantedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -1383,7 +1383,7 @@ func (it *BindingsRoleGrantedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(BindingsRoleGranted)
+			it.Event = new(InboxRoleGranted)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -1398,7 +1398,7 @@ func (it *BindingsRoleGrantedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(BindingsRoleGranted)
+		it.Event = new(InboxRoleGranted)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -1414,19 +1414,19 @@ func (it *BindingsRoleGrantedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *BindingsRoleGrantedIterator) Error() error {
+func (it *InboxRoleGrantedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *BindingsRoleGrantedIterator) Close() error {
+func (it *InboxRoleGrantedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// BindingsRoleGranted represents a RoleGranted event raised by the Bindings contract.
-type BindingsRoleGranted struct {
+// InboxRoleGranted represents a RoleGranted event raised by the Inbox contract.
+type InboxRoleGranted struct {
 	Role    [32]byte
 	Account common.Address
 	Sender  common.Address
@@ -1436,7 +1436,7 @@ type BindingsRoleGranted struct {
 // FilterRoleGranted is a free log retrieval operation binding the contract event 0x2f8788117e7eff1d82e926ec794901d17c78024a50270940304540a733656f0d.
 //
 // Solidity: event RoleGranted(bytes32 indexed role, address indexed account, address indexed sender)
-func (_Bindings *BindingsFilterer) FilterRoleGranted(opts *bind.FilterOpts, role [][32]byte, account []common.Address, sender []common.Address) (*BindingsRoleGrantedIterator, error) {
+func (_Inbox *InboxFilterer) FilterRoleGranted(opts *bind.FilterOpts, role [][32]byte, account []common.Address, sender []common.Address) (*InboxRoleGrantedIterator, error) {
 
 	var roleRule []interface{}
 	for _, roleItem := range role {
@@ -1451,17 +1451,17 @@ func (_Bindings *BindingsFilterer) FilterRoleGranted(opts *bind.FilterOpts, role
 		senderRule = append(senderRule, senderItem)
 	}
 
-	logs, sub, err := _Bindings.contract.FilterLogs(opts, "RoleGranted", roleRule, accountRule, senderRule)
+	logs, sub, err := _Inbox.contract.FilterLogs(opts, "RoleGranted", roleRule, accountRule, senderRule)
 	if err != nil {
 		return nil, err
 	}
-	return &BindingsRoleGrantedIterator{contract: _Bindings.contract, event: "RoleGranted", logs: logs, sub: sub}, nil
+	return &InboxRoleGrantedIterator{contract: _Inbox.contract, event: "RoleGranted", logs: logs, sub: sub}, nil
 }
 
 // WatchRoleGranted is a free log subscription operation binding the contract event 0x2f8788117e7eff1d82e926ec794901d17c78024a50270940304540a733656f0d.
 //
 // Solidity: event RoleGranted(bytes32 indexed role, address indexed account, address indexed sender)
-func (_Bindings *BindingsFilterer) WatchRoleGranted(opts *bind.WatchOpts, sink chan<- *BindingsRoleGranted, role [][32]byte, account []common.Address, sender []common.Address) (event.Subscription, error) {
+func (_Inbox *InboxFilterer) WatchRoleGranted(opts *bind.WatchOpts, sink chan<- *InboxRoleGranted, role [][32]byte, account []common.Address, sender []common.Address) (event.Subscription, error) {
 
 	var roleRule []interface{}
 	for _, roleItem := range role {
@@ -1476,7 +1476,7 @@ func (_Bindings *BindingsFilterer) WatchRoleGranted(opts *bind.WatchOpts, sink c
 		senderRule = append(senderRule, senderItem)
 	}
 
-	logs, sub, err := _Bindings.contract.WatchLogs(opts, "RoleGranted", roleRule, accountRule, senderRule)
+	logs, sub, err := _Inbox.contract.WatchLogs(opts, "RoleGranted", roleRule, accountRule, senderRule)
 	if err != nil {
 		return nil, err
 	}
@@ -1486,8 +1486,8 @@ func (_Bindings *BindingsFilterer) WatchRoleGranted(opts *bind.WatchOpts, sink c
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(BindingsRoleGranted)
-				if err := _Bindings.contract.UnpackLog(event, "RoleGranted", log); err != nil {
+				event := new(InboxRoleGranted)
+				if err := _Inbox.contract.UnpackLog(event, "RoleGranted", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -1511,18 +1511,18 @@ func (_Bindings *BindingsFilterer) WatchRoleGranted(opts *bind.WatchOpts, sink c
 // ParseRoleGranted is a log parse operation binding the contract event 0x2f8788117e7eff1d82e926ec794901d17c78024a50270940304540a733656f0d.
 //
 // Solidity: event RoleGranted(bytes32 indexed role, address indexed account, address indexed sender)
-func (_Bindings *BindingsFilterer) ParseRoleGranted(log types.Log) (*BindingsRoleGranted, error) {
-	event := new(BindingsRoleGranted)
-	if err := _Bindings.contract.UnpackLog(event, "RoleGranted", log); err != nil {
+func (_Inbox *InboxFilterer) ParseRoleGranted(log types.Log) (*InboxRoleGranted, error) {
+	event := new(InboxRoleGranted)
+	if err := _Inbox.contract.UnpackLog(event, "RoleGranted", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
 	return event, nil
 }
 
-// BindingsRoleRevokedIterator is returned from FilterRoleRevoked and is used to iterate over the raw logs and unpacked data for RoleRevoked events raised by the Bindings contract.
-type BindingsRoleRevokedIterator struct {
-	Event *BindingsRoleRevoked // Event containing the contract specifics and raw log
+// InboxRoleRevokedIterator is returned from FilterRoleRevoked and is used to iterate over the raw logs and unpacked data for RoleRevoked events raised by the Inbox contract.
+type InboxRoleRevokedIterator struct {
+	Event *InboxRoleRevoked // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -1536,7 +1536,7 @@ type BindingsRoleRevokedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *BindingsRoleRevokedIterator) Next() bool {
+func (it *InboxRoleRevokedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -1545,7 +1545,7 @@ func (it *BindingsRoleRevokedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(BindingsRoleRevoked)
+			it.Event = new(InboxRoleRevoked)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -1560,7 +1560,7 @@ func (it *BindingsRoleRevokedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(BindingsRoleRevoked)
+		it.Event = new(InboxRoleRevoked)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -1576,19 +1576,19 @@ func (it *BindingsRoleRevokedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *BindingsRoleRevokedIterator) Error() error {
+func (it *InboxRoleRevokedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *BindingsRoleRevokedIterator) Close() error {
+func (it *InboxRoleRevokedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// BindingsRoleRevoked represents a RoleRevoked event raised by the Bindings contract.
-type BindingsRoleRevoked struct {
+// InboxRoleRevoked represents a RoleRevoked event raised by the Inbox contract.
+type InboxRoleRevoked struct {
 	Role    [32]byte
 	Account common.Address
 	Sender  common.Address
@@ -1598,7 +1598,7 @@ type BindingsRoleRevoked struct {
 // FilterRoleRevoked is a free log retrieval operation binding the contract event 0xf6391f5c32d9c69d2a47ea670b442974b53935d1edc7fd64eb21e047a839171b.
 //
 // Solidity: event RoleRevoked(bytes32 indexed role, address indexed account, address indexed sender)
-func (_Bindings *BindingsFilterer) FilterRoleRevoked(opts *bind.FilterOpts, role [][32]byte, account []common.Address, sender []common.Address) (*BindingsRoleRevokedIterator, error) {
+func (_Inbox *InboxFilterer) FilterRoleRevoked(opts *bind.FilterOpts, role [][32]byte, account []common.Address, sender []common.Address) (*InboxRoleRevokedIterator, error) {
 
 	var roleRule []interface{}
 	for _, roleItem := range role {
@@ -1613,17 +1613,17 @@ func (_Bindings *BindingsFilterer) FilterRoleRevoked(opts *bind.FilterOpts, role
 		senderRule = append(senderRule, senderItem)
 	}
 
-	logs, sub, err := _Bindings.contract.FilterLogs(opts, "RoleRevoked", roleRule, accountRule, senderRule)
+	logs, sub, err := _Inbox.contract.FilterLogs(opts, "RoleRevoked", roleRule, accountRule, senderRule)
 	if err != nil {
 		return nil, err
 	}
-	return &BindingsRoleRevokedIterator{contract: _Bindings.contract, event: "RoleRevoked", logs: logs, sub: sub}, nil
+	return &InboxRoleRevokedIterator{contract: _Inbox.contract, event: "RoleRevoked", logs: logs, sub: sub}, nil
 }
 
 // WatchRoleRevoked is a free log subscription operation binding the contract event 0xf6391f5c32d9c69d2a47ea670b442974b53935d1edc7fd64eb21e047a839171b.
 //
 // Solidity: event RoleRevoked(bytes32 indexed role, address indexed account, address indexed sender)
-func (_Bindings *BindingsFilterer) WatchRoleRevoked(opts *bind.WatchOpts, sink chan<- *BindingsRoleRevoked, role [][32]byte, account []common.Address, sender []common.Address) (event.Subscription, error) {
+func (_Inbox *InboxFilterer) WatchRoleRevoked(opts *bind.WatchOpts, sink chan<- *InboxRoleRevoked, role [][32]byte, account []common.Address, sender []common.Address) (event.Subscription, error) {
 
 	var roleRule []interface{}
 	for _, roleItem := range role {
@@ -1638,7 +1638,7 @@ func (_Bindings *BindingsFilterer) WatchRoleRevoked(opts *bind.WatchOpts, sink c
 		senderRule = append(senderRule, senderItem)
 	}
 
-	logs, sub, err := _Bindings.contract.WatchLogs(opts, "RoleRevoked", roleRule, accountRule, senderRule)
+	logs, sub, err := _Inbox.contract.WatchLogs(opts, "RoleRevoked", roleRule, accountRule, senderRule)
 	if err != nil {
 		return nil, err
 	}
@@ -1648,8 +1648,8 @@ func (_Bindings *BindingsFilterer) WatchRoleRevoked(opts *bind.WatchOpts, sink c
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(BindingsRoleRevoked)
-				if err := _Bindings.contract.UnpackLog(event, "RoleRevoked", log); err != nil {
+				event := new(InboxRoleRevoked)
+				if err := _Inbox.contract.UnpackLog(event, "RoleRevoked", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -1673,18 +1673,18 @@ func (_Bindings *BindingsFilterer) WatchRoleRevoked(opts *bind.WatchOpts, sink c
 // ParseRoleRevoked is a log parse operation binding the contract event 0xf6391f5c32d9c69d2a47ea670b442974b53935d1edc7fd64eb21e047a839171b.
 //
 // Solidity: event RoleRevoked(bytes32 indexed role, address indexed account, address indexed sender)
-func (_Bindings *BindingsFilterer) ParseRoleRevoked(log types.Log) (*BindingsRoleRevoked, error) {
-	event := new(BindingsRoleRevoked)
-	if err := _Bindings.contract.UnpackLog(event, "RoleRevoked", log); err != nil {
+func (_Inbox *InboxFilterer) ParseRoleRevoked(log types.Log) (*InboxRoleRevoked, error) {
+	event := new(InboxRoleRevoked)
+	if err := _Inbox.contract.UnpackLog(event, "RoleRevoked", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
 	return event, nil
 }
 
-// BindingsUnpausedIterator is returned from FilterUnpaused and is used to iterate over the raw logs and unpacked data for Unpaused events raised by the Bindings contract.
-type BindingsUnpausedIterator struct {
-	Event *BindingsUnpaused // Event containing the contract specifics and raw log
+// InboxUnpausedIterator is returned from FilterUnpaused and is used to iterate over the raw logs and unpacked data for Unpaused events raised by the Inbox contract.
+type InboxUnpausedIterator struct {
+	Event *InboxUnpaused // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -1698,7 +1698,7 @@ type BindingsUnpausedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *BindingsUnpausedIterator) Next() bool {
+func (it *InboxUnpausedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -1707,7 +1707,7 @@ func (it *BindingsUnpausedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(BindingsUnpaused)
+			it.Event = new(InboxUnpaused)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -1722,7 +1722,7 @@ func (it *BindingsUnpausedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(BindingsUnpaused)
+		it.Event = new(InboxUnpaused)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -1738,19 +1738,19 @@ func (it *BindingsUnpausedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *BindingsUnpausedIterator) Error() error {
+func (it *InboxUnpausedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *BindingsUnpausedIterator) Close() error {
+func (it *InboxUnpausedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// BindingsUnpaused represents a Unpaused event raised by the Bindings contract.
-type BindingsUnpaused struct {
+// InboxUnpaused represents a Unpaused event raised by the Inbox contract.
+type InboxUnpaused struct {
 	Account common.Address
 	Raw     types.Log // Blockchain specific contextual infos
 }
@@ -1758,21 +1758,21 @@ type BindingsUnpaused struct {
 // FilterUnpaused is a free log retrieval operation binding the contract event 0x5db9ee0a495bf2e6ff9c91a7834c1ba4fdd244a5e8aa4e537bd38aeae4b073aa.
 //
 // Solidity: event Unpaused(address account)
-func (_Bindings *BindingsFilterer) FilterUnpaused(opts *bind.FilterOpts) (*BindingsUnpausedIterator, error) {
+func (_Inbox *InboxFilterer) FilterUnpaused(opts *bind.FilterOpts) (*InboxUnpausedIterator, error) {
 
-	logs, sub, err := _Bindings.contract.FilterLogs(opts, "Unpaused")
+	logs, sub, err := _Inbox.contract.FilterLogs(opts, "Unpaused")
 	if err != nil {
 		return nil, err
 	}
-	return &BindingsUnpausedIterator{contract: _Bindings.contract, event: "Unpaused", logs: logs, sub: sub}, nil
+	return &InboxUnpausedIterator{contract: _Inbox.contract, event: "Unpaused", logs: logs, sub: sub}, nil
 }
 
 // WatchUnpaused is a free log subscription operation binding the contract event 0x5db9ee0a495bf2e6ff9c91a7834c1ba4fdd244a5e8aa4e537bd38aeae4b073aa.
 //
 // Solidity: event Unpaused(address account)
-func (_Bindings *BindingsFilterer) WatchUnpaused(opts *bind.WatchOpts, sink chan<- *BindingsUnpaused) (event.Subscription, error) {
+func (_Inbox *InboxFilterer) WatchUnpaused(opts *bind.WatchOpts, sink chan<- *InboxUnpaused) (event.Subscription, error) {
 
-	logs, sub, err := _Bindings.contract.WatchLogs(opts, "Unpaused")
+	logs, sub, err := _Inbox.contract.WatchLogs(opts, "Unpaused")
 	if err != nil {
 		return nil, err
 	}
@@ -1782,8 +1782,8 @@ func (_Bindings *BindingsFilterer) WatchUnpaused(opts *bind.WatchOpts, sink chan
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(BindingsUnpaused)
-				if err := _Bindings.contract.UnpackLog(event, "Unpaused", log); err != nil {
+				event := new(InboxUnpaused)
+				if err := _Inbox.contract.UnpackLog(event, "Unpaused", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -1807,9 +1807,9 @@ func (_Bindings *BindingsFilterer) WatchUnpaused(opts *bind.WatchOpts, sink chan
 // ParseUnpaused is a log parse operation binding the contract event 0x5db9ee0a495bf2e6ff9c91a7834c1ba4fdd244a5e8aa4e537bd38aeae4b073aa.
 //
 // Solidity: event Unpaused(address account)
-func (_Bindings *BindingsFilterer) ParseUnpaused(log types.Log) (*BindingsUnpaused, error) {
-	event := new(BindingsUnpaused)
-	if err := _Bindings.contract.UnpackLog(event, "Unpaused", log); err != nil {
+func (_Inbox *InboxFilterer) ParseUnpaused(log types.Log) (*InboxUnpaused, error) {
+	event := new(InboxUnpaused)
+	if err := _Inbox.contract.UnpackLog(event, "Unpaused", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
